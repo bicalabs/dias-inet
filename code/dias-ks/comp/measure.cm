@@ -1,0 +1,170 @@
+void _ce_measure (dksobj_mask* mask, uvar32_64 objno, ubyte* image, record* rec) {
+	uvar32_64 *area = mask->cont[objno], area_len = mask->cont_sizes[objno];
+	uvar32_64 *perim = mask->perim[objno], perim_len = mask->perim_sizes[objno];
+
+	ubyte rot, rot_max, rot_min;
+	uvar32_64 n, m, dimx, dimy, apex;
+	rtbyte top, left, bottom, right,
+	       dx, dy, dxx, dyy, sumx, sumy,
+	       dx1, dx2, dx3, dy1, dy2, dy3, d1, d2, d3, d,
+	       diams[32], diam_sum2, angle, ferets[64][2], feret;
+	rtbyte geom_x = 0.2053, geom_y = 0.2053,
+	       angle_step = 3.1415926535897932384626433832795 / 32.;
+
+	strcpy (rec->src_dens, "linear");
+	strcpy (rec->src_geom, "Axioscop x40 :: COHU 4922 :: MvSIGMA SLg 768x526 :: DIAS");
+	rec->src_object = objno;
+
+	dimx = mask->dimx;
+	dimy = mask->dimy;
+
+	rec->area = area_len * geom_x * geom_y;
+	rec->perim = perim_len * geom_x * geom_y;
+	rec->pixels = area_len;
+
+	/* Grey value computations */
+	/* TODO: Add dens scale support */
+	rec->min = image[area[area_len - 1]];
+	for (n = 0; n < area_len; ++n) {
+		if (rec->min > image[area[n]])
+			rec->min = image[area[n]];
+		if (rec->max < image[area[n]])
+			rec->max = image[area[n]];
+		rec->sum += image[area[n]];
+		rec->sum2 += image[area[n]] * image[area[n]];
+	}
+	rec->mean = (rtbyte)(rec->sum) / (rtbyte)n;
+	for (n = 0; n < area_len; ++n)
+		rec->stddev += (image[area[n]] - rec->mean) *
+		               (image[area[n]] - rec->mean);
+	rec->stddev /= n - 1;
+	rec->stddev = pow (rec->stddev, 0.5);
+
+	// Gravity center by object area
+	sumx = sumy = 0;
+	for (n = 0; n < area_len; ++n) {
+		sumx += area[n] % dimx;
+		sumy += area[n] / dimy;
+	}
+	rec->grav_areax = sumx / area_len;
+	rec->grav_areay = sumy / area_len;
+
+	// Gravity center by object perimeter
+	sumx = sumy = 0;
+	for (n = 0; n < perim_len; ++n) {
+		sumx += perim[n] % dimx;
+		sumy += perim[n] / dimy;
+	}
+	rec->grav_perimx = sumx / perim_len;
+	rec->grav_perimy = sumy / perim_len;
+
+	// Gravity center by grey value
+	sumx = sumy = 0;
+	for (n = 0; n < area_len; ++n) {
+		sumx += image[area[n]] * (area[n] % dimx);
+		sumy += image[area[n]] * (area[n] / dimy);
+	}
+	rec->grav_greyx = sumx / rec->sum;
+	rec->grav_greyy = sumy / rec->sum;
+
+	apex = 0;
+	for (n = 0; n < perim_len; ++n) {
+		dx = perim[n] % dimx * geom_x;
+		dy = perim[n] / dimx * geom_y;
+		if (rec->top > dy || rec->top == 0)
+			rec->top = dy;
+		if (rec->left > dx || rec->left == 0)
+			rec->left = dx;
+		if (rec->bottom < dy || rec->bottom == 0)
+			rec->bottom = dy;
+		if (rec->right < dx || rec->right == 0)
+			rec->right = dx;
+		if (apex > perim[n] || apex == 0) {
+			apex = perim[n];
+			rec->apexx = dx;
+			rec->apexy = dy;
+		}
+	}
+
+	diam_sum2 = 0;
+	rec->diam_max = 0;
+	rec->diam_min = max (dimx * geom_x, dimy * geom_y);
+	for (rot = 0; rot < 64; ++rot) {
+		feret = 0;
+		top = left = 0;
+		bottom = right = 0;
+		for (n = 0; n < perim_len; ++n) {
+			dx = perim[n] % dimx - rec->grav_areax;
+			dy = perim[n] / dimx - rec->grav_areay;
+			dxx = dx * cosl (angle_step*rot) - dy * sinl (angle_step*rot);
+			dyy = dx * sinl (angle_step*rot) + dy * cosl (angle_step*rot);
+
+			if (top > dyy || top == 0)
+				top = dyy;
+			if (left > dxx || left == 0)
+				left = dxx;
+			if (bottom < dyy || bottom == 0)
+				bottom = dyy;
+			if (right < dxx || right == 0)
+				right = dxx;
+			if (feret > dyy || feret == 0) {
+				feret = dyy;
+				ferets[rot][0] = perim[n] % dimx;
+				ferets[rot][1] = perim[n] / dimx;
+				if (ferets[rot][0] - rec->grav_perimx < 0) ferets[rot][0] -= .5;
+				if (ferets[rot][0] - rec->grav_perimx > 0) ferets[rot][0] += .5;
+				if (ferets[rot][1] - rec->grav_perimy < 0) ferets[rot][1] -= .5;
+				if (ferets[rot][1] - rec->grav_perimy > 0) ferets[rot][1] += .5;
+			}
+
+		}
+		if (rot >= 32)	continue;
+
+		angle = angle_step * (rot <= 16 ? rot : (32 - rot));
+		diams[rot] = bottom - top + sinl (angle) + cosl (angle);
+		diams[rot] *= pow (geom_y*sinl(angle) * geom_y*sinl(angle) +
+		                   geom_x*cosl(angle) * geom_x*cosl(angle), .5);
+
+		rec->diam_mean += diams[rot];
+		diam_sum2 += diams[rot] * diams[rot];
+		if (rec->diam_min > diams[rot]) {
+			rot_min = rot;
+			rec->diam_min = diams[rot];
+			rec->angle_min = angle;
+		}
+		if (rec->diam_max < diams[rot]) {
+			rot_max = rot;
+			rec->diam_max = diams[rot];
+			rec->angle_max = angle;
+		}
+	}
+	rec->diam_x = diams[15];
+	rec->diam_y = diams[0];
+	rec->diam_ort = diams[rot_max < 15 ? rot_max + 16 : rot_max - 16];
+	rec->diam_var = pow ((32. * diam_sum2 - rec->diam_mean * rec->diam_mean) / 992., .5);
+	rec->diam_mean /= 32.;
+
+	for (n = 0; n < 64; ++n) {
+		m = n == 63 ? 0 : n + 1;
+		dx1 = (ferets[m][0] - ferets[n][0]) * geom_x;
+		dy1 = (ferets[m][1] - ferets[n][1]) * geom_y;
+		dx2 = (ferets[n][0] - rec->grav_areax) * geom_x;
+		dy2 = (ferets[n][1] - rec->grav_areay) * geom_y;
+		dx3 = (ferets[m][0] - rec->grav_areax) * geom_x;
+		dy3 = (ferets[m][1] - rec->grav_areay) * geom_y;
+		d1 = pow (dx1*dx1 + dy1*dy1, .5);
+		d2 = pow (dx2*dx2 + dy2*dy2, .5);
+		d3 = pow (dx3*dx3 + dy3*dy3, .5);
+		d = (d1 + d2 + d3) / 2;
+
+		rec->csc_area += pow (d * (d - d1) * (d - d2) * (d - d3), .5);
+		rec->csc_perim += d1;
+	}
+
+	rec->grav_areax *= geom_x;
+	rec->grav_areay *= geom_y;
+	rec->grav_perimx *= geom_x;
+	rec->grav_perimy *= geom_y;
+	rec->grav_greyx *= geom_x;
+	rec->grav_greyy *= geom_y;
+}

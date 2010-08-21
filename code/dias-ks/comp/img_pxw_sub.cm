@@ -1,0 +1,28 @@
+	sdword val;
+	udword mode;
+	rtbyte divider;
+	register svar32_64 l, i;
+	INIT_XIMGS(2, ce_img_pxw_sub);
+	isvalidf (kstp_get_real (query, 0, &divider), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 1, &mode), c, kstp_errno);
+	iffailedf (divider != 0, c, "ce_img_pxw_sub: divider is zero");
+	iffailedf (mode <= 1, c, "ce_img_pxw_sub: wrong mode code");
+
+/*	for (l = dst->dimz - 1; l >= 0; --l) {
+		i = size - 1;
+		pdst = dst->layers[l];
+		while (i--) {
+			pdst[i] = srcs[0]->layers[l][i];
+			for (no = 1; no < n; ++no) {
+				val = (sdword)( (rtbyte)( (uvar32_64)(pdst[i]) - (uvar32_64)(srcs[no]->layers[l][i]) ) / divider);
+				if (val < 0x00 && mode == 0) val = 0;
+				else if (val < 0x00 && mode == 1) val &= 0xFF;
+				else if (val > 0xFF && mode == 0) val = 0xFF;
+				else if (val > 0xFF && mode == 1) val &= 0xFF;
+				pdst[i] = (ubyte)(val);
+			}
+		}
+	}*/
+
+	PROC_PWX_1 (-);
+	FINALIZE_XIMGS;

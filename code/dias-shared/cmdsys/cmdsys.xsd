@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema targetNamespace="http://tempuri.org/ks-cmdsys.xsd" elementFormDefault="qualified"
+	xmlns="http://tempuri.org/ks-cmdsys.xsd" xmlns:mstns="http://tempuri.org/ks-cmdsys.xsd"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:attributeGroup name="titles">
+		<xs:attribute name="title" type="xs:string" />
+		<xs:attribute name="name" type="xs:string" />
+	</xs:attributeGroup>
+	<xs:element name="info">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="descr" type="xs:string" />
+				<xs:element name="copyright" type="xs:string" />
+				<xs:element name="source" type="xs:string" />
+				<xs:element name="check" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="arg">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="enum">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="entry">
+								<xs:complexType>
+									<xs:attributeGroup ref="titles" />
+									<xs:attribute name="val" type="xs:short" />
+								</xs:complexType>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="titles" />
+			<xs:attribute name="gentype" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="int" />
+						<xs:enumeration value="real" />
+						<xs:enumeration value="string" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="subtype" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="storage" />
+						<xs:enumeration value="image" />
+						<xs:enumeration value="mask" />
+						<xs:enumeration value="mark" />
+						<xs:enumeration value="survey" />
+						<xs:enumeration value="bool" />
+						<xs:enumeration value="matrix" />
+						<xs:enumeration value="offsets" />
+						<xs:enumeration value="greyval" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="min" type="xs:int" use="optional" />
+			<xs:attribute name="max" type="xs:int" use="optional" />
+			<xs:attribute name="default" type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ref">
+		<xs:complexType>
+			<xs:attributeGroup ref="titles" />
+			<xs:attribute name="gentype" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="int" />
+						<xs:enumeration value="real" />
+						<xs:enumeration value="string" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="subtype" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="hobj" />
+						<xs:enumeration value="safestr" />
+						<xs:enumeration value="name" />
+						<xs:enumeration value="storage" />
+						<xs:enumeration value="image" />
+						<xs:enumeration value="mask" />
+						<xs:enumeration value="mark" />
+						<xs:enumeration value="survey" />
+						<xs:enumeration value="bool" />
+						<xs:enumeration value="matrix" />
+						<xs:enumeration value="offsets" />
+						<xs:enumeration value="greyval" />
+						<xs:enumeration value="plot" />
+						<xs:enumeration value="graph" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="min" type="xs:int" use="optional" />
+			<xs:attribute name="max" type="xs:int" use="optional" />
+			<xs:attribute name="default" type="xs:string" use="optional" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cmd">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="info" maxOccurs="1" minOccurs="0" />
+				<xs:element ref="arg" />
+				<xs:element ref="ret" />
+			</xs:all>
+			<xs:attribute name="code" type="xs:int" />
+			<xs:attributeGroup ref="titles" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="class">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="cmd" />
+				<xs:element ref="class" />
+			</xs:all>
+			<xs:attributeGroup ref="titles" />
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cmdsys">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="class" />
+			</xs:all>
+			<xs:attribute name="system">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="DIAS" />
+						<xs:enumeration value="LIGA" />
+						<xs:enumeration value="NERO" />
+						<xs:enumeration value="SIAS" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="version" type="xs:short" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

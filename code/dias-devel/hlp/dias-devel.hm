@@ -1,0 +1,35 @@
+ 
+// Commands (ID_* and IDM_*) 
+HIDM_ABOUTBOX                           0x10010
+HID_FILE_DOWNLOAD                       0x18004
+HID_FILE_UPLOAD                         0x18005
+HID_FILE_EXIT                           0x18006
+HID_FILE_DISCONNECT                     0x1800A
+HID_FILE_CONNECT                        0x1800B
+HID_VIEW_REFRESH                        0x1800F
+HID_VIEW_STORAGEINFO                    0x18010
+HID_VIEW_IMAGEINFO                      0x18011
+HID_VIEW_AUTOPREVIEW                    0x18012
+HID_HELP32787                           0x18013
+HID_FILE_SELECTSTORAGE                  0x18014
+HID_FILE_EDITSTORAGE                    0x18015
+HID_VIW_AUTOPREVIEW                     0x18021
+HID_VIEW_APPLYNOW                       0x18023
+HID_FILE_DELETESTORAGE                  0x18024
+HID_PLUG_HTHALAMAVP                     0x18026
+HID_PLUG_MEMORYTEST1                    0x18027
+ 
+// Prompts (IDP_*) 
+HIDP_OLE_INIT_FAILED                    0x30064
+HIDP_SOCKETS_INIT_FAILED                0x30067
+ 
+// Resources (IDR_*) 
+HIDR_DIASDEVEL1                         0x2006B
+HIDR_MAINFRAME                          0x20080
+HIDR_DIASDEVEL                          0x20082
+ 
+// Dialogs (IDD_*) 
+HIDD_ABOUTBOX                           0x20064
+HIDD_DIASDEVEL_DIALOG                   0x200FE
+ 
+// Frame Controls (IDW_*) 

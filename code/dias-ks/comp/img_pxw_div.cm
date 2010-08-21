@@ -1,0 +1,12 @@
+	sdword val;
+	udword mode;
+	rtbyte divider;
+	register svar32_64 l, i;
+	INIT_XIMGS(2, ce_img_pxw_div);
+	isvalidf (kstp_get_real (query, 0, &divider), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 1, &mode), c, kstp_errno);
+	iffailedf (divider != 0, c, "ce_img_pxw_div: divider is zero");
+	iffailedf (mode > 1, c, "ce_img_pxw_div: wrong mode code");
+	divider = 1. / divider;
+	PROC_PWX_1 (/);
+	FINALIZE_XIMGS;

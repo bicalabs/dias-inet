@@ -1,0 +1,124 @@
+
+/* DEPRICATED
+ * Function performs recursive filling of closed areas and returns the total filled area in pixels
+ * Workflow:
+ *   Strict arguments checking: YES
+ *   Right error messages: NO
+ *   Multithreading: NO
+ *   16-bit channels: NO
+ *   Algorithm optimization: YES
+ */
+uvar32_64 _ce_floodfill0 (ubyte* data, uvar32_64 dimx, uvar32_64 dimy, uvar32_64 seed, ubyte fill) {
+	ubyte src;
+	bool first = true;
+	ubyte *ptr, *lptr, *lp, *flp;
+	uvar32_64 pos, left, right, lf, flf, frf, regions, sseed = seed,
+	          area = 0, size = dimx * dimy;
+
+	ptr = data + seed;
+	src = *ptr;
+	for (pos = seed % dimx; pos && *ptr == src; ptr--, pos--) ;
+	flp = ptr; flf = pos;
+	for (pos = seed % dimx; pos < dimx && *ptr == src; ptr++, pos++) ;
+	frf = pos;
+
+	while (true) {
+		/* Scanning till the left edge on the current line */
+		for (pos = seed % dimx, ptr = data + seed;
+		     pos && ptr >= data && ptr < data + size && *ptr == src;
+		     *ptr-- = fill, pos--, area++) ;
+		/* Remembering left edge */
+		lptr = ptr; left = pos;
+		/* Filling the line until the right edge is found */
+		for (pos = seed % dimx + 1, ptr = data + seed + 1;
+		     pos < dimx && ptr >= data && ptr < data + size && *ptr == src;
+		     *ptr++ = fill, pos++, area++) ;
+		/* Remembering right edge */
+		right = pos;
+
+		/* Offseting seed one line down */
+		ptr = lptr + dimx;
+		if (ptr >= data && ptr < data + size) {
+			/* Scanning till the left edge on the current line */
+			for (pos = left;
+			     ptr >= data && (svar32_64)pos > 0 && *ptr == src;
+			     pos--, ptr--) ;
+			for (;ptr < data + size && pos < right && *ptr != src;
+			     pos++, ptr++) ;
+			if (pos > right)
+				break;
+			lp = ptr; lf = pos;
+			/* Counting gerions on the line */
+			for (regions = 0, pos++; pos < right; pos++, ptr++)
+				if (*ptr != src) {
+					for (; pos < right && *ptr != src; pos++, ptr++) ;
+					if (pos < right) regions++;
+				}
+			/* If line has more then one regions the fill
+			   them with recursive method */
+			if (regions != 0) {
+				for (pos = lf, ptr = lp; pos < right;  pos++, ptr++)
+					if (*ptr == src)
+						area += _ce_floodfill
+						  (data, dimx, dimy, pos + seed + dimx, fill);
+				return (area);
+			/* If the full line is a one region then fill
+			   the line by iterative method */
+			} else {
+				seed += dimx - seed % dimx + lf;
+				continue;
+			}
+		}
+
+		/* Offseting seed one line up */
+		if (first == true) {
+			seed = sseed;
+			ptr = data;
+			left = flf;
+			right = frf;
+			lptr = flp;
+			first = false;
+		}
+		ptr = lptr - dimx;
+		if (ptr >= data && ptr < data + size) {
+			/* Scanning till the left edge on the current line */
+			for (pos = left;
+			     ptr >= data && (svar32_64)pos > 0 && *ptr == src;
+			     pos--, ptr--) ;
+			for (; ptr < data + size && pos <= right && *ptr != src;
+			     pos++, ptr++) ;
+			if (pos > right)
+				break;
+			lp = ptr; lf = pos;
+			/* Counting gerions on the line */
+			for (regions = 0, pos++; pos < right; pos++, ptr++)
+				if (*ptr != src) {
+					for (; pos < right && *ptr != src; pos++, ptr++) ;
+					if (pos < right) regions++;
+				}
+			/* If line has more then one regions the fill
+			   them with recursive method */
+			if (regions) {
+				for (pos = lf, ptr = lp; pos < right;  pos++, ptr++)
+					if (*ptr == src)
+						area += _ce_floodfill
+						  (data, dimx, dimy, pos + seed - dimx, fill);
+				return (area);
+			/* If the full line is a one region then fill
+			   the line by iterative method */
+			} else {
+				seed += dimx - seed % dimx + lf;
+				continue;
+			}
+		} else break;
+	}
+	return (area);
+
+/*	for (pos = left, ptr = lptr - dimx; pos < right && ptr > data ; *ptr++, pos++)
+		if (*ptr == src)
+			area += _ce_floodfill (data, dimx, dimy, seed - dimx + pos, fill);
+	for (pos = left, ptr = lptr + dimx; pos < right && ptr < data + size ; *ptr++, pos++)
+		if (*ptr == src)
+			area += _ce_floodfill (data, dimx, dimy, seed + dimx + pos, fill);*/
+}
+

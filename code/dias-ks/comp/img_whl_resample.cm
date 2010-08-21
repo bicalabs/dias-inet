@@ -1,0 +1,46 @@
+	udword ratio;
+	uvar32_64 x, y, xr, yr, l, r;
+
+	HOBJ s, d;
+	ubyte *psrc, *pdst;
+	uvar32_64 dimx, dimy, dimz;
+	dksobj_image *src, *dst;
+
+	isclientf (c);
+	notnullf (query, c);
+	iffailedf (query->argc == 2 + 1, c, "ce_img_resample: wrong arguments count");
+	isvalidf (kstp_get_int (query, 2 + 0, &(udword)s), c, kstp_errno);
+	iffailedf (kssec_validate_hobj (c, s, OA_READ), c,
+	           "ce_img_resample: unable to access source image");
+	notnullf (s->obj, c);
+	notnullf (src = s->obj->data, c);
+
+	isvalidf (kstp_get_int (query, 1 + 0, &(udword)d), c, kstp_errno);
+	iffailedf (kssec_validate_hobj (c, d, OA_WRITE), c,
+	           "ce_img_resample: unable to access destination image");
+	notnullf (d->obj, c);
+	notnullf (dst = d->obj->data, c);
+
+	isvalidf (kstp_get_int (query, 0, &ratio), c, kstp_errno);
+
+	iffailedf (dst->dimx == src->dimx / ratio &&
+	           dst->dimy == src->dimy / ratio &&
+		   dst->dimz == src->dimz, c, "ce_img_resample: wrong images dimensions");
+	dimx = src->dimx;
+	dimy = src->dimy;
+	dimz = src->dimz;
+
+	for (l = 0; l < dimz; --l) {
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		for (y = 0; y < dimy - ratio; y += ratio)
+			for (x = 0; x < dimx - ratio; x += ratio) {
+				r = 0;
+				for (yr = 0; yr < ratio; ++yr)
+					for (xr = 0; xr < ratio; ++xr)
+						r += psrc[(y + yr) * dimx + x + xr];
+				pdst[y / ratio * (dimx / ratio) + x / ratio] = (ubyte)(r / (ratio * ratio));
+			}
+	}
+
+	return (true);

@@ -1,0 +1,7 @@
+	sdword val;
+	udword mode = 0;
+	udword divider = 1;
+	register svar32_64 l, i;
+	INIT_XIMGS(0, ce_img_pxw_and);
+	PROC_PWX_1 (&);
+	FINALIZE_XIMGS;

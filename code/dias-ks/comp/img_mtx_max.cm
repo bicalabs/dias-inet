@@ -1,0 +1,43 @@
+	clock_t oclock;
+	ubyte max, *sp;
+	svar32_64 l;
+	udword mtxdim;
+	uvar32_64 limx, limy;
+	register uvar32_64 x, y;
+	register svar32_64 mx, my;
+	INIT_2IMGS (1, ce_img_mtx_max);
+
+	isvalidf (kstp_get_int (query, 0, &mtxdim), c, kstp_errno);
+	iffailedf (mtxdim >= 1 && mtxdim < min (src->dimx / 4,src->dimy / 4),
+	           c, "ce_img_mtx_max: wrong matrix size");
+
+	oclock = clock ();
+	for (l = dimz - 1; l >= 0; --l) {
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		memset (pdst, 0, size);
+
+		limy = dimy - mtxdim;
+		psrc += mtxdim * (dimx + 1);
+		pdst += mtxdim * (dimx + 1);
+		for (y = mtxdim; y < limy; ++y) {
+			limx = dimx - mtxdim;
+			for (x = mtxdim; x < limx; ++x) {
+				sp = psrc - mtxdim * (dimx + 1);
+				max = 0;
+				for (my = -(sdword)mtxdim; my <= (sdword)mtxdim; ++my) {
+					for (mx = -(sdword)mtxdim; mx <= (sdword)mtxdim; ++mx, ++sp)
+						if (max < *sp) max = *sp;
+					sp += dimx - (mtxdim << 1) - 1;
+				}
+
+				*pdst++ = max;
+				psrc++;
+			}
+			psrc += 2 * mtxdim;
+			pdst += 2 * mtxdim;
+		}
+	}
+	oclock = clock () - oclock;
+	kserr_fire (c, 0, "mtx max timing", __FILE__, oclock);
+	return (true);

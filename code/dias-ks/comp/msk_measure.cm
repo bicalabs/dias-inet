@@ -1,0 +1,84 @@
+#	define PROC "ce_measure"
+	bool retval = true;
+	struct timeb tb;
+	clock_t clk_start, clk_spend;
+	uword histx;
+
+	sdword m, i, s, l;
+	HOBJ hmsk, himg, hsur;
+	dksobj_mask* msk;
+	dksobj_image* img;
+	dksobj_survey* sur;
+
+	uvar32_64 n;
+	record *rec, *rec_prev = NULL;
+
+	/* ### Standart arguments validation */
+	isclientf (c);
+	isvalidf (c->cpu_quot > c->cpu_time, c, KSERR_QUOT);
+	notnullf (query, c);
+	notnullf (resp, c);
+
+	/* ### Function parameters validation: count, not null, exists,
+	       accessible, with right type and characteristics */
+	isvalidf (query->argc == 4, c, KSERR_ARGCOUNT);
+
+	GET_OBJECT (0, m, hmsk, msk, DOBJT_MASK, OA_RDEX);
+	GET_OBJECT (1, s, hsur, sur, DOBJT_SURVEY, OA_WRITE);
+	GET_OBJECT (2, i, himg, img, DOBJT_IMAGE, OA_RDEX);
+
+	isvalidf (kstp_get_int (query, 3, &l), c, kstp_errno);
+	iffailedf ((uvar32_64)l < img->dimz, c, PROC": specified channel does not exists");
+
+	iffailedf (img->layers, c, PROC": there is no initialized channels on the image");
+	iffailedf (img->dimx == msk->dimx &&
+		   img->dimy == msk->dimy, c, PROC": different dimensions");
+
+	/* ### Starting */
+/*	isvalidf (!(hmsk->obj->share & OA_WRITE), c, KSERR_SHARECONFLICT);
+	isvalidf (!(himg->obj->share & OA_WRITE), c, KSERR_SHARECONFLICT);
+	isvalidf (!(hsur->obj->share & OA_ALL), c, KSERR_SHARECONFLICT);
+	himg->obj->share |= OA_WRITE;
+	hmsk->obj->share |= OA_WRITE;
+	hsur->obj->share |= OA_ALL;*/
+	clk_start = clock ();
+
+	/* ### Computations: iffailedf, notnullf and isvalidf not allowed */
+	for (n = 0; n < msk->count; ++n) {
+		iffailedb (img->layers[l], c, PROC": specified channel is uninitialized");
+		iffailedb (rec = ksmem_commit (c, sizeof (record)), c, PROC);
+		strcpy (rec->src_image, himg->obj->path);
+		strcpy (rec->src_mask, hmsk->obj->path);
+		_ce_measure (msk, n, img->layers[l], rec);
+		if (!sur->rec_head)
+			sur->rec_head = rec;
+		else
+			bdlist_add (!rec_prev ? sur->rec_head : rec_prev, rec);
+		sur->rec_count++;
+		rec_prev = rec;
+	}
+	if (n == msk->count) retval = false;
+
+	/* ### Updating all structures */
+	clk_spend = clock () - clk_start;
+	c->cpu_time += clk_spend;
+	msk->cpu_time += clk_spend;
+	ftime (&tb);
+
+	HISTORY_ADD (msk, DCMD_MEASURE, "mask measurement", c, clk_spend, tb.time);
+	HISTORY_ADD (sur, DCMD_MEASURE, "records added", c, clk_spend, tb.time);
+
+	hmsk->obj->accessed = tb.time;
+	himg->obj->accessed = tb.time;
+	hsur->obj->accessed = tb.time;
+	hsur->obj->modified = tb.time;
+
+/*	hmsk->obj->share ^= OA_WRITE;
+	himg->obj->share ^= OA_WRITE;
+	hsur->obj->share ^= OA_ALL;*/
+
+	if (retval == false) return (false);
+	kstp_allocate (resp, 1);
+	kstp_set_int (resp, 0, clk_spend);
+	return (true);
+#	undef PROC

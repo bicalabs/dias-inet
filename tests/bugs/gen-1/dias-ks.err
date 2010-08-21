@@ -1,0 +1,90 @@
+ *** Log service is started
+0, 	Mon Jan 27 20:10:15 2003	memory is already released	(ksmem.c, 383)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:15 2003	(no = _ksmem_mbat_find_used (c, unit, ptr)) != -1	(ksmem.c, 294)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:15 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:15 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:15 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:15 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:15 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:15 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:15 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:15 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:15 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:15 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:15 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:15 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:15 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:15 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:15 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:15 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:15 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:15 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:15 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:15 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:15 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:15 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:15 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:15 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:15 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:16 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:16 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:16 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:16 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:16 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:16 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:16 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:16 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:16 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:16 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:16 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:16 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:16 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:16 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:16 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:16 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:16 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:16 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:16 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:16 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:16 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:16 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:16 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:16 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:16 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:16 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:16 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:16 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:16 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:16 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:16 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:16 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:17 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:17 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:17 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:17 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:17 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:17 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:17 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:17 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:17 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:17 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:17 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:17 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:17 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:17 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:17 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:17 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:17 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:17 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:17 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:17 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:17 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:17 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:17 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:17 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:17 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:17 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:17 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:17 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed
+0, 	Mon Jan 27 20:10:17 2003	unit->tbottom != 0	(ksmem.c, 292)	1073741850	Internal kernel service memory manager error
+0, 	Mon Jan 27 20:10:17 2003	Failed to release memory	(ksmem.c, 448)	536870952	Operation failed

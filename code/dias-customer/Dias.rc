@@ -1,0 +1,1522 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1251)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\Dias.ico"
+IDR_DISTYPE             ICON                    "res\\StorageDoc.ico"
+IDI_WS_MARKER_CENTER    ICON                    "res\\ws_marker_center.ico"
+IDI_WS_MARKER_ZOOM      ICON                    "res\\ws_marker_zoom.ico"
+IDI_PIC_SIZE            ICON                    "res\\pic_size.ico"
+IDI_PIC_OFFX            ICON                    "res\\pic_offx.ico"
+IDI_PIC_OFFY            ICON                    "res\\pic_offy.ico"
+IDI_PIC_FILL            ICON                    "res\\pic_fill.ico"
+IDI_PIC_SIZEX           ICON                    "res\\pic_sizex.ico"
+IDI_PIC_SIZEY           ICON                    "res\\pic_sizey.ico"
+IDI_PIC_ROTATE          ICON                    "res\\pic_rota.ico"
+IDI_PIC_LOCKED          ICON                    "res\\pic_lock.ico"
+IDI_PIC_UNLOCKED        ICON                    "res\\pic_unlo.ico"
+IDI_MRK_CENTER          ICON                    "res\\mrk_cent.ico"
+IDI_PIC_RIGHT           ICON                    "res\\pic_rigt.ico"
+IDI_INDICATOR_GEOMSCALE ICON                    "res\\geomscale.ico"
+IDI_INDICATOR_DENSSCALE ICON                    "res\\densscale.ico"
+IDI_PIC_UP              ICON                    "res\\pic_up.ico"
+IDI_PIC_DOWN            ICON                    "res\\pic_down.ico"
+IDI_PIC_REMOVE          ICON                    "res\\pic_remo.ico"
+IDI_PIC_HAND            ICON                    "res\\pic_hand.ico"
+IDI_PIC_ZOOM            ICON                    "res\\pic_zoom.ico"
+IDI_PIC_ZOOM1           ICON                    "res\\ico00001.ico"
+IDI_PIC_ZOOMFIT         ICON                    "res\\ico00002.ico"
+IDI_PIC_TOGGLE          ICON                    "res\\pic_togg.ico"
+IDI_INDICATOR_IMGICO    ICON                    "res\\indicato.ico"
+IDI_INDICATOR_CNLICO    ICON                    "res\\ico00003.ico"
+IDI_INDICATOR_PTCICO    ICON                    "res\\ico00004.ico"
+IDI_INDICATOR_MRKICO    ICON                    "res\\ico00005.ico"
+IDI_INDICATOR_PRG_STOP  ICON                    "res\\ico00006.ico"
+IDI_INDICATOR_PRG_PAUSE ICON                    "res\\ico00007.ico"
+IDI_INDICATOR_PRG_START ICON                    "res\\ico00008.ico"
+IDI_INDICATOR_SAVE      ICON                    "res\\ico00009.ico"
+IDI_INDICATOR_OPEN      ICON                    "res\\ico00010.ico"
+IDI_INDICATOR_IMPORT    ICON                    "res\\ico00011.ico"
+IDI_INDICATOR_EXPORT    ICON                    "res\\ico00012.ico"
+IDI_ICON_IMAGES         ICON                    "res\\icon_ima.ico"
+IDI_ICON_SURVEY         ICON                    "res\\icon_sur.ico"
+IDI_POINTER             ICON                    "res\\pointer.ico"
+IDI_PIC_TRANSPARENT     ICON                    "res\\icon1.ico"
+IDI_PIC_FORMFACTOR      ICON                    "res\\ico00013.ico"
+IDR_SETTINGS            ICON                    "res\\settings.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_IL_DOCTYPES         BITMAP                  "res\\doctypes.bmp"
+IDB_TBX_STD_H           BITMAP                  "res\\tbx_std_h.bmp"
+IDB_TBX_STD_N           BITMAP                  "res\\tbx_std_n.bmp"
+IDB_TBX_STD_D           BITMAP                  "res\\tbx_std_d.bmp"
+IDB_TBP_IMAGE_H         BITMAP                  "res\\tbp_image_h.bmp"
+IDB_IL_COLORMODELS      BITMAP                  "res\\colormodels.bmp"
+IDB_DENSSCALES          BITMAP                  "res\\densscal.bmp"
+IDB_DENSTYPES           BITMAP                  "res\\denstype.bmp"
+IDB_GEOMSCALES          BITMAP                  "res\\geomscal.bmp"
+IDB_IL_OBJECTS          BITMAP                  "res\\il_objec.bmp"
+IDB_IL_FIELDTYPES       BITMAP                  "res\\il_field.bmp"
+IDB_TOOLBOX_IMAGES      BITMAP                  "res\\toolbox_images.bmp"
+IDB_IL_MARKERKERNELS    BITMAP                  "res\\il_mrkkernel.bmp"
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+#ifdef _WIN32
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\Dias.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#include ""afxprint.rc""       // printing/print preview resources\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+AFX_IDC_HSPLITBAR       CURSOR                  "res\\splith.cur"
+AFX_IDC_SMALLARROWS     CURSOR                  "res\\sarrows.cur"
+AFX_IDC_TRACK4WAY       CURSOR                  "res\\trck4way.cur"
+IDC_CURSOR2             CURSOR                  "res\\cur00002.cur"
+IDC_CURSOR3             CURSOR                  "res\\cur00003.cur"
+IDC_CURSOR4             CURSOR                  "res\\cur00004.cur"
+IDC_CURSOR11            CURSOR                  "res\\shp_p.cur"
+#endif    // Russian resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+IDR_TOOLBOX_IMAGES      BITMAP                  "res\\images_toolbox.bmp"
+IDB_LOGO                BITMAP                  "res\\logo.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_ZOOMIN              CURSOR                  "res\\magnify.cur"
+IDC_ZOOMOUT             CURSOR                  "res\\zoomout.cur"
+IDC_POINTER             CURSOR                  "res\\pointer.cur"
+IDC_IOBJCREATE          CURSOR                  "res\\shapes.cur"
+IDC_MRKCREATE           CURSOR                  "res\\markcrea.cur"
+IDCX_ZOOMIN_AREASEL     CURSOR                  "res\\x-zi-as.cur"
+IDCX_IOBJPTR_MOVE       CURSOR                  "res\\x-ip-m.cur"
+IDC_MRKPTR              CURSOR                  "res\\mrk_ptr.cur"
+IDC_TEXTCNG             CURSOR                  "res\\textcng.cur"
+IDC_TEXTCREATE          CURSOR                  "res\\textcreate.cur"
+IDCX_ZOOMOUT_AREASEL    CURSOR                  "res\\x-zo-as.cur"
+IDC_MRKPTR_MOVE         CURSOR                  "res\\mrkptr_move.cur"
+IDC_MRKPTR_SIZEX        CURSOR                  "res\\mrkptr_movex.cur"
+IDC_MRKPTR_SIZEY        CURSOR                  "res\\mrkptr_movey.cur"
+IDC_MRKPTR_SIZEXY       CURSOR                  "res\\mrkptr_movexy.cur"
+IDC_MRKPTR_ROT          CURSOR                  "res\\mrkptr_rot.cur"
+IDC_MRKSEL              CURSOR                  "res\\mrkptr_sel.cur"
+IDC_MRKPTR_SIZEYROT     CURSOR                  "res\\mrkptr_moveyrot.cur"
+IDC_MRKPTR_SIZEXYROT    CURSOR                  "res\\mrkptr_movexyrot.cur"
+IDC_MRKPTR_SIZEXROT     CURSOR                  "res\\mrkptr_movexrot.cur"
+IDC_HAND                CURSOR                  "res\\hand.cur"
+IDC_HANDSHAKE           CURSOR                  "res\\handshake.cur"
+IDC_IOBJCREATE_INCL     CURSOR                  "res\\iobjcrea.cur"
+IDC_IOBJCREATE_XOR      CURSOR                  "res\\cur00001.cur"
+IDC_IOBJCREATE_EXCL     CURSOR                  "res\\cur00005.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 304, 233
+STYLE DS_SETFONT | WS_POPUP | WS_BORDER | WS_SYSMENU
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    CONTROL         277,IDC_STATIC,"Static",SS_BITMAP,0,0,304,233
+    DEFPUSHBUTTON   "OK",IDOK,212,204,50,14,WS_GROUP
+END
+
+IDD_PREF_DENSSCALE DIALOG  0, 0, 410, 190
+STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Densitometric Scales"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "List1",IDC_DS_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | 
+                    WS_BORDER | WS_TABSTOP,7,7,339,89
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,7,104,338,1
+    LTEXT           "Densitomertic scale parameters ",IDC_STATIC,7,99,101,8
+    LTEXT           " Scale type ",IDC_STATIC,230,99,38,8
+    EDITTEXT        IDC_DS_NAME,75,111,151,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_DS_DESCR,75,126,151,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_DS_A,75,141,151,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_DS_B,75,156,151,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_DS_UNITS,75,171,151,12,ES_AUTOHSCROLL
+    CONTROL         "List1",IDC_DS_TYPES,"SysListView32",LVS_SINGLESEL | 
+                    LVS_SHOWSELALWAYS | LVS_NOCOLUMNHEADER | 
+                    LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,232,109,114,74
+    PUSHBUTTON      "&New",IDC_DS_ADD,353,7,50,14
+    PUSHBUTTON      "&Delete",IDC_DS_REMOVE,353,25,50,14
+    PUSHBUTTON      "&Select",IDC_DS_SELECT,353,51,50,14
+    LTEXT           "Scale name",IDC_STATIC,7,113,38,8
+    LTEXT           "Scale description",IDC_STATIC,7,128,55,8
+    LTEXT           "The 'a' coefficient",IDC_STATIC,7,143,57,8
+    LTEXT           "The 'b' coefficient",IDC_STATIC,7,158,57,8
+    LTEXT           "Measurement units",IDC_STATIC,7,173,60,8
+    CONTROL         "",IDC_STATIC,"Static",SS_ETCHEDHORZ,352,44,51,1
+END
+
+IDD_PREF_GEOMSCALE DIALOG  0, 0, 410, 190
+STYLE DS_SETFONT | WS_CHILD | WS_DISABLED | WS_CAPTION
+CAPTION "Geometric Scales"
+FONT 8, "MS Sans Serif"
+BEGIN
+    CONTROL         "List1",IDC_GS_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_NOSORTHEADER | 
+                    WS_BORDER | WS_TABSTOP,7,7,339,89
+    CONTROL         "",-1,"Static",SS_ETCHEDHORZ,7,103,338,1
+    LTEXT           "Scale parameters ",-1,7,99,58,8
+    EDITTEXT        IDC_GS_NAME,75,110,271,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GS_DESCR,75,125,271,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GS_A,75,140,271,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GS_B,75,155,271,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GS_UNITS,75,170,271,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&New",IDC_GS_ADD,353,7,50,14
+    PUSHBUTTON      "&Delete",IDC_GS_REMOVE,353,25,50,14
+    PUSHBUTTON      "&Select",IDC_GS_SELECT,353,51,50,14
+    LTEXT           "Scale name",-1,7,111,38,8
+    LTEXT           "Scale description",-1,7,126,55,8
+    LTEXT           "X-axis coefficient",-1,7,141,54,8
+    LTEXT           "Y-axis coefficient",-1,7,156,54,8
+    LTEXT           "Measurement units",-1,7,171,60,8
+    CONTROL         "",-1,"Static",SS_ETCHEDHORZ,352,44,51,1
+END
+
+IDD_TITLES DIALOG  0, 0, 242, 102
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Title and description"
+FONT 8, "MS Sans Serif"
+BEGIN
+    EDITTEXT        IDC_TITLES_TITLE,7,17,228,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_TITLES_DESCR,7,42,228,29,ES_MULTILINE | 
+                    ES_AUTOHSCROLL | ES_WANTRETURN | WS_VSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,124,81,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,185,81,50,14
+    LTEXT           "Title:",IDC_STATIC,7,7,116,8
+    LTEXT           "Description or comments:",IDC_STATIC,7,32,116,8
+END
+
+IDD_PANE_MARKERS DIALOGEX 0, 0, 169, 360
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_VISIBLE | WS_CLIPCHILDREN
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PTM_STATIC_KRNL_LINE,"Static",SS_ETCHEDHORZ,7,131,
+                    155,1
+    LTEXT           "Kernel ",IDC_PTM_STATIC_KRNL,7,126,23,8
+    LTEXT           "Marker style",IDC_STATIC,7,7,40,8
+    CONTROL         "",IDC_PTM_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_EDITLABELS | 
+                    LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,18,155,103
+    CONTROL         "Add",IDC_PTM_OPT,"Button",BS_OWNERDRAW | BS_ICON | 
+                    WS_TABSTOP,97,7,11,10
+    CONTROL         "Add",IDC_PTM_UP,"Button",BS_OWNERDRAW | BS_ICON | 
+                    WS_TABSTOP,113,7,11,10
+    CONTROL         "Add",IDC_PTM_DOWN,"Button",BS_OWNERDRAW | BS_ICON | 
+                    WS_TABSTOP,124,7,11,10
+    CONTROL         "Add",IDC_PTM_ADD,"Button",BS_OWNERDRAW | BS_ICON | 
+                    WS_TABSTOP,140,7,11,10
+    CONTROL         "Add",IDC_PTM_DELETE,"Button",BS_OWNERDRAW | BS_ICON | 
+                    WS_TABSTOP,151,7,11,10
+    CONTROL         "",IDC_PTM_KERNEL,"ComboBoxEx32",CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP,7,141,123,172
+    CONTROL         "Color",IDC_PTM_KRNL_COLOR,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,134,141,28,14
+    CONTROL         "",IDC_PRM_KRNL_SIZE,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    TBS_TOOLTIPS | WS_TABSTOP,21,165,108,11
+    CONTROL         "",IDC_PTM_EDT_KSZ,"Static",SS_WHITERECT | SS_SUNKEN,133,
+                    165,29,9
+    CONTROL         "",IDC_PTM_KRNL_TRANSP,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    TBS_TOOLTIPS | WS_TABSTOP,21,181,108,12
+    CONTROL         "",IDC_PTM_EDT_KTP,"Static",SS_WHITERECT | SS_SUNKEN,133,
+                    183,29,9
+    CONTROL         "",IDC_PTM_STATIC_SHP_LINE,"Static",SS_ETCHEDHORZ,7,206,
+                    155,1
+    CONTROL         "",IDC_PTM_SHAPE,"ComboBoxEx32",CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP,7,216,123,70
+    CONTROL         "Color",IDC_PTM_SHP_COLOR,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,134,216,28,14
+    CONTROL         "",IDC_PTM_OUT_STYLE,"ComboBoxEx32",CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP,7,238,60,70
+    CONTROL         "",IDC_PTM_OUT_WIDTH,"ComboBoxEx32",CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP,70,238,59,70
+    CONTROL         "Color",IDC_PTM_OUT_COLOR,"Button",BS_OWNERDRAW | 
+                    WS_TABSTOP,134,238,28,14
+    CONTROL         "",IDC_PTM_SHP_TRANSP,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    TBS_TOOLTIPS | WS_TABSTOP,21,260,108,12
+    CONTROL         "",IDC_PTM_EDT_STP,"Static",SS_WHITERECT | SS_SUNKEN,133,
+                    261,29,9
+    CONTROL         "",IDC_PTM_SHP_FORM,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    TBS_TOOLTIPS | WS_TABSTOP,21,278,108,12
+    CONTROL         "",IDC_PTM_EDT_SFRM,"Static",SS_WHITERECT | SS_SUNKEN,
+                    133,279,29,9
+    CONTROL         "",IDC_PTM_STATIC_SIZE_LINE,"Static",SS_ETCHEDHORZ,7,306,
+                    155,1
+    CONTROL         "",IDC_PTM_EDT_KOFFX,"Static",SS_WHITERECT | SS_SUNKEN,
+                    20,316,50,9
+    CONTROL         "",IDC_PTM_EDT_KOFFY,"Static",SS_WHITERECT | SS_SUNKEN,
+                    20,328,50,9
+    CONTROL         "",IDC_PTM_LCK_KSZ,"Static",SS_GRAYFRAME,72,323,9,9
+    CONTROL         "",IDC_PTM_EDT_SSZX,"Static",SS_WHITERECT | SS_SUNKEN,
+                    100,316,50,9
+    CONTROL         "",IDC_PTM_EDT_SSZY,"Static",SS_WHITERECT | SS_SUNKEN,
+                    100,328,50,9
+    CONTROL         "",IDC_PTM_LCK_SSZ,"Static",SS_GRAYFRAME,153,323,9,9
+    CONTROL         "",IDC_PTM_EDT_SROT,"Static",SS_WHITERECT | SS_SUNKEN,62,
+                    344,50,9
+    CONTROL         "",IDC_PTM_LCK_SROT,"Static",SS_GRAYFRAME,114,344,9,9
+    LTEXT           "Shape ",IDC_PTM_STATIC_SHP,7,202,23,8
+    LTEXT           "Size",IDC_PTM_STATIC_SIZE,7,301,14,8
+END
+
+IDD_PANE_ACQUIRE DIALOGEX 0, 0, 169, 360
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD | WS_VISIBLE | WS_CLIPCHILDREN
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PTM_STATIC_KRNL_LINE,"Static",SS_ETCHEDHORZ,7,176,
+                    154,1
+    LTEXT           "Image position ",IDC_PTM_STATIC_KRNL,7,171,50,8
+    LTEXT           "Acquire presets",IDC_STATIC,7,7,51,8
+    CONTROL         "",IDC_PTM_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_EDITLABELS | 
+                    LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,18,155,103
+    CONTROL         "Add",IDC_PTM_OPT,"Button",BS_OWNERDRAW | BS_ICON | 
+                    WS_TABSTOP,97,7,11,10
+    CONTROL         "Add",IDC_PTM_UP,"Button",BS_OWNERDRAW | BS_ICON | 
+                    WS_TABSTOP,113,7,11,10
+    CONTROL         "Add",IDC_PTM_DOWN,"Button",BS_OWNERDRAW | BS_ICON | 
+                    WS_TABSTOP,124,7,11,10
+    CONTROL         "Add",IDC_PTM_ADD,"Button",BS_OWNERDRAW | BS_ICON | 
+                    WS_TABSTOP,140,7,11,10
+    CONTROL         "Add",IDC_PTM_DELETE,"Button",BS_OWNERDRAW | BS_ICON | 
+                    WS_TABSTOP,151,7,11,10
+    CONTROL         "",IDC_PTM_KERNEL,"ComboBoxEx32",CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP,7,186,155,172
+    CONTROL         "",IDC_PTM_STATIC_SHP_LINE,"Static",SS_ETCHEDHORZ,7,211,
+                    154,1
+    CONTROL         "",IDC_PTM_STATIC_SIZE_LINE,"Static",SS_ETCHEDHORZ,7,267,
+                    154,1
+    LTEXT           "Image name ",IDC_PTM_STATIC_SHP,7,206,42,8
+    LTEXT           "Automation ",IDC_PTM_STATIC_SIZE,7,262,40,8
+    CONTROL         "Use automatic naming",IDC_CHECK1,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,234,86,10
+    CONTROL         "Capture sequence of",IDC_CHECK10,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,275,83,10
+    CONTROL         "Auto capture every",IDC_CHECK11,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,302,79,10
+    CONTROL         "Integrate",IDC_CHECK12,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,318,47,10
+    EDITTEXT        IDC_EDIT1,7,218,155,12,ES_AUTOHSCROLL
+    LTEXT           "Currnet N",IDC_PTM_STATIC_SHP2,19,247,32,8
+    LTEXT           "Step",IDC_PTM_STATIC_SHP3,101,247,16,8
+    CONTROL         "Under the same name",IDC_CHECK13,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,19,288,86,10
+    CONTROL         "",IDC_PTM_EDT_SSZX,"Static",SS_WHITERECT | SS_SUNKEN,87,
+                    302,75,9
+    CONTROL         "",IDC_PTM_EDT_SSZX2,"Static",SS_WHITERECT | SS_SUNKEN,
+                    87,318,75,9
+    CONTROL         "",IDC_PTM_EDT_SSZX3,"Static",SS_WHITERECT | SS_SUNKEN,
+                    87,276,75,9
+    CONTROL         "",IDC_PTM_EDT_SSZX4,"Static",SS_WHITERECT | SS_SUNKEN,
+                    53,246,38,9
+    CONTROL         "",IDC_PTM_EDT_SSZX5,"Static",SS_WHITERECT | SS_SUNKEN,
+                    120,247,42,9
+    PUSHBUTTON      "Init device",IDC_BUTTON1,84,156,78,14
+    CONTROL         "",IDC_PTM_STATIC_KRNL_LINE2,"Static",SS_ETCHEDHORZ,8,
+                    129,154,1
+    LTEXT           "Source ",IDC_PTM_STATIC_KRNL2,8,124,25,8
+    CONTROL         "",IDC_PTM_KERNEL2,"ComboBoxEx32",CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP,7,137,155,172
+    PUSHBUTTON      "Online",IDC_BUTTON3,7,339,74,14
+    PUSHBUTTON      "Capture",IDC_BUTTON4,85,339,77,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_PREF_DENSSCALE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 403
+        VERTGUIDE, 75
+        VERTGUIDE, 346
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 183
+    END
+
+    IDD_PREF_GEOMSCALE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 403
+        VERTGUIDE, 75
+        VERTGUIDE, 346
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 183
+    END
+
+    IDD_TITLES, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 235
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 95
+    END
+
+    IDD_PANE_MARKERS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 162
+        VERTGUIDE, 21
+        VERTGUIDE, 70
+        VERTGUIDE, 102
+        VERTGUIDE, 129
+        VERTGUIDE, 133
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 353
+        HORZGUIDE, 141
+        HORZGUIDE, 216
+        HORZGUIDE, 238
+        HORZGUIDE, 316
+    END
+
+    IDD_PANE_ACQUIRE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 162
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 353
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        POPUP "&New"
+        BEGIN
+            MENUITEM "&Storage...",                 33113
+            MENUITEM "&Processor...",               33116
+        END
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "Open Wor&kspace...",          33124
+        MENUITEM SEPARATOR
+        MENUITEM "&Upload...\tCtrl+U",          33121
+        MENUITEM "&Download...",                33122
+        MENUITEM "&Acquire",                    33146
+        MENUITEM SEPARATOR
+        MENUITEM "Pri&nt Setup...\tAlt+Shift+Ctrl+P", 33120
+        MENUITEM SEPARATOR
+        POPUP "&Jump To"
+        BEGIN
+            MENUITEM "aIm Suite Stanum",            32902
+            MENUITEM "aIm Suite Liga",              32901
+            MENUITEM "aIm Suite Spider",            32903
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Full Screen\tF9",            32977
+        MENUITEM SEPARATOR
+        POPUP "&Toolbars"
+        BEGIN
+            MENUITEM "&File",                       ID_VIEW_TOOLBAR_STD
+            MENUITEM "&Edit",                       ID_VIEW_TOOLBAR_EDIT
+            MENUITEM "&Tools",                      33147
+            MENUITEM "&Window",                     33149
+            MENUITEM "&aIm SUITE",                  33148
+        END
+        POPUP "Task Pa&nes"
+        BEGIN
+            MENUITEM "Create new",                  33142
+            MENUITEM "Document info",               33134
+            MENUITEM SEPARATOR
+            MENUITEM "Components",                  33135
+            MENUITEM "Options",                     33136
+            MENUITEM SEPARATOR
+            MENUITEM "Tool Settings",               33141
+            MENUITEM "Find && Replace",             33137
+            MENUITEM "Grid && Guidelines",          33138
+            MENUITEM "Filters",                     33139
+            MENUITEM "History",                     33140
+            MENUITEM SEPARATOR
+            MENUITEM "Geometric scales",            33188
+            MENUITEM "Densitometric scales",        33189
+            MENUITEM "Processor",                   33143
+        END
+        MENUITEM "St&atus Bar",                 ID_VIEW_STATUS_BAR
+    END
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "Components && presets",       33185
+        MENUITEM SEPARATOR
+        MENUITEM "&Import Options...",          ID_TOOLS_IMPORTPREFS
+        MENUITEM "&Export Options...",          ID_TOOLS_EXPORTPREFS
+        MENUITEM SEPARATOR
+        POPUP "&Macros"
+        BEGIN
+            MENUITEM "&Record",                     33194
+            MENUITEM "&Pause",                      33195
+            MENUITEM "&Stop",                       33196
+            MENUITEM SEPARATOR
+            MENUITEM "&Play",                       33197
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Options\tCtrl+O",            ID_TOOLS_PREFERENCES
+        MENUITEM "C&ustomize...",               33179
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Contents\tF1",               ID_HELP_FINDER
+        MENUITEM "&aIm Helper\tShift+F1",       ID_HELP_HELPER
+        MENUITEM SEPARATOR
+        MENUITEM "&About Dias...",              ID_APP_ABOUT
+        POPUP "About Plug-in"
+        BEGIN
+            MENUITEM "Plug-ins List",               ID_HELP_PLUGIN_LIST
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Feedback...",                 ID_HELP_FEEDBACK
+    END
+END
+
+IDR_DISTYPE MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        POPUP "&New"
+        BEGIN
+            MENUITEM "&Storage...",                 ID_FILE_NEW_STORAGE
+            MENUITEM "&Processor...",               ID_FILE_NEW_PROCESSOR
+        END
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM SEPARATOR
+        MENUITEM "&Close\tCtrl+W",              ID_FILE_CLOSE
+        MENUITEM "&Save\tCtrl+S",               ID_FILE_SAVE
+        MENUITEM "Save &As...\tShift+Ctrl+S",   ID_FILE_SAVEAS
+        MENUITEM "Save A&ll\tAlt+Shift+Ctrl+S", ID_FILE_SAVEALL
+        MENUITEM SEPARATOR
+        MENUITEM "Open Wor&kspace...",          ID_Menu
+        MENUITEM "Save &Workspace...",          ID_FILE_SAVEWORKSPACE
+        MENUITEM SEPARATOR
+        MENUITEM "&Upload...\tCtrl+U",          ID_FILE_UPLOAD
+        MENUITEM "&Download...",                ID_FILE_DOWNLOAD
+        MENUITEM SEPARATOR
+        MENUITEM "I&mport...\tCtrl+I",          ID_FILE_IMPORT
+        MENUITEM "Expo&rt...\tCtrl+E",          ID_FILE_EXPORT
+        POPUP "&Acquire"
+        BEGIN
+            MENUITEM "&TWAIN Source...",            ID_FILE_ACQUIRE_TWAIN
+            MENUITEM "&Windows Imaging ...",        ID_FILE_ACQUIRE_WINMAGING
+
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Print...\tCtrl+P",           ID_FILE_PRINT
+        MENUITEM "Print Pre&view\tShift+Ctrl+P", ID_FILE_PREVIEW
+        MENUITEM "Pa&ge Setup...\tAlt+Ctrl+P",  ID_FILE_PAGESETUP
+        MENUITEM "Pri&nt Setup...\tAlt+Shift+Ctrl+P", ID_FILE_PRINTSETUP
+        MENUITEM SEPARATOR
+        MENUITEM "Document Prop&erties\tCtrl+I", ID_FILE_INFO
+        MENUITEM SEPARATOR
+        POPUP "&Jump To"
+        BEGIN
+            MENUITEM "aIm Suite Stanum",            ID_FILE_JUMP_STANUM
+            MENUITEM "aIm Suite Liga",              ID_FILE_JUMP_LIGA
+            MENUITEM "aIm Suite Spider",            ID_FILE_JUMP_SPIDER
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1, GRAYED
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Images",                     ID_VIEW_IMAGES
+        MENUITEM "&Surveis",                    ID_VIEW_DATA
+        MENUITEM "&Reports",                    ID_VIEW_REPORTS
+        MENUITEM SEPARATOR
+        MENUITEM "&Big icons",                  ID_EDIT_BIG
+        MENUITEM "S&mall icons",                ID_EDIT_SMALL
+        MENUITEM "Thumbinals",                  ID_VIEW_THUMBINALS
+        MENUITEM SEPARATOR
+        MENUITEM "&List area",                  ID_VIEW_LIST
+        MENUITEM "&Client area",                ID_VIEW_CLIENT
+        MENUITEM SEPARATOR
+        POPUP "&Zoom"
+        BEGIN
+            MENUITEM "Zoom I&n\tCtrl+'+'",          ID_VIEW_ZOOM_IN
+            MENUITEM "Zoom &Out\tCtrl+'-'",         ID_VIEW_ZOOM_OUT
+            MENUITEM SEPARATOR
+            MENUITEM "&Fit All",                    ID_VIEW_ZOOM_FIT
+            MENUITEM SEPARATOR
+            MENUITEM "25%",                         ID_VIEW_ZOOM_25
+            MENUITEM "33%",                         ID_VIEW_ZOOM_33
+            MENUITEM "50%",                         ID_VIEW_ZOOM_50
+            MENUITEM "66%",                         ID_VIEW_ZOOM_66
+            MENUITEM "75%",                         ID_VIEW_ZOOM_75
+            MENUITEM SEPARATOR
+            MENUITEM "&1:1 (100%)",                 ID_VIEW_ZOOM_1TO1
+            MENUITEM SEPARATOR
+            MENUITEM "125%",                        ID_VIEW_ZOOM_125
+            MENUITEM "150%",                        ID_VIEW_ZOOM_150
+            MENUITEM "200%",                        ID_VIEW_ZOOM_200
+            MENUITEM "250%",                        ID_VIEW_ZOOM_250
+            MENUITEM "300%",                        ID_VIEW_ZOOM_300
+            MENUITEM "400%",                        ID_VIEW_ZOOM_400
+            MENUITEM "500%",                        ID_VIEW_ZOOM_500
+            MENUITEM "750%",                        ID_VIEW_ZOOM_750
+            MENUITEM "1000%",                       ID_VIEW_ZOOM_1000
+            MENUITEM SEPARATOR
+            MENUITEM "Other...",                    ID_VIEW_ZOOM_OTHER
+        END
+        MENUITEM "&Full Screen\tF9",            ID_VIEW_FULLSCREEN
+        MENUITEM SEPARATOR
+        POPUP "&Filters"
+        BEGIN
+            MENUITEM "&Alpha blending",             ID_VIEW_FILTERS_ALPHA
+        END
+        POPUP "&Objects"
+        BEGIN
+            MENUITEM "Show &marks",                 ID_VIEW_OBJECTS_MARKS
+            MENUITEM "Show &patches",               ID_VIEW_OBJECTS_PATCHES
+            MENUITEM SEPARATOR
+            MENUITEM "&Blend inactive",             ID_VIEW_OBJECTS_BLEND
+        END
+        POPUP "La&yers"
+        BEGIN
+            MENUITEM "View &all",                   ID_EDIT_LAYERS_VIEWALL
+            MENUITEM SEPARATOR
+            MENUITEM "&Background",                 ID_VIEW_LAYERS_BACKGROUND
+
+            MENUITEM "&Cells",                      ID_VIEW_LAYERS_CELLS
+            MENUITEM "&Nuclei",                     ID_VIEW_LAYERS_NUCLEI
+            MENUITEM "Nucle&oli",                   ID_VIEW_LAYERS_NUCLEOLI
+            MENUITEM "&Et cetera",                  ID_VIEW_LAYERS_ETCETERA
+            MENUITEM SEPARATOR
+            MENUITEM "&Blend inactive",             ID_LAYERS_BLENDINACTIVE
+        END
+        MENUITEM SEPARATOR
+        POPUP "&Toolbars"
+        BEGIN
+            MENUITEM "&File",                       ID_VIEW_TOOLBAR_STD
+            MENUITEM "&Edit",                       ID_VIEW_TOOLBAR_EDIT
+            MENUITEM "&Tools",                      ID_TOOLBARS_MACROS
+            MENUITEM "&Window",                     ID_TOOLBARS_WINDOW
+            MENUITEM "&aIm SUITE",                  ID_TOOLBARS_AIMSUITE
+        END
+        POPUP "Task Pa&nes"
+        BEGIN
+            MENUITEM "Create new",                  ID_CONTROLPANELS_CREATENEW
+
+            MENUITEM "Document info",               ID_CONTROLPANELS_DOCUMENTINFO
+
+            MENUITEM SEPARATOR
+            MENUITEM "Tool Settings",               ID_CONTROLPANELS_TOOLSETTINGS
+
+            MENUITEM "Find && Replace",             ID_CONTROLPANELS_FINDREPLACE
+
+            MENUITEM "Grid && Guidelines",          ID_CONTROLPANELS_GRIDGUIDELINES
+
+            MENUITEM "Filters",                     ID_CONTROLPANELS_FILTERS
+            MENUITEM "History",                     ID_CONTROLPANELS_HISTORY
+            MENUITEM SEPARATOR
+            MENUITEM "Histograms",                  ID_TASKPANES_HISTOGRAMS
+            MENUITEM "Lookup tables",               ID_TASKPANES_LOOKUPTABLES
+
+            MENUITEM "Densitometric scales",        ID_TASKPANES_DENSITOMETRICSCALES
+
+            MENUITEM "Geometric scales",            ID_TASKPANES_GEOMETRICSCALES
+
+            MENUITEM SEPARATOR
+            MENUITEM "Processor",                   ID_CONTROLPANELS_PROCESSOR
+
+            MENUITEM SEPARATOR
+            MENUITEM "Components",                  ID_CONTROLPANELS_COMPONENTS
+
+            MENUITEM "Options",                     ID_CONTROLPANELS_SETTINGS
+
+        END
+        MENUITEM "St&atus Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM SEPARATOR
+        MENUITEM "Toolbo&x",                    ID_VIEW_TOOLBOX
+        MENUITEM "Document &Bar",               ID_VIEW_PROPBAR
+        MENUITEM "Scale && &Headers",           ID_VIEW_SCALE33144
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Undo\tCtrl+Z",               ID_EDIT_UNDO
+        MENUITEM "&Redo\tShift+Ctrl+Z",         ID_EDIT_REDO
+        MENUITEM "Repeat &Last\tCtrl+Y",        ID_EDIT_REPEATLAST
+        MENUITEM SEPARATOR
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM "Paste &Special...\tAlt+Ctrl+V", ID_EDIT_PASTESPECIAL
+        MENUITEM SEPARATOR
+        MENUITEM "Du&plicate\tCtrl+D",          ID_EDIT_DUPLICATE
+        MENUITEM "&Clear\tBackspace",           ID_EDIT_CLEAR
+        MENUITEM "&Delete\tDel",                ID_EDIT_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "Re&name\tF2",                 ID_EDIT_RENAME
+        MENUITEM SEPARATOR
+        MENUITEM "Select &All\tCtrl+A",         ID_EDIT_SELECT
+        MENUITEM "Re&move Selection",           ID_EDIT_REMOVESELECTION
+        MENUITEM SEPARATOR
+        MENUITEM "&Find...\tCtrl+F",            ID_EDIT_FIND
+        MENUITEM "Rep&lace...\tCtrl+R",         ID_EDIT_REPLACE
+        MENUITEM "&Goto...\tCtrl+G",            ID_EDIT_GOTO
+    END
+    POPUP "&Storage"
+    BEGIN
+        POPUP "Color &Model"
+        BEGIN
+            MENUITEM "&Dualcolor",                  ID_STORAGE_MODEL_BW
+            MENUITEM "&Monochrome",                 ID_STORAGE_MODEL_GREYSCALE
+
+            MENUITEM "&RGB",                        ID_STORAGE_MODEL_RGB
+            MENUITEM "&CMY",                        ID_STORAGE_MODEL_CMY
+            MENUITEM "CMY&K",                       ID_STORAGE_MODEL_CMYK
+            MENUITEM "&Lab",                        ID_STORAGE_MODEL_LAB
+            MENUITEM "M&ultychannel",               ID_STORAGE_MODEL_MULTY
+        END
+        POPUP "&Bits Per Pixel"
+        BEGIN
+            MENUITEM "&1",                          ID_STORAGE_BPP1
+            MENUITEM "&4",                          ID_STORAGE_BPP4
+            MENUITEM "&8",                          ID_STORAGE_BPP8
+            MENUITEM "1&6",                         ID_STORAGE_BPP16
+            MENUITEM "&32",                         ID_STORAGE_BPP32
+        END
+        MENUITEM SEPARATOR
+        POPUP "R&otate"
+        BEGIN
+            MENUITEM "90° Cl&ockwise",              ID_STORAGE_ROTATE90CW
+            MENUITEM "90° Co&nterclockwise",        ID_STORAGE_ROTATE90CCW
+            MENUITEM "&Arbitrary...",               ID_STORAGE_ROTATEARBITRARY
+
+            MENUITEM SEPARATOR
+            MENUITEM "Flip &Vertical",              ID_STORAGE_ROTATEVERT
+            MENUITEM "Flip &Horizontal",            ID_STORAGE_ROTATEHORZ
+        END
+        MENUITEM "R&esample...",                ID_STORAGE_RESAMPLE
+        MENUITEM "Re&size...",                  ID_STORAGE_RESIZE
+        MENUITEM "&Crop...",                    ID_STORAGE_CROP
+        MENUITEM SEPARATOR
+        MENUITEM "Histograms...",               ID_STORAGE_HISTOGRAMS
+        MENUITEM "Lookup Tabless...",           ID_STORAGE_LOOKUPTABLESS
+        MENUITEM "&Densitometric Scales...",    ID_STORAGE_DENSSCALES
+        MENUITEM "&Geometric Scales...",        ID_STORAGE_GEOMSCALES
+        MENUITEM SEPARATOR
+        MENUITEM "&Process...",                 ID_STORAGE_PROCESS
+        MENUITEM "&Measure...",                 ID_STORAGE_MEASURE
+        MENUITEM "&Report...",                  ID_STORAGE_REPORT
+    END
+    POPUP "&Tools"
+    BEGIN
+        MENUITEM "Components && presets",       ID_TOOLS_COMPONENTS
+        MENUITEM SEPARATOR
+        MENUITEM "&Import Options...",          ID_TOOLS_IMPORTPREFS
+        MENUITEM "&Export Options...",          ID_TOOLS_EXPORTPREFS
+        MENUITEM SEPARATOR
+        POPUP "&Macros"
+        BEGIN
+            MENUITEM "&Record",                     ID_TOOLS_MACROS_RECORD
+            MENUITEM "&Pause",                      ID_TOOLS_MACROS_PAUSE
+            MENUITEM "&Stop",                       ID_TOOLS_MACROS_STOP
+            MENUITEM SEPARATOR
+            MENUITEM "&Play",                       ID_TOOLS_MACROS_PLAY
+        END
+        POPUP "&Build-in functions"
+        BEGIN
+            MENUITEM "Extract patches by layer",    ID_TOOLS_BUILD_EXTRACTPATCHESBYLAYER
+
+            MENUITEM "Find out background mask",    ID_TOOLS_BUILD_FINDOUTBGMASK
+
+            MENUITEM "Remove background mask",      ID_TOOLS_BUILD_REMOVEBACKGROUNDMASK
+
+            MENUITEM "White noise computations",    ID_BUILD_WHITENOISECOMPUTATIOS
+
+            MENUITEM "Median filtering",            ID_TOOLS_BUILD_MEDIANFILTERING
+
+            MENUITEM SEPARATOR
+            MENUITEM "Remove noise",                ID_TOOLS_BUILD_REMOVENOISE
+
+            MENUITEM "New noise remove proc 4",     ID_TOOLS_BUILD_NEWNOISEREMOVEPROC4
+
+            MENUITEM "New noise remove proc 8",     ID_TOOLS_BUILD_NEWNOISEREMOVEPROC8
+
+            MENUITEM SEPARATOR
+            MENUITEM "Last minimum segmentation",   ID_TOOLS_BUILD_LASTMINIMUMSEGMENTATION
+
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Options\tCtrl+O",            ID_TOOLS_PREFERENCES
+        MENUITEM "C&ustomize...",               ID_TOOLS_CUSTOMIZE
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&New Window",                 ID_WINDOW_NEW
+        MENUITEM "&Close Window",               ID_WINDOW_CLOSE
+        MENUITEM "Close &All Windows",          ID_WINDOW_CLOSEALL
+        MENUITEM SEPARATOR
+        MENUITEM "&Cascade Windows",            ID_WINDOW_CASCADE
+        MENUITEM "&Tile Windows",               ID_WINDOW_TILE_HORZ
+        MENUITEM "&Arrange Icons",              ID_WINDOW_ARRANGE
+        MENUITEM SEPARATOR
+        MENUITEM "&Minimize",                   32972
+        MENUITEM "Ma&ximize",                   32973
+        MENUITEM SEPARATOR
+        MENUITEM "Minimize All",                ID_WINDOW_MINIMIZEALL
+        MENUITEM "Maximize All",                ID_WINDOW_MAXIMIZEALL
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&Contents\tF1",               ID_HELP_FINDER
+        MENUITEM "&aIm Helper\tShift+F1",       ID_HELP_HELPER
+        MENUITEM SEPARATOR
+        MENUITEM "&About Dias...",              ID_APP_ABOUT
+        POPUP "About Plug-in"
+        BEGIN
+            MENUITEM "Plug-ins List",               ID_HELP_PLUGIN_LIST
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "Feedback...",                 ID_HELP_FEEDBACK
+    END
+END
+
+IDR_POPUP_DOC_EMPTY MENU 
+BEGIN
+    POPUP "Popup Doc Item"
+    BEGIN
+        MENUITEM "Add a new element",           ID_EDIT_ADD
+        MENUITEM SEPARATOR
+        POPUP "View style"
+        BEGIN
+            MENUITEM "Big icons",                   ID_EDIT_STYLE_BIG
+            MENUITEM "Small icons",                 ID_EDIT_STYLE_SMALL
+        END
+    END
+END
+
+IDR_POPUP_DOC_ITEM MENU 
+BEGIN
+    POPUP "Popup Doc Item"
+    BEGIN
+        MENUITEM "Add a new element",           ID_EDIT_ADD
+        MENUITEM "Remove an element",           ID_EDIT_REMOVE
+        MENUITEM SEPARATOR
+        MENUITEM "Move element up",             ID_EDIT_UP
+        MENUITEM "Move element down",           ID_EDIT_DOWN
+        MENUITEM SEPARATOR
+        MENUITEM "Go to the prevoius element",  ID_EDIT_PREV
+        MENUITEM "Go to the next element",      ID_EDIT_NEXT
+        MENUITEM SEPARATOR
+        MENUITEM "Element propertes",           ID_EDIT_PROP
+        POPUP "View style"
+        BEGIN
+            MENUITEM "Big icons",                   ID_EDIT_STYLE_BIG
+            MENUITEM "Small icons",                 ID_EDIT_STYLE_SMALL
+        END
+    END
+END
+
+IDR_POPUP_DOC_ADDIMG MENU 
+BEGIN
+    POPUP "Add image"
+    BEGIN
+        MENUITEM "&Add image",                  ID_DOC_ADD_IMAGE
+        MENUITEM "A&dd images...",              ID_DOC_ADD_SEQUENCE
+        MENUITEM SEPARATOR
+        MENUITEM "Add in ac&quire mode...",     ID_DOC_ADD_ACQUIRE
+        MENUITEM SEPARATOR
+        MENUITEM "&Import image...",            ID_DOC_ADD_IMPORTIMG
+        MENUITEM "Import &sequence...",         ID_DOC_ADD_IMPORTSEQ
+    END
+END
+
+IDR_POPUP_DOC_ADDDB MENU 
+BEGIN
+    POPUP "Add database"
+    BEGIN
+        MENUITEM "&Add survey...",              ID_DOC_ADD_DB
+        MENUITEM SEPARATOR
+        MENUITEM "Add in &measure mode...",     ID_DOC_ADD_DBMEASURE
+        MENUITEM SEPARATOR
+        MENUITEM "&Import survey...",           ID_DOC_ADD_IMPORTDB
+    END
+END
+
+IDR_POPUP_DOC_ADDRPT MENU 
+BEGIN
+    POPUP "Add report"
+    BEGIN
+        MENUITEM "&Add report",                 ID_DOC_ADD_REPORT
+    END
+END
+
+IDR_POPUP_DOC_ZOOM MENU 
+BEGIN
+    POPUP "Zoom"
+    BEGIN
+        MENUITEM "To &fit",                     ID_VIEW_ZOOM_FIT
+        MENUITEM "&1:1",                        ID_VIEW_ZOOM_1TO1
+        MENUITEM SEPARATOR
+        MENUITEM "25%",                         ID_VIEW_ZOOM_25
+        MENUITEM "33%",                         ID_VIEW_ZOOM_33
+        MENUITEM "50%",                         ID_VIEW_ZOOM_50
+        MENUITEM "66%",                         ID_VIEW_ZOOM_66
+        MENUITEM "75%",                         ID_VIEW_ZOOM_75
+        MENUITEM SEPARATOR
+        MENUITEM "125%",                        ID_VIEW_ZOOM_125
+        MENUITEM "150%",                        ID_VIEW_ZOOM_150
+        MENUITEM "200%",                        ID_VIEW_ZOOM_200
+        MENUITEM "250%",                        ID_VIEW_ZOOM_250
+        MENUITEM "300%",                        ID_VIEW_ZOOM_300
+        MENUITEM "400%",                        ID_VIEW_ZOOM_400
+        MENUITEM "500%",                        ID_VIEW_ZOOM_500
+        MENUITEM "750%",                        ID_VIEW_ZOOM_750
+        MENUITEM "1000%",                       ID_VIEW_ZOOM_1000
+        MENUITEM SEPARATOR
+        MENUITEM "Other...",                    ID_VIEW_ZOOM_OTHER
+    END
+END
+
+IDR_POPUP_MARKER_STYLE MENU 
+BEGIN
+    POPUP "Marker style"
+    BEGIN
+        MENUITEM "Add...",                      ID_MARKER_STYLE_ADD
+        MENUITEM "Duplicate...",                ID_MARKER_STYLE_DUPLICATE
+        MENUITEM "Delete",                      ID_MARKER_STYLE_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "Rename...",                   ID_MARKER_STYLE_RENAME
+        MENUITEM SEPARATOR
+        MENUITEM "Import...",                   ID_MARKER_STYLE_IMPORT
+        MENUITEM "Export...",                   ID_MARKER_STYLE_EXPORT
+        MENUITEM "Autoimport list...",          ID_MARKER_AUTOIMPORT
+    END
+END
+
+IDR_POPUP_MARKER_KRNLSTYLE MENU 
+BEGIN
+    POPUP "Marker kernel"
+    BEGIN
+        MENUITEM "&None",                       ID_MARKER_KERNEL_NONE
+        MENUITEM "&Round",                      ID_MARKER_KERNEL_ROUND
+        MENUITEM "&X-Shaped",                   ID_MARKER_KERNEL_X
+        MENUITEM "&+-Shaped",                   ID_MARKER_KERNEL_PLUS
+    END
+END
+
+IDR_POPUP_MARKER_SHPSTYLE MENU 
+BEGIN
+    POPUP "Marker shape"
+    BEGIN
+        MENUITEM "&None",                       ID_MARKER_SHAPE_NONE
+        MENUITEM "&Ellipse",                    ID_MARKER_SHAPE_ELLIPSE
+        MENUITEM "&Triangle",                   ID_MARKER_SHAPE_TRI
+        MENUITEM "&Rectangle",                  ID_MARKER_SHAPE_RECT
+    END
+END
+
+IDR_POPUP_TOOLPANE MENU 
+BEGIN
+    POPUP "Task Pa&nes"
+    BEGIN
+        MENUITEM "Create new",                  33142
+        MENUITEM "Document info",               33134
+        MENUITEM SEPARATOR
+        MENUITEM "Components",                  33135
+        MENUITEM "Options",                     33136
+        MENUITEM SEPARATOR
+        MENUITEM "Tool Settings",               33141
+        MENUITEM "Find && Replace",             33137
+        MENUITEM "Grid && Guidelines",          33138
+        MENUITEM "Filters",                     33139
+        MENUITEM "History",                     33140
+        MENUITEM SEPARATOR
+        MENUITEM "Geometric scales",            33188
+        MENUITEM "Densitometric scales",        33189
+        MENUITEM "Processor",                   33143
+    END
+END
+
+IDR_POPUP_IMG MENU 
+BEGIN
+    POPUP "Pointer"
+    BEGIN
+        MENUITEM "Cu&t",                        57635
+        MENUITEM "&Copy",                       57634
+        MENUITEM "&Paste",                      57637
+        MENUITEM "Paste &Special...",           33129
+        MENUITEM SEPARATOR
+        MENUITEM "Alpha blend &images",         33240
+        MENUITEM SEPARATOR
+        MENUITEM "Show &marks",                 33239
+        MENUITEM "Show &patches",               33238
+        MENUITEM "Alpha blend &objects",        33237
+        MENUITEM SEPARATOR
+        MENUITEM "View &all layers",            33228
+        MENUITEM "&Background layer",           33221
+        MENUITEM "&Cells layer",                33222
+        MENUITEM "&Nuclei layer",               33223
+        MENUITEM "Nucle&oli layer",             33224
+        MENUITEM "&Et cetera layer",            33225
+        MENUITEM "Alpha blend &layers",         33229
+        MENUITEM SEPARATOR
+        MENUITEM "Select &All",                 32896
+        MENUITEM "Re&move Selection",           33133
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    "P",            ID_FILE_PRINT,          VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SAVE,           VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_BACK,        ID_EDIT_UNDO,           VIRTKEY, ALT, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    VK_F1,          ID_HELP,                VIRTKEY, NOINVERT
+    VK_F1,          ID_CONTEXT_HELP,        VIRTKEY, SHIFT, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "Z",            ID_EDIT_UNDO,           VIRTKEY, CONTROL, NOINVERT
+END
+
+IDR_DISTYPE ACCELERATORS 
+BEGIN
+    VK_F2,          ID_EDIT_RENAME,         VIRTKEY, NOINVERT
+    "A",            ID_EDIT_SELECT,         VIRTKEY, CONTROL, NOINVERT
+    VK_DELETE,      ID_EDIT_DELETE,         VIRTKEY, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 2,0,0,0
+ PRODUCTVERSION 2,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "World Wide Science"
+            VALUE "FileDescription", "Dias Application"
+            VALUE "FileVersion", "2.0"
+            VALUE "InternalName", "DIAS"
+            VALUE "LegalCopyright", "Copyright (C) 1998-2002 Maxim A. Orlovsky"
+            VALUE "LegalTrademarks", "Maxim A. Orlovsky"
+            VALUE "OriginalFilename", "Dias.exe"
+            VALUE "ProductName", "Digital Image Analysis System"
+            VALUE "ProductVersion", "2.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR  24, 24
+BEGIN
+    BUTTON      ID_FILE_NEW
+    BUTTON      ID_FILE_OPEN
+    BUTTON      ID_FILE_SAVE
+    BUTTON      ID_FILE_SAVEALL
+    SEPARATOR
+    BUTTON      ID_FILE_MAIL
+    BUTTON      ID_FILE_IMPORT
+    BUTTON      ID_FILE_EXPORT
+    SEPARATOR
+    BUTTON      ID_FILE_PREVIEW
+    BUTTON      ID_FILE_PAGESETUP
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_EDIT_CUT
+    BUTTON      ID_EDIT_COPY
+    BUTTON      ID_EDIT_PASTE
+    BUTTON      ID_EDIT_DUPLICATE
+    BUTTON      ID_EDIT_DELETE
+    BUTTON      ID_EDIT_CLEAR
+    SEPARATOR
+    BUTTON      ID_EDIT_UNDO
+    BUTTON      ID_EDIT_REDO
+    BUTTON      ID_EDIT_REPEATLAST
+    SEPARATOR
+    BUTTON      ID_EDIT_FIND
+    BUTTON      ID_EDIT_REPLACE
+    SEPARATOR
+    BUTTON      ID_TOOLS_PREFERENCES
+    BUTTON      ID_TOOLS_CUSTOMIZE
+    SEPARATOR
+    BUTTON      ID_TOOLS_MACROS_PLAY
+    BUTTON      ID_TOOLS_COMPONENTS
+    SEPARATOR
+    BUTTON      ID_VIEW_TASKPANE
+    SEPARATOR
+    BUTTON      ID_CONTEXT_HELP
+END
+
+IDR_TOOLBOX_IMAGES TOOLBAR  20, 20
+BEGIN
+    BUTTON      ID_IMAGE_POINTER
+    BUTTON      ID_IMAGE_HAND
+    BUTTON      ID_IMAGE_SELECT
+    BUTTON      ID_IMAGE_ZOOM
+    SEPARATOR
+    BUTTON      ID_IMAGE_ACQUIRE
+    SEPARATOR
+    BUTTON      ID_IMAGE_MEASURE
+    BUTTON      ID_IMAGE_MARKER
+    BUTTON      ID_IMAGE_PATCH
+    BUTTON      ID_IMAGE_LABEL
+    SEPARATOR
+    BUTTON      ID_IMAGE_PICKER
+    BUTTON      ID_IMAGE_PEN
+    BUTTON      ID_IMAGE_SHAPE
+    BUTTON      ID_IMAGE_TEXT
+    BUTTON      ID_IMAGE_FILL
+    BUTTON      ID_IMAGE_ERASER
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDP_SOCKETS_INIT_FAILED "Windows sockets initialization failed."
+    IDS_MARKER_KERNEL_NONE  "None"
+    IDS_MARKER_KERNEL_ROUND "Round"
+    IDS_MARKER_KERNEL_X     "Exs"
+    IDS_MARKER_KERNEL_PLUS  "Plus"
+    IDS_MARKER_KERNEL_ASTERIX "Asterix"
+    IDS_MARKER_KERNEL_SYMBOL "Symbol"
+END
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "aIm Suite DIAS"
+    IDR_DISTYPE             "\nStorage\nStorage\nDias Images Storage (*.dis)\n.dis\naIm.Dias.Storage\nDias Images Storage"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "Dias"
+    AFX_IDS_IDLEMESSAGE     "For Help, press F1"
+    AFX_IDS_HELPMODEMESSAGE "Select an object on which to get Help"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Change the printing options\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Change the printer and printing options\nPrint Setup"
+    ID_FILE_PRINT           "Print the active document\nPrint"
+    ID_FILE_PRINT_PREVIEW   "Display full pages\nPrint Preview"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+    ID_HELP_INDEX           "Opens Help\nHelp Topics"
+    ID_HELP_FINDER          "List Help topics\nHelp Topics"
+    ID_HELP_USING           "Display instructions about how to use help\nHelp"
+    ID_CONTEXT_HELP         "Display help for clicked on buttons, menus and windows\nHelp"
+    ID_HELP                 "Display help for current task or command\nHelp"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
+    ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
+    ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
+    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+    AFX_IDS_MDICHILD        "Activate this window"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_PREVIEW_CLOSE   "Close print preview mode\nCancel Preview"
+    IDS_TBX_DOC_ADD_IMAGE   "Add image"
+    IDS_TBX_DOC_REMOVE      "Remove"
+    IDS_TBX_DOC_UP          "Move up"
+    IDS_TBX_DOC_ADD_ACQUIRE "Acquire"
+    IDS_TBX_DOC_IMAGES      "Images"
+    IDS_TBX_DOC_DB          "Surveis"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_TBX_DOC_REPORTS     "Reports"
+    IDS_TBX_IMG             "Image Tools"
+    IDS_IMPORTSEQ_DLGCAPTION "Import images sequence"
+    IDS_IMPORTSEQ_DEFNAME   "%s - %02d"
+    IDS_IMPORTSEQ_OPENERR   "Can not import images - an error occured during file open"
+    IDS_IMPORTSEQ_TYPEERR   "Can not import images - wrong file header. You should check file type"
+    IDS_IMPORTSEQ_SIZEERR   "Can not import images - image sizes in file are inconsistent with current image size in document. Set a new image size"
+    IDS_TBX_DOC_ZOOM        "100%"
+    IDS_ERR_SYS_MEMRES      "A memory error occured. Close all documents and applications and reboot the computer.\n\nSend the following data to the developer:\n\nAction:\t\tVirtualAlloc\nRequest type:\tMEM_RESERVE\nProcedure:\t%s\nLocation:\t\t%s, line %d\nMessage:\t\t%s\nError:\t\t%s"
+    IDS_ERR_SYS_MEMCOM      "A memory error occured. Close all documents and applications and reboot the computer.\n\nSend the following data to the developer:\n\nAction:\t\tVirtualAlloc\nRequest type:\tMEM_COMMIT\nProcedure:\t%s\nLocation:\t\t%s, line %d\nMessage:\t\t%s\nError:\t\t%s"
+    IDS_ERR_SYS_MEMDECOM    "A memory error occured. Close all documents and applications and reboot the computer.\n\nSend the following data to the developer:\n\nAction:\t\tVirtualFree\nRequest type:\tMEM_DECOMMIT\nProcedure:\t%s\nLocation:\t\t%s, line %d\nMessage:\t\t%s\nError:\t\t%s"
+    IDS_ERR_SYS_MEMREL      "A memory error occured. Close all documents and applications and reboot the computer.\n\nSend the following data to the developer:\n\nAction:\t\tVirtualFree\nRequest type:\tMEM_DECOMMIT\nProcedure:\t%s\nLocation:\t\t%s, line %d\nMessage:\t\t%s\nError:\t\t%s"
+    IDS_MARKER_COPYSTYLE    "Copy style"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_TOOLBOX_PTR          "Pointer (V)"
+    ID_TOOLBOX_HAND         "Move the image\nMove tool"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_TOOLBOX_ZOOM         "Zoom the image\nZoom"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_MARKER_SELSTYLE      "Select style"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_MARKER_SELSTYLE     "Select style"
+    IDS_TBP_MRKCREATE       "Mark create tool property bar"
+    IDS_CM_BW               "Monochrome (B&W)"
+    IDS_CM_GRAY             "Paletted (Grayscale)"
+    IDS_CM_RGB              "RGB colors"
+    IDS_CM_CMY              "CMY colors"
+    IDS_CM_CMYK             "CMYK colors"
+    IDS_CM_LAB              "Lab colors"
+    IDS_ERR_DOC_VERSION     "The file being opened is not a DIAS Storage verion 2.0 document"
+    IDS_ERR_DOC             "Document error"
+    IDS_COLORMODEL          "Color model"
+    IDS_BPP                 "Bits per pixel"
+    IDS_CHANNELS            "Channels"
+    IDS_CM_MULTY            "Multichannel"
+    IDS_TBX_DOC_ADD_DB      "Add survey"
+    IDS_TBX_DOC_MEASURE     "Measure"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_SAVEAS          "Save the active document with a new name\nSave As"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_DLG_CAPTURE_LIVE    "Live"
+    IDS_DLG_CAPTURE_STOP    "Stop"
+    IDS_REG_ROOT            "Software\\World Wide Science\\aIm Suite.Forthcoming\\DIAS"
+    IDS_MBTITLE_APP         "DIAS"
+    IDS_MBTEXT_REGERR       "Unable to read the program settings from Windows registry."
+    IDS_MBTEXT_FSETERR      "Unable to open the program settings file."
+    IDS_MBTEXT_FSETWERR     "Unable to write the program settings file. All changes in program configuration will be lost."
+    IDS_PREFERENCES         "DIAS Preferences"
+    IDS_DENS_COL_NAME       "Scale name"
+    IDS_DENS_COL_COEF1      """a"""
+    IDS_DENS_COL_COEF2      """b"""
+    IDS_DENS_COL_UNITS      "Units"
+    IDS_DENS_COL_DESCRIPT   "Description"
+    IDS_DENS_TYPE_LINEAR    "Linear"
+    IDS_DENS_TYPE_POLY      "Polynomial"
+    IDS_DENS_TYPE_EXP       "Exponential"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_DENS_TYPE_LOG       "Logarithmical"
+    IDS_MBTEXT_REGWERR      "Unable to write the program settings to Windows registry."
+    IDS_MRKKRNL_NAME        "Name"
+    IDS_TBX_DOC_IMPORT      "Import"
+    IDS_TBX_DOC_EXPORT      "Export"
+    IDS_IMGPB_SHOW          "Show All"
+    IDS_IMGPB_HIDE          "Hide"
+    IDS_MRKSHP_NAME         "Name"
+    IDS_METRICS_PX          "px"
+    IDS_METRICS_PIXELS      "pixels"
+    IDS_METRICS_DEGR        "°"
+    IDS_METRICS_DEGREES     "degrees"
+    IDS_MRKSTYLE_NAME       "Name"
+    IDS_MRKSTYLE_DESCR      "Description"
+    IDS_DLG_DAS_FIELDCAPTION "Field caption"
+    IDS_DLG_DAS_FIELDNAME   "Variable name"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_EXPORTSEQ_DLGCAPTION "Export images sequence"
+    IDS_EXPORTSEQ_OPENERR   "Can not export images - an error occured during file open"
+    IDS_MBTITLE_WARNING     "Warning"
+    IDS_MBTEXT_ADDSRVDLG    "Changing measuring object will clear all selected parameters"
+    IDS_DLG_DAS_UNIT        "Unit"
+    IDS_TBX_DOC_FIELDS      "Fields"
+    IDS_DLG_DAS_APP         "DIAS application"
+    IDS_DLG_DAS_DOC         "Storage document"
+    IDS_DLG_DAS_IMG         "Image"
+    IDS_DLG_DAS_CHNL        "Channel"
+    IDS_DLG_DAS_PTCH        "Patch"
+    IDS_DLG_DAS_MRK         "Mark"
+    IDS_DLG_DAS_USR         "User defined"
+    IDS_STATUS_READY        "Ready"
+    IDS_MBTEXT_DIASKS_NO    "The DIAS kernel service is not running. Image analysis function will be unavaible"
+    IDS_MBTITLE_COLLISION   "Collision"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_MBTEXT_COLLISION    "The name is already in use. Do you want to try another name?"
+    IDS_MBTITLE_DELETE      "Deletion"
+    IDS_MBTEXT_DELETE       "Do you really want to delete the item?"
+    IDS_MBTITLE_ERROR       "Error"
+    IDS_MBTEXT_BUILTINDELETION "Unable to delete build-in object"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\Dias.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#include "afxprint.rc"       // printing/print preview resources
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

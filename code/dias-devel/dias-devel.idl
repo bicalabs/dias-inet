@@ -1,0 +1,31 @@
+// dias-devel.idl : type library source for dias-devel.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (diasdevel.tlb).
+
+import "ocidl.idl";
+import "oaidl.idl";
+[ uuid(320D5912-DB68-4A93-B57B-9856504BCA4B), version(1.0) ]
+library diasdevel
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	//  Primary dispatch interface for CdiasdevelDoc
+	
+	[ uuid(3910DA92-03F4-4B8D-8BFE-439ECA15D7F1) ]
+	dispinterface Idiasdevel
+	{
+		properties:
+			
+		methods:
+	};
+
+	//  Class information for CdiasdevelDoc
+	
+	[ uuid(7AFF2E3E-5185-47FB-81FA-B8C36830C497) ]
+	coclass diasdevel
+	{
+		[default] dispinterface Idiasdevel;
+	};
+};

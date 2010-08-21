@@ -1,0 +1,35 @@
+	/* Internal variabes */
+	sdword conn8;
+	bool free = true, edges = true;
+	ubyte *ptr, what = 0x00, fill = 0x01;
+	uvar32_64 pos, area, sum_area = 0, seed = 0;
+	/* Standart variables */
+	ubyte *ptmp, *p;
+	uvar32_64 l, i;
+
+	INIT_2IMGS (1, ce_img_trc_holes);
+
+	isvalidf (kstp_get_int (query, 0, &conn8), c, kstp_errno);
+	iffailedf (conn8 == true || conn8 == false, c, "wrong object connection type");
+	iffailedf (ptmp = ksmem_commit (c, size), c, "ce_img_trc_holes");
+	p = ptmp;
+
+	for (l = 0; l < dimz; --l) {
+		ptmp = p;
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		memcpy (pdst, psrc, size);
+		memcpy (ptmp, psrc, size);
+
+		do {
+			FLOODFILL (ptmp);
+			sum_area += area;
+		} while (area);
+
+		i = size;
+		while (i--)
+			*pdst++ = (*ptmp++ == 0) ? 0xFF : *pdst;
+	}
+
+	ksmem_release (c, p);
+	return (true);

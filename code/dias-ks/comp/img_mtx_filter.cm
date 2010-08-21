@@ -1,0 +1,45 @@
+	string str;
+	ubyte *sp;
+	svar32_64 l;
+	udword mtxdim;
+	rtbyte reslt, *moffs, *mp;
+	uvar32_64 limx, limy, mlen;
+	register svar32_64 mx, my, x, y;
+	INIT_2IMGS (2, ce_img_mtx_filter);
+
+	isvalidf (kstp_get_int (query, 0, &mtxdim), c, kstp_errno);
+	iffailedf (mtxdim > 1 && mtxdim < min (src->dimx / 4,src->dimy / 4),
+	           c, "ce_img_mtx_filter: wrong matrix size");
+	isvalidf (kstp_get_string (query, 1, &str), c, kstp_errno);
+	iffailedf (moffs = (rtbyte *)strsafe_ptr (str), c, "ce_img_mtx_filter: wrong parameter");
+	iffailedf (mlen = strsafe_len (str) / sizeof(rtbyte) / 2, c, "ce_img_mtx_filter: wrong parameter");
+//	iffailedf (mlen != 4 * mtxdim * mtxdim, c, "ce_img_mtx_filter: matrix dimension mismatch");
+
+	for (l = dimz - 1; l >= 0; --l) {
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		memset (pdst, 0, size);
+
+		limy = dimy - mtxdim;
+		psrc += mtxdim * (dimx + 1);
+		pdst += mtxdim * (dimx + 1);
+		for (y = (sdword)mtxdim; y < (sdword)limy; ++y) {
+			limx = dimx - mtxdim;
+			for (x = (sdword)mtxdim; x < (sdword)limx; ++x) {
+				reslt = 0.;
+				mp = moffs;
+				sp = psrc - mtxdim * (dimx + 1);
+				for (my = -(sdword)mtxdim; my <= (sdword)mtxdim; ++my) {
+					for (mx = -(sdword)mtxdim; mx <= (sdword)mtxdim; ++mx)
+						reslt += *sp++ * *mp++;
+					sp += dimx - mtxdim * 2 - 1;
+				}
+				*pdst++ = (ubyte)reslt;
+				psrc++;
+			}
+			psrc += 2 * mtxdim;
+			pdst += 2 * mtxdim;
+		}
+	}
+
+	return (true);

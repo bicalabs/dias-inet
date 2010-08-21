@@ -1,0 +1,1248 @@
+/*******************************************************************************
+*  This is a part of DIAS ver3.0, aIm SUITE.Internet                           *
+*                                                                              *
+*  DIAS kernel service computations engine subsystem                           *
+*                                                                              *
+*  Do not copy, view or modify this code unless your a member of               *
+*  DIAS development team                                                       *
+*                                                                              *
+*  For licensing information see license.txt in the program root directody     *
+*                                                                              *
+*  Created 28.12.2002 Maxim A. Orlovsky (maxim_orlovsky@yahoo.com)             *
+*                                                                              *
+*******************************************************************************/
+
+/* TODO: Image processing functions to implement in ver1.0:
+         gradients, median, mask, link;
+	 use 16-bit color depth for evedy channel */
+
+/* TODO: Evedy ce_* function should be build on the following shemee:
+         a) function-specific variables declaration
+	 b) standart macro call
+	    [standart variables declaration, parameters validation,
+	     image hobj, obj, access, and dimension validation]
+	 c) update following client fields: cpu_used, comp_used, accessed
+	 d) set response structure fields, even if there is nothing to respond
+	 e) read and validate function-specific data from the query structure.
+	    all
+	 f) update the following fileds in the destination images:
+	    cpu_used, comp_used, accessed, modified, histody
+	 g) update the following fields in the source images: accessed
+	 h) lock source images on write access and destination images
+	    on read and write access from the beginning till the end of function */
+
+#include <math.h>
+#include <time.h>
+#include <winsock2.h>
+#include <sys/timeb.h>
+
+#include <sysconf.h>
+#include <strsafex.h>
+#include <mysql/mysql.h>
+#include "dias-ks.h"
+#include "comp.h"
+
+#include "comput/floodfill.cm"
+
+bool ce_img_stat (client* c, packet* query, packet* resp) {
+	rtbyte avg, std = 0;
+	uvar32_64 sum = 0, min = (uvar32_64)-1, max = 0, i;
+
+	INIT_1IMGS (0, ce_img_stat);
+
+	i = size;
+	psrc = src->layers[0];
+	while (i--) {
+		if (min > *psrc) min = *psrc;
+		if (max < *psrc) max = *psrc;
+		sum += *psrc++;
+	}
+	avg = (rtbyte)sum / (rtbyte)size;
+	i = size;
+	psrc = src->layers[0];
+	while (i--)
+		std += pow (avg - *psrc++, 2);
+	std /= size - 1;
+	std = pow (std, 0.5);
+
+	kstp_allocate (resp, 6);
+	kstp_set_real (resp, 0, avg);
+	kstp_set_real (resp, 1, std);
+	kstp_set_int (resp, 2, size);
+	kstp_set_int (resp, 3, min);
+	kstp_set_int (resp, 4, max);
+	kstp_set_int (resp, 5, sum);
+
+	return (true);
+}
+
+bool ce_img_pxn_add (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_pxn_mul (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_pxn_pow (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_pxn_and (client* c, packet* query, packet* resp) {
+	int a;
+	uword px;
+	register svar32_64 i, l;
+
+	INIT_2IMGS (1, ce_img_mtx_avg);
+
+	isvalidf (kstp_get_int (query, 0, &a), c, kstp_errno);
+	px = a;
+	for (l = dst->dimz - 1; l >= 0; --l) {
+		i = size;
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		while (i--)
+			pdst[i] = psrc[i] & px;
+	}
+	return (true);
+}
+bool ce_img_pxn_or (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_pxn_xor (client* c, packet* query, packet* resp) { return (false); }
+
+bool ce_img_pxw_add (client* c, packet* query, packet* resp) {
+	udword divider;
+	register svar32_64 l, i;
+	INIT_XIMGS(1, ce_img_pxw_add);
+	isvalidf (kstp_get_int (query, 0, &divider), c, kstp_errno);
+	PROC_PWX_1 (+, add);
+	FINALIZE_XIMGS;
+}
+bool ce_img_pxw_sub (client* c, packet* query, packet* resp) {
+	enum ce_sub_modes mode;
+	register svar32_64 l, i;
+	INIT_XIMGS(1, ce_img_pxw_sub);
+
+	isvalidf (kstp_get_int (query, 0, &mode), c, kstp_errno);
+	iffailedf (mode == ce_subm_zero || mode == ce_subm_absolute || mode == ce_subm_module,
+	           c, "ce_img_pxw_sub: wrong mode");
+
+	for (l = dst->dimz - 1; l >= 0; --l) {
+		i = size;
+		pdst = dst->layers[l];
+		while (i--) {
+			pdst[i] = srcs[0]->layers[l][i];
+			for (no = 1; no < n; ++no) {
+				if ((sword)(pdst[i]) - srcs[no]->layers[l][i] < 0)
+					switch (mode) {
+						case ce_subm_zero:
+							pdst[i] = 0;
+							break;
+						case ce_subm_absolute:
+							pdst[i] = abs((sword)(pdst[i]) - srcs[no]->layers[l][i]);
+							break;
+						case ce_subm_module:
+							pdst[i] = pdst[i] -= srcs[no]->layers[l][i];
+							break;
+					}
+				else
+					pdst[i] -= srcs[no]->layers[l][i];
+			}
+		}
+	}
+
+	FINALIZE_XIMGS;
+}
+bool ce_img_pxw_mul (client* c, packet* query, packet* resp) {
+	udword divider;
+	register svar32_64 l, i;
+	INIT_XIMGS(1, ce_img_pxw_mul);
+	isvalidf (kstp_get_int (query, 0, &divider), c, kstp_errno);
+	PROC_PWX_1 (*, mul);
+	FINALIZE_XIMGS;
+}
+bool ce_img_pxw_div (client* c, packet* query, packet* resp) {
+	udword divider;
+	register svar32_64 l, i;
+	INIT_XIMGS(1, ce_img_pxw_div);
+	isvalidf (kstp_get_int (query, 0, &divider), c, kstp_errno);
+	PROC_PWX_1 (/, div);
+	FINALIZE_XIMGS;
+}
+bool ce_img_pxw_pow (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_pxw_root (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_pxw_or (client* c, packet* query, packet* resp) {
+	udword divider = 1;
+	register svar32_64 l, i;
+	INIT_XIMGS(0, ce_img_pxw_or);
+	PROC_PWX_1 (|, or);
+	FINALIZE_XIMGS;
+}
+bool ce_img_pxw_and (client* c, packet* query, packet* resp) {
+	udword divider = 1;
+	register svar32_64 l, i;
+	INIT_XIMGS(0, ce_img_pxw_and);
+	PROC_PWX_1 (&, and);
+	FINALIZE_XIMGS;
+}
+bool ce_img_pxw_xor (client* c, packet* query, packet* resp) {
+	udword divider = 1;
+	register svar32_64 l, i;
+	INIT_XIMGS(0, ce_img_pxw_xor);
+	PROC_PWX_1 (^, xor);
+	FINALIZE_XIMGS;
+}
+bool ce_img_pxw_not (client* c, packet* query, packet* resp) {
+	register uvar32_64 l;
+	INIT_1IMGS(0, ce_img_pxw_not);
+	for (l = 0; l < dimz; l++)
+		for (psrc = src->layers[l]; size; size--, psrc++)
+			*psrc = ~*psrc;
+	return (false);
+}
+
+bool ce_img_pxw_min (client* c, packet* query, packet* resp) {
+	register svar32_64 l, i;
+	INIT_XIMGS(0, ce_img_pxw_min);
+	for (l = dst->dimz - 1; l >= 0; --l) {
+		i = size;
+		pdst = dst->layers[l];
+		while (i--) {
+			pdst[i] = (ubyte)-1;
+			for (no = 0; no < n; ++no)
+				pdst[i] = min (pdst[i], srcs[no]->layers[l][i]);
+		}
+	}
+	FINALIZE_XIMGS;
+}
+bool ce_img_pxw_max (client* c, packet* query, packet* resp) {
+	register svar32_64 l, i;
+	INIT_XIMGS(0, ce_img_pxw_max);
+	for (l = dst->dimz - 1; l >= 0; --l) {
+		i = size;
+		pdst = dst->layers[l];
+		while (i--) {
+			pdst[i] = (ubyte)0;
+			for (no = 0; no < n; ++no)
+				pdst[i] = max (pdst[i], srcs[no]->layers[l][i]);
+		}
+	}
+	FINALIZE_XIMGS;
+}
+
+bool ce_img_pxw_med (client* c, packet* query, packet* resp) { return (false); }
+
+bool ce_img_pxw_avg (client* c, packet* query, packet* resp) {
+	rtbyte sum;
+	register svar32_64 l, i;
+	INIT_XIMGS(0, ce_img_pxw_avg);
+	for (l = dst->dimz - 1; l >= 0; --l) {
+		i = size;
+		pdst = dst->layers[l];
+		while (i--) {
+			sum = 0;
+			for (no = 0; no < n; ++no)
+				sum += srcs[no]->layers[l][i];
+			pdst[i] = (ubyte)(sum / n);
+		}
+	}
+	FINALIZE_XIMGS;
+}
+
+bool ce_img_pxw_gvg (client* c, packet* query, packet* resp) {
+	rtbyte sum;
+	register svar32_64 l, i;
+	INIT_XIMGS(0, ce_img_pxw_gvg);
+	for (l = dst->dimz - 1; l >= 0; --l) {
+		i = size;
+		pdst = dst->layers[l];
+		while (i--) {
+			sum = 1;
+			for (no = 0; no < n; ++no)
+				sum *= srcs[no]->layers[l][i];
+			pdst[i] = (ubyte)pow (sum, 1.0/(rtbyte)n);
+		}
+	}
+	FINALIZE_XIMGS;
+}
+
+bool ce_img_pxw_hvg (client* c, packet* query, packet* resp) {
+	rtbyte sum;
+	register svar32_64 l, i;
+	INIT_XIMGS(0, ce_img_pxw_gvg);
+	for (l = dst->dimz - 1; l >= 0; --l) {
+		i = size;
+		pdst = dst->layers[l];
+		while (i--) {
+			sum = 1;
+			for (no = 0; no < n; ++no)
+				sum *= srcs[no]->layers[l][i];
+			pdst[i] = (ubyte)pow (sum, 1.0/(rtbyte)n);
+		}
+	}
+	FINALIZE_XIMGS;
+}
+
+bool ce_img_pxw_std (client* c, packet* query, packet* resp) {
+	rtbyte sum, avg, std;
+	register svar32_64 l, i;
+	INIT_XIMGS(1, ce_img_pxw_std);
+	for (l = dst->dimz - 1; l >= 0; --l) {
+		i = size;
+		pdst = dst->layers[l];
+		while (i--) {
+			sum = avg = std = 0;
+			for (no = 0; no < n; ++no)
+				sum += srcs[no]->layers[l][i];
+			avg = sum / n;
+			for (no = 0; no < n; ++no)
+				std += (srcs[no]->layers[l][i] - avg) * (srcs[no]->layers[l][i] - avg);
+			std /= (n - 1);
+			pdst[i] = (ubyte)std;
+		}
+	}
+	FINALIZE_XIMGS;
+}
+
+bool ce_img_pxw_eds (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_pxw_mds (client* c, packet* query, packet* resp) { return (false); }
+
+bool ce_img_pxw_thr (client* c, packet* query, packet* resp) {
+	int a;
+	uword low_color, hi_color, dst_color;
+	register svar32_64 i, l;
+
+	INIT_2IMGS (3, ce_img_pxw_thr);
+
+	isvalidf (kstp_get_int (query, 0, &a), c, kstp_errno);
+	low_color = a;
+	isvalidf (kstp_get_int (query, 1, &a), c, kstp_errno);
+	hi_color = a;
+	isvalidf (kstp_get_int (query, 2, &a), c, kstp_errno);
+	dst_color = a;
+
+	for (l = dst->dimz - 1; l >= 0; --l) {
+		i = size;
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		while (i--)
+			pdst[i] = (psrc[i] > low_color && psrc[i] <= hi_color) ? dst_color : 0 ;
+	}
+	return (true);
+}
+
+bool ce_img_mtx_logic (client* c, packet* query, packet* resp) {
+	string str;
+	sdword *moffs, *p;
+	ubyte val, min, max;
+	int copysrc, trueval, compval, compcode, resltcode;
+	uvar32_64 limx, limy, mlen, count, sum;
+	svar32_64 l, mszt = 0, mszb = 0, mszl = 0, mszr = 0;
+	uvar32_64 x, y, m;
+
+	INIT_2IMGS (6, ce_img_mtx_logic);
+
+	isvalidf (kstp_get_int (query, 0, &compval), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 1, &copysrc), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 2, &trueval), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 3, &compcode), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 4, &resltcode), c, kstp_errno);
+	isvalidf (kstp_get_string (query, 5, &str), c, kstp_errno);
+	iffailedf (compcode < 6, c, "ce_img_mtx_logic: wrong comparsion code");
+	iffailedf (resltcode < 7, c, "ce_img_mtx_logic: wrong result code");
+	iffailedf (moffs = (sdword *)strsafe_ptr (str), c, "ce_img_mtx_logic: wrong parameter");
+	iffailedf (mlen = strsafe_len (str) / sizeof(sdword) / 2, c, "ce_img_mtx_logic: wrong parameter");
+	iffailedf (p = ksmem_commit (c, mlen * sizeof(sdword)), c, "ce_img_mtx_logic");
+	for (m = 0; m < mlen * 2; m += 2) {
+		p[m / 2] = moffs[m + 0] + moffs[m + 1] * dimx;
+		if (mszt > moffs[m + 1]) mszt = moffs[m + 1];
+		if (mszl > moffs[m + 0]) mszl = moffs[m + 0];
+		if (mszb < moffs[m + 1]) mszb = moffs[m + 1];
+		if (mszr < moffs[m + 0]) mszr = moffs[m + 0];
+	}
+	moffs = p;
+
+	for (l = dimz - 1; l >= 0; --l) {
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		if (copysrc == -1)
+			memcpy (pdst, psrc, size);
+		else
+			memset (pdst, copysrc, size);
+		limy = dimy - mszb;
+
+#define	PROC1(expr1,expr2)	\
+		switch (compcode) { \
+			case ce_logc_eq: PROC2(==, expr1, expr2); break; \
+			case ce_logc_ne: PROC2(!=, expr1, expr2); break; \
+			case ce_logc_lt: PROC2(<,  expr1, expr2); break; \
+			case ce_logc_gt: PROC2(>,  expr1, expr2); break; \
+			case ce_logc_le: PROC2(<=, expr1, expr2); break; \
+			case ce_logc_ge: PROC2(>=, expr1, expr2); break; \
+		}
+#define	PROC2(op,true_expr,eq_expr)	\
+		for (y = -mszt, psrc += -mszt, pdst += -mszt; \
+		     y < limy; \
+		     ++y, pdst += mszr, psrc += mszr) { \
+			limx = dimx - mszr; \
+			for (x = -mszl, pdst += -mszl, psrc += -mszl; \
+			     x < limx; \
+			     ++x, ++pdst, ++psrc) { \
+				min = 0xFF; \
+				count = sum = max = 0; \
+				for (p = moffs, m = 0; m < mlen; ++m, ++p) \
+					if ((val = *(psrc + *p)) op compval) { \
+						true_expr; \
+						count++; \
+						sum += val; \
+						if (min > val) min = val; \
+						if (max < val) max = val; \
+		 			} \
+				eq_expr; \
+			} \
+		}
+
+		switch (resltcode) {
+			case ce_logr_bool:	PROC1(*pdst = trueval; break;, ;); break;
+			case ce_logr_value:	PROC1(*pdst = val; break;, ;); break;
+			case ce_logr_count:	PROC1(;, if (count > 0) *pdst = (ubyte)(count / trueval)); break;
+			case ce_logr_sum:	PROC1(;, if (count > 0) *pdst = (ubyte)(sum / trueval)); break;
+			case ce_logr_mean:	PROC1(;, if (count > 0) *pdst = (ubyte)(sum / count)); break;
+			case ce_logr_min:	PROC1(;, if (count > 0) *pdst = min); break;
+			case ce_logr_max:	PROC1(;, if (count > 0) *pdst = max); break;
+		}
+#undef PROC2
+#undef PROC1
+	}
+	ksmem_release (c, moffs);
+	return (true);
+}
+
+bool ce_img_mtx_sum (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_mtx_prd (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_mtx_and (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_mtx_or (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_mtx_xor (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_mtx_min (client* c, packet* query, packet* resp) {
+	clock_t oclock;
+	ubyte min, *sp;
+	svar32_64 l;
+	udword mtxdim;
+	uvar32_64 limx, limy;
+	register uvar32_64 x, y;
+	register svar32_64 mx, my;
+	INIT_2IMGS (1, ce_img_mtx_min);
+
+	isvalidf (kstp_get_int (query, 0, &mtxdim), c, kstp_errno);
+	iffailedf (mtxdim >= 1 && mtxdim < min (src->dimx / 4,src->dimy / 4),
+	           c, "ce_img_mtx_min: wrong matrix size");
+
+	oclock = clock ();
+	for (l = dimz - 1; l >= 0; --l) {
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		memset (pdst, 0, size);
+
+		limy = dimy - mtxdim;
+		psrc += mtxdim * (dimx + 1);
+		pdst += mtxdim * (dimx + 1);
+		for (y = mtxdim; y < limy; ++y) {
+			limx = dimx - mtxdim;
+			for (x = mtxdim; x < limx; ++x) {
+
+				sp = psrc - mtxdim * (dimx + 1);
+/*			__asm {
+				pushad
+				mov	al,-1
+				mov	edi,mtxdim
+				mov	esi,sp
+				mov	ecx,edi
+				mov	edx,edi
+				shl	edx,1
+				inc	edx
+				sub	esi,edx
+__loop2:			push	ecx
+				mov	ecx,edi
+__loop1:			cmp	al,byte ptr [esi]
+				jle	__jle1
+				mov	al,byte ptr [esi]
+__jle1:				inc	esi
+				loop	__loop1
+				mov	ebx,edi		/* remembers dimx
+				sub	ebx,edx		/* substracting (mtxdim << 1) + 1
+				add	esi,ebx
+				pop	ecx
+				loop	__loop2
+				mov	min,al
+				mov	psrc,esi
+				popad
+			}*/
+
+				min = (ubyte)-1;
+				for (my = -(sdword)mtxdim; my <= (sdword)mtxdim; ++my) {
+					for (mx = -(sdword)mtxdim; mx <= (sdword)mtxdim; ++mx, ++sp)
+						if (min > *sp) min = *sp;
+					sp += dimx - (mtxdim << 1) - 1;
+				}
+
+				*pdst++ = min;
+				psrc++;
+			}
+			psrc += 2 * mtxdim;
+			pdst += 2 * mtxdim;
+		}
+	}
+	oclock = clock () - oclock;
+	kserr_fire (c, 0, "mtx min timing", __FILE__, oclock);
+	return (true);
+}
+bool ce_img_mtx_max (client* c, packet* query, packet* resp) {
+	clock_t oclock;
+	ubyte max, *sp;
+	svar32_64 l;
+	udword mtxdim;
+	uvar32_64 limx, limy;
+	register uvar32_64 x, y;
+	register svar32_64 mx, my;
+	INIT_2IMGS (1, ce_img_mtx_max);
+
+	isvalidf (kstp_get_int (query, 0, &mtxdim), c, kstp_errno);
+	iffailedf (mtxdim >= 1 && mtxdim < min (src->dimx / 4,src->dimy / 4),
+	           c, "ce_img_mtx_max: wrong matrix size");
+
+	oclock = clock ();
+	for (l = dimz - 1; l >= 0; --l) {
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		memset (pdst, 0, size);
+
+		limy = dimy - mtxdim;
+		psrc += mtxdim * (dimx + 1);
+		pdst += mtxdim * (dimx + 1);
+		for (y = mtxdim; y < limy; ++y) {
+			limx = dimx - mtxdim;
+			for (x = mtxdim; x < limx; ++x) {
+				sp = psrc - mtxdim * (dimx + 1);
+				max = 0;
+				for (my = -(sdword)mtxdim; my <= (sdword)mtxdim; ++my) {
+					for (mx = -(sdword)mtxdim; mx <= (sdword)mtxdim; ++mx, ++sp)
+						if (max < *sp) max = *sp;
+					sp += dimx - (mtxdim << 1) - 1;
+				}
+
+				*pdst++ = max;
+				psrc++;
+			}
+			psrc += 2 * mtxdim;
+			pdst += 2 * mtxdim;
+		}
+	}
+	oclock = clock () - oclock;
+	kserr_fire (c, 0, "mtx max timing", __FILE__, oclock);
+	return (true);
+}
+bool ce_img_mtx_med (client* c, packet* query, packet* resp) { return (false); }
+
+bool ce_img_mtx_avg (client* c, packet* query, packet* resp) {
+	clock_t oclock;
+	ubyte *sp;
+	svar32_64 l;
+	udword mtxdim;
+	uvar32_64 limx, limy, sum, mtxsize;
+	register uvar32_64 x, y;
+	register svar32_64 mx, my;
+
+	INIT_2IMGS (1, ce_img_mtx_avg);
+
+	isvalidf (kstp_get_int (query, 0, &mtxdim), c, kstp_errno);
+	iffailedf (mtxdim > 1 && mtxdim < min (src->dimx / 4,src->dimy / 4),
+	           c, "ce_img_mtx_avg: wrong matrix size");
+
+	oclock = clock ();
+	mtxsize = 4 * mtxdim * (mtxdim + 1) + 1;
+	for (l = dimz - 1; l >= 0; --l) {
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		memset (pdst, 0, size);
+
+		limy = dimy - mtxdim;
+		psrc += mtxdim * (dimx + 1);
+		pdst += mtxdim * (dimx + 1);
+		for (y = mtxdim; y < limy; ++y) {
+			limx = dimx - mtxdim;
+			for (x = mtxdim; x < limx; ++x) {
+				sp = psrc - mtxdim * (dimx + 1);
+				sum = 0;
+				for (my = -(sdword)mtxdim; my <= (sdword)mtxdim; ++my) {
+					for (mx = -(sdword)mtxdim; mx <= (sdword)mtxdim; ++mx, ++sp)
+						sum += *sp;
+					sp += dimx - (mtxdim << 1) - 1;
+				}
+
+				*pdst++ = (ubyte)(sum / mtxsize);
+				psrc++;
+			}
+			psrc += 2 * mtxdim;
+			pdst += 2 * mtxdim;
+		}
+	}
+	oclock = clock () - oclock;
+	kserr_fire (c, 0, "mtx avg timing", __FILE__, oclock);
+
+/*	for (l = dst->dimz - 1; l >= 0; --l) {
+		i = size;
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		for (y = 0; y < dst->dimy; ++y)
+			for (x = 0; x < dst->dimx; ++x) {
+				if (x <= mtxdim || dst->dimx - x <= mtxdim ||
+				    y <= mtxdim || dst->dimy - y <= mtxdim) {
+					pdst[x + y*dst->dimx] = 0;
+					continue;
+				}
+				sum = 0;
+				for (mx = -(svar32_64)mtxdim; mx <= (svar32_64)mtxdim; ++mx)
+					for (my = -(svar32_64)mtxdim; my <= (svar32_64)mtxdim; ++my)
+						sum += psrc[(x + mx) + (y + my)*dst->dimx];
+				pdst[x + y*dst->dimx] = (ubyte)(sum / (mtxdim * mtxdim * 4 + 2 * mtxdim + 4));
+			}
+	}*/
+	return (true);
+}
+
+bool ce_img_mtx_gvg (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_mtx_hvg (client* c, packet* query, packet* resp) { return (false); }
+
+bool ce_img_mtx_std (client* c, packet* query, packet* resp) {
+	rtbyte r, std, avg;
+	uvar32_64 mtxdim, sum, prod;
+	register uvar32_64 x, y;
+	register svar32_64 i, l, mx, my;
+	INIT_2IMGS (2, ce_img_mtx_std);
+
+	isvalidf (kstp_get_int (query, 0, &mtxdim), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 1, &prod), c, kstp_errno);
+	iffailedf (mtxdim > 1 && mtxdim < min (src->dimx / 4,src->dimy / 4),
+	           c, "ce_img_mtx_avg: wrong matrix size");
+
+	for (l = dst->dimz - 1; l >= 0; --l) {
+		i = size;
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		for (y = 0; y < dst->dimy; ++y)
+			for (x = 0; x < dst->dimx; ++x) {
+				if (x <= mtxdim || dst->dimx - x <= mtxdim ||
+				    y <= mtxdim || dst->dimy - y <= mtxdim) {
+					pdst[x + y*dst->dimx] = 0;
+					continue;
+				}
+				sum = 0;
+				for (mx = -(svar32_64)mtxdim; mx <= (svar32_64)mtxdim; ++mx)
+					for (my = -(svar32_64)mtxdim; my <= (svar32_64)mtxdim; ++my)
+						sum += psrc[(x + mx) + (y + my)*dst->dimx];
+				std = 0;
+				avg = (rtbyte)(sum) / (mtxdim * mtxdim * 4 + 2 * mtxdim + 4);
+				for (mx = -(svar32_64)mtxdim; mx <= (svar32_64)mtxdim; ++mx)
+					for (my = -(svar32_64)mtxdim; my <= (svar32_64)mtxdim; ++my) {
+						r = psrc[(x + mx) + (y + my)*dst->dimx] - avg;
+						r *= r;
+						//if (r < 0.) r = -1;
+						std += r;
+					}
+				pdst[x + y*dst->dimx] = (ubyte)(prod * pow(std / (mtxdim * mtxdim * 4 + 2 * mtxdim + 4), 0.5));
+			}
+	}
+	return (true);
+}
+
+bool ce_img_mtx_eds (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_mtx_mds (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_mtx_grad (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_mtx_div (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_mtx_rot (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_mtx_lapl (client* c, packet* query, packet* resp) { return (false); }
+
+bool ce_img_mtx_filter (client* c, packet* query, packet* resp) {
+	string str;
+	ubyte *sp;
+	svar32_64 l;
+	udword mtxdim;
+	rtbyte reslt, *moffs, *mp;
+	uvar32_64 limx, limy, mlen;
+	register svar32_64 mx, my, x, y;
+	INIT_2IMGS (2, ce_img_mtx_filter);
+
+	isvalidf (kstp_get_int (query, 0, &mtxdim), c, kstp_errno);
+	iffailedf (mtxdim > 1 && mtxdim < min (src->dimx / 4,src->dimy / 4),
+	           c, "ce_img_mtx_filter: wrong matrix size");
+	isvalidf (kstp_get_string (query, 1, &str), c, kstp_errno);
+	iffailedf (moffs = (rtbyte *)strsafe_ptr (str), c, "ce_img_mtx_filter: wrong parameter");
+	iffailedf (mlen = strsafe_len (str) / sizeof(rtbyte) / 2, c, "ce_img_mtx_filter: wrong parameter");
+//	iffailedf (mlen != 4 * mtxdim * mtxdim, c, "ce_img_mtx_filter: matrix dimension mismatch");
+
+	for (l = dimz - 1; l >= 0; --l) {
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		memset (pdst, 0, size);
+
+		limy = dimy - mtxdim;
+		psrc += mtxdim * (dimx + 1);
+		pdst += mtxdim * (dimx + 1);
+		for (y = (sdword)mtxdim; y < (sdword)limy; ++y) {
+			limx = dimx - mtxdim;
+			for (x = (sdword)mtxdim; x < (sdword)limx; ++x) {
+				reslt = 0.;
+				mp = moffs;
+				sp = psrc - mtxdim * (dimx + 1);
+				for (my = -(sdword)mtxdim; my <= (sdword)mtxdim; ++my) {
+					for (mx = -(sdword)mtxdim; mx <= (sdword)mtxdim; ++mx)
+						reslt += *sp++ * *mp++;
+					sp += dimx - mtxdim * 2 - 1;
+				}
+				*pdst++ = (ubyte)reslt;
+				psrc++;
+			}
+			psrc += 2 * mtxdim;
+			pdst += 2 * mtxdim;
+		}
+	}
+
+	return (true);
+}
+
+bool ce_img_trc_holes (client* c, packet* query, packet* resp) {
+	/* Internal variabes */
+	sdword conn8;
+	bool free = true, edges = true;
+	ubyte *ptr, what = 0x00, fill = 0x01;
+	uvar32_64 pos, area, sum_area = 0, seed = 0;
+	/* Standart variables */
+	ubyte *ptmp, *p;
+	uvar32_64 l, i;
+
+	INIT_2IMGS (1, ce_img_trc_holes);
+
+	isvalidf (kstp_get_int (query, 0, &conn8), c, kstp_errno);
+	iffailedf (conn8 == true || conn8 == false, c, "wrong object connection type");
+	iffailedf (ptmp = ksmem_commit (c, size), c, "ce_img_trc_holes");
+	p = ptmp;
+
+	for (l = 0; l < dimz; --l) {
+		ptmp = p;
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		memcpy (pdst, psrc, size);
+		memcpy (ptmp, psrc, size);
+
+		do {
+			FLOODFILL (ptmp);
+			sum_area += area;
+		} while (area);
+
+		i = size;
+		while (i--)
+			*pdst++ = (*ptmp++ == 0) ? 0xFF : *pdst;
+	}
+
+	ksmem_release (c, p);
+	return (true);
+}
+
+bool ce_img_trc_scrap (client* c, packet* query, packet* resp) {
+	/* Internal variabes */
+	udword conn8, lower, upper, type;
+	bool free = false, edges = false;
+	ubyte *ptr, what = 0xFF, fill = 0xC0;
+	uvar32_64 pos, area, sum_area, seed = 0;
+	/* Standart variables */
+	ubyte *ptmp, *p;
+	uvar32_64 l, i;
+
+	INIT_2IMGS (4, ce_img_trc_scrap);
+
+	isvalidf (kstp_get_int (query, 0, &type), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 1, &lower), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 2, &upper), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 3, &conn8), c, kstp_errno);
+	iffailedf (type == true || type == false, c, "wrong operation type");
+	iffailedf (conn8 == true || conn8 == false, c, "wrong object connection type");
+
+	iffailedf (ptmp = ksmem_commit (c, size), c, "ce_img_trc_scrap");
+	p = ptmp;
+
+	for (l = 0; l < dimz; --l) {
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		memcpy (ptmp, psrc, size);
+		memcpy (pdst, psrc, size);
+
+		for (seed = 0; seed < size; seed++)
+			if (pdst[seed] == 0xFF) {
+				sum_area = 0;
+				do {
+					FLOODFILL (pdst);
+					sum_area += area;
+				} while (area);
+				if (type == true && (sum_area <= lower || sum_area >= upper))
+					do { FLOODFILL (ptmp); } while (area);
+				if (type == false && sum_area >= lower && sum_area <= upper)
+					do { FLOODFILL (ptmp); } while (area);
+			}
+
+		i = size;
+		memcpy (pdst, psrc, size);
+		while (i--)
+			*pdst++ = (*ptmp++ == 0xC0) ? 0x00 : *pdst;
+	}
+
+	ksmem_release (c, p);
+	return (true);
+}
+
+bool ce_img_trc_mark (client* c, packet* query, packet* resp) {
+	/* Internal variabes */
+	udword conn8, type;
+	bool free = false, edges = false;
+	ubyte *ptr, what = 0xFF, fill;
+	uvar32_64 pos, area, seed = 0;
+	/* Standart variables */
+	ubyte *ptmp, *p;
+	uvar32_64 l, i;
+
+	INIT_2IMGS (2, ce_img_trc_scrap);
+
+	isvalidf (kstp_get_int (query, 0, &type), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 1, &conn8), c, kstp_errno);
+	iffailedf (type == true || type == false, c, "wrong operation type");
+	iffailedf (conn8 == true || conn8 == false, c, "wrong object connection type");
+
+	iffailedf (ptmp = ksmem_commit (c, size), c, "ce_img_trc_scrap");
+	p = ptmp;
+
+	fill = type ? 0xC0 : 0x00;
+	for (l = 0; l < dimz; --l) {
+		ptmp = p;
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		memcpy (ptmp, pdst, size);
+
+		for (seed = 0; seed < size; seed++)
+			if (ptmp[seed] == 0xFF)
+				do { FLOODFILL (ptmp); } while (area);
+
+		i = size;
+		if (type)
+			while (i--) *pdst++ = (*ptmp++ == fill) ? 0xFF : 0x00;
+		else
+			memcpy (pdst, ptmp, size);
+	}
+
+	ksmem_release (c, p);
+	return (true);
+}
+bool ce_img_trc_mask (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_trc_link (client* c, packet* query, packet* resp) { return (false); }
+bool ce_img_trc_window (client* c, packet* query, packet* resp) {
+	/* Internal variabes */
+	udword conn8, top, bottom, left, right, type;
+	bool free = false, edges = false;
+	ubyte *ptr, what = 0xFF, fill = 0xC0;
+	uvar32_64 pos, area, seed = 0;
+	/* Standart variables */
+	uvar32_64 l;
+
+	INIT_1IMGS (6, ce_img_trc_window);
+
+	isvalidf (kstp_get_int (query, 0, &left), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 1, &top), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 2, &right), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 3, &bottom), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 4, &type), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 5, &conn8), c, kstp_errno);
+	iffailedf (left < dimx && right < dimx && top < dimy && bottom < dimy, c, "wrong boundaries");
+	iffailedf (type == true || type == false, c, "wrong operation type");
+	iffailedf (conn8 == true || conn8 == false, c, "wrong object connection type");
+
+	for (l = 0; l < dimz; --l) {
+		psrc = src->layers[l];
+
+		for (seed = 0; seed < size; seed++)
+			if (seed % dimx <= left || dimx - seed % dimx <= right ||
+			    seed / dimx <= top || dimy - seed / dimx <= bottom)
+				if (psrc[seed] == 0xFF)
+					do { FLOODFILL (psrc); } while (area);
+
+		for (seed = 0; seed < size; seed++)
+			if (psrc[seed] == 0xC0) psrc[seed] = 0x00;
+	}
+	return (true);
+}
+bool ce_img_trc_ident (client* c, packet* query, packet* resp) {
+	/* Internal variabes */
+	udword conn8;
+	bool free = false, edges = false;
+	ubyte *ptr, what = 0xFF, fill = 0x00;
+	uvar32_64 pos, area, seed = 0;
+	/* Standart variables */
+	uvar32_64 l;
+
+	INIT_1IMGS (1, ce_img_trc_window);
+
+	isvalidf (kstp_get_int (query, 0, &conn8), c, kstp_errno);
+	iffailedf (conn8 == true || conn8 == false, c, "wrong object connection type");
+
+	for (l = 0; l < dimz; --l) {
+		psrc = src->layers[l];
+
+		for (seed = 0; seed < size; seed++)
+			if (psrc[seed] == 0xFF) {
+				fill++;
+				if (fill == 0x00) fill = 0x01;
+				do { FLOODFILL (psrc); } while (area);
+			}
+	}
+	return (true);
+}
+
+bool ce_img_resample (client* c, packet* query, packet* resp) {
+	udword ratio;
+	uvar32_64 x, y, xr, yr, l, r;
+
+	HOBJ s, d;
+	ubyte *psrc, *pdst;
+	uvar32_64 dimx, dimy, dimz;
+	dksobj_image *src, *dst;
+
+	isclientf (c);
+	notnullf (query, c);
+	iffailedf (query->argc == 2 + 1, c, "ce_img_resample: wrong arguments count");
+	isvalidf (kstp_get_int (query, 2 + 0, &(udword)s), c, kstp_errno);
+	iffailedf (kssec_validate_hobj (c, s, OA_READ), c,
+	           "ce_img_resample: unable to access source image");
+	notnullf (s->obj, c);
+	notnullf (src = s->obj->data, c);
+
+	isvalidf (kstp_get_int (query, 1 + 0, &(udword)d), c, kstp_errno);
+	iffailedf (kssec_validate_hobj (c, d, OA_WRITE), c,
+	           "ce_img_resample: unable to access destination image");
+	notnullf (d->obj, c);
+	notnullf (dst = d->obj->data, c);
+
+	isvalidf (kstp_get_int (query, 0, &ratio), c, kstp_errno);
+
+	iffailedf (dst->dimx == src->dimx / ratio &&
+	           dst->dimy == src->dimy / ratio &&
+		   dst->dimz == src->dimz, c, "ce_img_resample: wrong images dimensions");
+	dimx = src->dimx;
+	dimy = src->dimy;
+	dimz = src->dimz;
+
+	for (l = 0; l < dimz; --l) {
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		for (y = 0; y < dimy - ratio; y += ratio)
+			for (x = 0; x < dimx - ratio; x += ratio) {
+				r = 0;
+				for (yr = 0; yr < ratio; ++yr)
+					for (xr = 0; xr < ratio; ++xr)
+						r += psrc[(y + yr) * dimx + x + xr];
+				pdst[y / ratio * (dimx / ratio) + x / ratio] = (ubyte)(r / (ratio * ratio));
+			}
+	}
+
+	return (true);
+}
+
+bool ce_img_product  (client* c, packet* query, packet* resp) {
+	uvar32_64 *ptmp, min = (uvar32_64)-1, max = 0;
+	register svar32_64 l;
+	register uvar32_64 x, y, i;
+	INIT_3IMGS (0, ce_img_whl_prod);
+
+	iffailedf (ptmp = ksmem_commit(c, dst->dimx * dst->dimx * sizeof (uvar32_64)), c, "out of memody");
+
+	for (l = dst->dimz - 1; l >= 0; --l) {
+		pdst = dst->layers[l];
+		psrc1 = src1->layers[l];
+		psrc2 = src2->layers[l];
+		for (y = 0; y < dst->dimy; ++y)
+			for (x = 0; x < dst->dimy; ++x) {
+				ptmp[x+y*dst->dimx] = 0;
+				for (i = 0; i < dst->dimy; ++i)
+					ptmp[x+y*dst->dimx] += psrc1[x+i*dst->dimx] * psrc2[i+y*dst->dimx];
+				min = (min <= ptmp[x+y*dst->dimx]) ? min : ptmp[x+y*dst->dimx];
+				max = (max >= ptmp[x+y*dst->dimx]) ? max : ptmp[x+y*dst->dimx];
+			}
+		for (y = 0; y < dst->dimy; ++y)
+			for (x = 0; x < dst->dimx; ++x)
+				pdst[x+y*dst->dimx] = (ubyte)((ptmp[x+y*dst->dimx] - min) * 255. / (max - min));
+	}
+	ksmem_release (c, ptmp);
+	return (true);
+}
+
+bool ce_measure (client* c, packet* query, packet* resp) {
+#	define PROC "ce_measure"
+	bool retval = true;
+	struct timeb tb;
+	clock_t clk_start, clk_spend;
+	uword histx;
+
+	sdword m, i, s, l;
+	HOBJ hmsk, himg, hsur;
+	dksobj_mask* msk;
+	dksobj_image* img;
+	dksobj_survey* sur;
+
+	uvar32_64 n;
+	record *rec, *rec_prev = NULL;
+
+	/* ### Standart arguments validation */
+	isclientf (c);
+	isvalidf (c->cpu_quot > c->cpu_time, c, KSERR_QUOT);
+	notnullf (query, c);
+	notnullf (resp, c);
+
+	/* ### Function parameters validation: count, not null, exists,
+	       accessible, with right type and characteristics */
+	isvalidf (query->argc == 4, c, KSERR_ARGCOUNT);
+
+	GET_OBJECT (0, m, hmsk, msk, DOBJT_MASK, OA_RDEX);
+	GET_OBJECT (1, s, hsur, sur, DOBJT_SURVEY, OA_WRITE);
+	GET_OBJECT (2, i, himg, img, DOBJT_IMAGE, OA_RDEX);
+
+	isvalidf (kstp_get_int (query, 3, &l), c, kstp_errno);
+	iffailedf ((uvar32_64)l < img->dimz, c, PROC": specified channel does not exists");
+
+	iffailedf (img->layers, c, PROC": there is no initialized channels on the image");
+	iffailedf (img->dimx == msk->dimx &&
+		   img->dimy == msk->dimy, c, PROC": different dimensions");
+
+	/* ### Starting */
+/*	isvalidf (!(hmsk->obj->share & OA_WRITE), c, KSERR_SHARECONFLICT);
+	isvalidf (!(himg->obj->share & OA_WRITE), c, KSERR_SHARECONFLICT);
+	isvalidf (!(hsur->obj->share & OA_ALL), c, KSERR_SHARECONFLICT);
+	himg->obj->share |= OA_WRITE;
+	hmsk->obj->share |= OA_WRITE;
+	hsur->obj->share |= OA_ALL;*/
+	clk_start = clock ();
+
+	/* ### Computations: iffailedf, notnullf and isvalidf not allowed */
+	for (n = 0; n < msk->count; ++n) {
+		iffailedb (img->layers[l], c, PROC": specified channel is uninitialized");
+		iffailedb (rec = ksmem_commit (c, sizeof (record)), c, PROC);
+		strcpy (rec->src_image, himg->obj->path);
+		strcpy (rec->src_mask, hmsk->obj->path);
+		_ce_measure (msk, n, img->layers[l], rec);
+		if (!sur->rec_head)
+			sur->rec_head = rec;
+		else
+			bdlist_add (!rec_prev ? sur->rec_head : rec_prev, rec);
+		sur->rec_count++;
+		rec_prev = rec;
+	}
+	if (n == msk->count) retval = false;
+
+	/* ### Updating all structures */
+	clk_spend = clock () - clk_start;
+	c->cpu_time += clk_spend;
+	msk->cpu_time += clk_spend;
+	ftime (&tb);
+
+	HISTORY_ADD (msk, DCMD_MEASURE, "mask measurement", c, clk_spend, tb.time);
+	HISTORY_ADD (sur, DCMD_MEASURE, "records added", c, clk_spend, tb.time);
+
+	hmsk->obj->accessed = tb.time;
+	himg->obj->accessed = tb.time;
+	hsur->obj->accessed = tb.time;
+	hsur->obj->modified = tb.time;
+
+/*	hmsk->obj->share ^= OA_WRITE;
+	himg->obj->share ^= OA_WRITE;
+	hsur->obj->share ^= OA_ALL;*/
+
+	if (retval == false) return (false);
+	kstp_allocate (resp, 1);
+	kstp_set_int (resp, 0, clk_spend);
+	return (true);
+#	undef PROC
+}
+
+void _ce_measure (dksobj_mask* mask, uvar32_64 objno, ubyte* image, record* rec) {
+	uvar32_64 *area = mask->cont[objno], area_len = mask->cont_sizes[objno];
+	uvar32_64 *perim = mask->perim[objno], perim_len = mask->perim_sizes[objno];
+
+	ubyte rot, rot_max, rot_min;
+	uvar32_64 n, m, dimx, dimy, apex;
+	rtbyte top, left, bottom, right,
+	       dx, dy, dxx, dyy, sumx, sumy,
+	       dx1, dx2, dx3, dy1, dy2, dy3, d1, d2, d3, d,
+	       diams[32], diam_sum2, angle, ferets[64][2], feret;
+	rtbyte geom_x = 0.2053, geom_y = 0.2053,
+	       angle_step = 3.1415926535897932384626433832795 / 32.;
+
+	strcpy (rec->src_dens, "linear");
+	strcpy (rec->src_geom, "Axioscop x40 :: COHU 4922 :: MvSIGMA SLg 768x526 :: DIAS");
+	rec->src_object = objno;
+
+	dimx = mask->dimx;
+	dimy = mask->dimy;
+
+	rec->area = area_len * geom_x * geom_y;
+	rec->perim = perim_len * geom_x * geom_y;
+	rec->pixels = area_len;
+
+	/* Grey value computations */
+	/* TODO: Add dens scale support */
+	rec->min = image[area[area_len - 1]];
+	for (n = 0; n < area_len; ++n) {
+		if (rec->min > image[area[n]])
+			rec->min = image[area[n]];
+		if (rec->max < image[area[n]])
+			rec->max = image[area[n]];
+		rec->sum += image[area[n]];
+		rec->sum2 += image[area[n]] * image[area[n]];
+	}
+	rec->mean = (rtbyte)(rec->sum) / (rtbyte)n;
+	for (n = 0; n < area_len; ++n)
+		rec->stddev += (image[area[n]] - rec->mean) *
+		               (image[area[n]] - rec->mean);
+	rec->stddev /= n - 1;
+	rec->stddev = pow (rec->stddev, 0.5);
+
+	// Gravity center by object area
+	sumx = sumy = 0;
+	for (n = 0; n < area_len; ++n) {
+		sumx += area[n] % dimx;
+		sumy += area[n] / dimy;
+	}
+	rec->grav_areax = sumx / area_len;
+	rec->grav_areay = sumy / area_len;
+
+	// Gravity center by object perimeter
+	sumx = sumy = 0;
+	for (n = 0; n < perim_len; ++n) {
+		sumx += perim[n] % dimx;
+		sumy += perim[n] / dimy;
+	}
+	rec->grav_perimx = sumx / perim_len;
+	rec->grav_perimy = sumy / perim_len;
+
+	// Gravity center by grey value
+	sumx = sumy = 0;
+	for (n = 0; n < area_len; ++n) {
+		sumx += image[area[n]] * (area[n] % dimx);
+		sumy += image[area[n]] * (area[n] / dimy);
+	}
+	rec->grav_greyx = sumx / rec->sum;
+	rec->grav_greyy = sumy / rec->sum;
+
+	apex = 0;
+	for (n = 0; n < perim_len; ++n) {
+		dx = perim[n] % dimx * geom_x;
+		dy = perim[n] / dimx * geom_y;
+		if (rec->top > dy || rec->top == 0)
+			rec->top = dy;
+		if (rec->left > dx || rec->left == 0)
+			rec->left = dx;
+		if (rec->bottom < dy || rec->bottom == 0)
+			rec->bottom = dy;
+		if (rec->right < dx || rec->right == 0)
+			rec->right = dx;
+		if (apex > perim[n] || apex == 0) {
+			apex = perim[n];
+			rec->apexx = dx;
+			rec->apexy = dy;
+		}
+	}
+
+	diam_sum2 = 0;
+	rec->diam_max = 0;
+	rec->diam_min = max (dimx * geom_x, dimy * geom_y);
+	for (rot = 0; rot < 64; ++rot) {
+		feret = 0;
+		top = left = 0;
+		bottom = right = 0;
+		for (n = 0; n < perim_len; ++n) {
+			dx = perim[n] % dimx - rec->grav_areax;
+			dy = perim[n] / dimx - rec->grav_areay;
+			dxx = dx * cosl (angle_step*rot) - dy * sinl (angle_step*rot);
+			dyy = dx * sinl (angle_step*rot) + dy * cosl (angle_step*rot);
+
+			if (top > dyy || top == 0)
+				top = dyy;
+			if (left > dxx || left == 0)
+				left = dxx;
+			if (bottom < dyy || bottom == 0)
+				bottom = dyy;
+			if (right < dxx || right == 0)
+				right = dxx;
+			if (feret > dyy || feret == 0) {
+				feret = dyy;
+				ferets[rot][0] = perim[n] % dimx;
+				ferets[rot][1] = perim[n] / dimx;
+				if (ferets[rot][0] - rec->grav_perimx < 0) ferets[rot][0] -= .5;
+				if (ferets[rot][0] - rec->grav_perimx > 0) ferets[rot][0] += .5;
+				if (ferets[rot][1] - rec->grav_perimy < 0) ferets[rot][1] -= .5;
+				if (ferets[rot][1] - rec->grav_perimy > 0) ferets[rot][1] += .5;
+			}
+
+		}
+		if (rot >= 32)	continue;
+
+		angle = angle_step * (rot <= 16 ? rot : (32 - rot));
+		diams[rot] = bottom - top + sinl (angle) + cosl (angle);
+		diams[rot] *= pow (geom_y*sinl(angle) * geom_y*sinl(angle) +
+		                   geom_x*cosl(angle) * geom_x*cosl(angle), .5);
+
+		rec->diam_mean += diams[rot];
+		diam_sum2 += diams[rot] * diams[rot];
+		if (rec->diam_min > diams[rot]) {
+			rot_min = rot;
+			rec->diam_min = diams[rot];
+			rec->angle_min = angle;
+		}
+		if (rec->diam_max < diams[rot]) {
+			rot_max = rot;
+			rec->diam_max = diams[rot];
+			rec->angle_max = angle;
+		}
+	}
+	rec->diam_x = diams[15];
+	rec->diam_y = diams[0];
+	rec->diam_ort = diams[rot_max < 15 ? rot_max + 16 : rot_max - 16];
+	rec->diam_var = pow ((32. * diam_sum2 - rec->diam_mean * rec->diam_mean) / 992., .5);
+	rec->diam_mean /= 32.;
+
+	for (n = 0; n < 64; ++n) {
+		m = n == 63 ? 0 : n + 1;
+		dx1 = (ferets[m][0] - ferets[n][0]) * geom_x;
+		dy1 = (ferets[m][1] - ferets[n][1]) * geom_y;
+		dx2 = (ferets[n][0] - rec->grav_areax) * geom_x;
+		dy2 = (ferets[n][1] - rec->grav_areay) * geom_y;
+		dx3 = (ferets[m][0] - rec->grav_areax) * geom_x;
+		dy3 = (ferets[m][1] - rec->grav_areay) * geom_y;
+		d1 = pow (dx1*dx1 + dy1*dy1, .5);
+		d2 = pow (dx2*dx2 + dy2*dy2, .5);
+		d3 = pow (dx3*dx3 + dy3*dy3, .5);
+		d = (d1 + d2 + d3) / 2;
+
+		rec->csc_area += pow (d * (d - d1) * (d - d2) * (d - d3), .5);
+		rec->csc_perim += d1;
+	}
+
+	rec->grav_areax *= geom_x;
+	rec->grav_areay *= geom_y;
+	rec->grav_perimx *= geom_x;
+	rec->grav_perimy *= geom_y;
+	rec->grav_greyx *= geom_x;
+	rec->grav_greyy *= geom_y;
+}
+
+/*
+	__asm {
+			pusha
+			mov	ebx,pdst
+			mov	ecx,psrc
+			mov	edx,s
+			add	edx,ecx
+__loop1:		mov	ax,word ptr[ecx]
+			add	ax,word ptr[ebx]
+			mov	[ecx],ax
+			inc	ecx
+			inc	ebx
+			cmp	ecx,edx
+			jl	__loop1
+			popa
+	}
+*/

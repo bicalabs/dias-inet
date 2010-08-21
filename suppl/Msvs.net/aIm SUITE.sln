@@ -1,0 +1,56 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aimkstp", "aimkstp.vcproj", "{45D0D5F2-BBAA-4697-B6DD-54D2A48E284C}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "shared-ks", "shared-ks.vcproj", "{45D0D5F2-BBAA-4697-B6DD-54D2A48E284C}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dias-ks", "dias-ks.vcproj", "{C35054B3-3009-4669-9AE4-671D757C2475}"
+	ProjectSection(ProjectDependencies) = postProject
+		{45D0D5F2-BBAA-4697-B6DD-54D2A48E284C} = {45D0D5F2-BBAA-4697-B6DD-54D2A48E284C}
+		{45D0D5F2-BBAA-4697-B6DD-54D2A48E284C} = {45D0D5F2-BBAA-4697-B6DD-54D2A48E284C}
+		{45D0D5F2-BBAA-4697-B6DD-54D2A48E284C} = {45D0D5F2-BBAA-4697-B6DD-54D2A48E284C}
+		{45D0D5F2-BBAA-4697-B6DD-54D2A48E284C} = {45D0D5F2-BBAA-4697-B6DD-54D2A48E284C}
+		{45D0D5F2-BBAA-4697-B6DD-54D2A48E284C} = {45D0D5F2-BBAA-4697-B6DD-54D2A48E284C}
+	EndProjectSection
+EndProject
+Project("{12D5BE11-463B-4172-A1D3-C7278FDBCF36}") = "shared-xml", "shared-xml.xsltproj", "{4AE0FD24-D8E5-4FFB-8CE4-5971121F165B}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{45D0D5F2-BBAA-4697-B6DD-54D2A48E284C}.Debug.ActiveCfg = Debug|Win32
+		{45D0D5F2-BBAA-4697-B6DD-54D2A48E284C}.Debug.Build.0 = Debug|Win32
+		{45D0D5F2-BBAA-4697-B6DD-54D2A48E284C}.Release.ActiveCfg = Release|Win32
+		{45D0D5F2-BBAA-4697-B6DD-54D2A48E284C}.Release.Build.0 = Release|Win32
+		{45D0D5F2-BBAA-4697-B6DD-54D2A48E284C}.Debug.ActiveCfg = Debug|Win32
+		{45D0D5F2-BBAA-4697-B6DD-54D2A48E284C}.Debug.Build.0 = Debug|Win32
+		{45D0D5F2-BBAA-4697-B6DD-54D2A48E284C}.Release.ActiveCfg = Release|Win32
+		{45D0D5F2-BBAA-4697-B6DD-54D2A48E284C}.Release.Build.0 = Release|Win32
+		{C35054B3-3009-4669-9AE4-671D757C2475}.Debug.ActiveCfg = Debug|Win32
+		{C35054B3-3009-4669-9AE4-671D757C2475}.Debug.Build.0 = Debug|Win32
+		{C35054B3-3009-4669-9AE4-671D757C2475}.Release.ActiveCfg = Release|Win32
+		{C35054B3-3009-4669-9AE4-671D757C2475}.Release.Build.0 = Release|Win32
+		{4AE0FD24-D8E5-4FFB-8CE4-5971121F165B}.Debug.ActiveCfg = Debug
+		{4AE0FD24-D8E5-4FFB-8CE4-5971121F165B}.Release.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		..\..\design\aIm SUITE.vsd = ..\..\design\aIm SUITE.vsd
+		..\..\design\dias-ks.vsd = ..\..\design\dias-ks.vsd
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

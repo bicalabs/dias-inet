@@ -1,0 +1,178 @@
+﻿
+/*******************************************************************************
+*  This is a part of DIAS ver3.00, aIm SUITE.Internet                          *
+*                                                                              *
+*  DIAS kernel service-specific publuc functions lookup tables module          *
+*                                                                              *
+*  Do not copy, view or modify this code unless your a member of               *
+*  DIAS development team                                                       *
+*                                                                              *
+*  For licensing information see license.txt in the program root directory     *
+*                                                                              *
+*  File is automatically generated from dias_cmdsys.xml                        *
+*                                                                              *
+*******************************************************************************/
+
+				
+//***
+// Image analysis commands
+//***
+
+					
+
+// *** Floating window operationing
+diascm_proc _cm_proc_img_mtx_table[] = {
+
+	// Arythmetic operations
+	ce_img_mtx_sum,		// Summ operation
+	ce_img_mtx_prd,		// Productuion operation
+
+	// Statistical operations
+	ce_img_mtx_max,		// Maximum operation
+	ce_img_mtx_min,		// Minimum operation
+	ce_img_mtx_avg,		// Average filrer
+	ce_img_mtx_med,		// Median filrer
+	ce_img_mtx_gvg,		// Geometric average operation
+	ce_img_mtx_hvg,		// Harmonic average operation
+	ce_img_mtx_std,		// Standart deviation operation
+
+	// Boolean logic operations
+	ce_img_mtx_and,		// Logical AND operation
+	ce_img_mtx_or,		// Logical OR operation
+	ce_img_mtx_xor,		// Logical XOR operation
+
+	// Geometry distance operations
+	ce_img_mtx_eds,		// Euclidian distance operation
+	ce_img_mtx_mds,		// Manhattan distance operation
+
+	// Diffirentiating operations
+	ce_img_mtx_grad,		// Gradient (nabla) operation
+	ce_img_mtx_div,		// Divergence operation
+	ce_img_mtx_rot,		// Rotor operation
+	ce_img_mtx_lapl,		// Laplacian operation
+
+	// Special operations
+	ce_img_mtx_filter,		// Custom operation
+	ce_img_mtx_logic,		// Content-dependent logic
+	NULL
+};
+	
+
+// *** Whole image processing
+diascm_proc _cm_proc_img_whl_table[] = {
+
+	// Information
+	ce_img_whl_stat,		// Statistical information
+
+	// Transofrmation
+	ce_img_whl_resample,		// Resample image
+	ce_img_whl_product,		// Matrix pruduction of two images
+	NULL
+};
+	
+
+// *** Trace image operationing
+diascm_proc _cm_proc_img_trc_table[] = {
+
+	// Objects separation/aggregation
+	ce_img_trc_erode,		// Erode objects
+	ce_img_trc_dilate,		// Dilate objects
+	ce_img_trc_open,		// Open objects
+	ce_img_trc_close,		// Close objects
+
+	// Objects transformation
+	ce_img_trc_holes,		// Fill holes in objects
+	ce_img_trc_link,		// Link lines
+
+	// Objects selection
+	ce_img_trc_scrap,		// Scrap objects
+	ce_img_trc_mark,		// Mark objects
+	ce_img_trc_mask,		// Mask objects
+
+	// Objects identification
+	ce_img_trc_ident,		// Identificate objects
+	ce_img_trc_window,		// Identificate objects in window
+	NULL
+};
+	
+
+// *** Pixelwise image operations
+diascm_proc _cm_proc_img_pxw_table[] = {
+
+	// Arythmetic operations
+	ce_img_pxw_add,		// Summa operation
+	ce_img_pxw_sub,		// Substitute operation
+	ce_img_pxw_mul,		// Multiplication operation
+	ce_img_pxw_div,		// Division operation
+	ce_img_pxw_pow,		// Power operation
+	ce_img_pxw_root,		// Root operation
+
+	// Statistical operations
+	ce_img_pxw_max,		// Maximum operation
+	ce_img_pxw_min,		// Minimum operation
+	ce_img_pxw_avg,		// Average filrer
+	ce_img_pxw_med,		// Median filrer
+	ce_img_pxw_gvg,		// Geometric average operation
+	ce_img_pxw_hvg,		// Harmonic average operation
+	ce_img_pxw_std,		// Standart deviation operation
+
+	// Boolean logic operations
+	ce_img_pxw_and,		// Logical AND operation
+	ce_img_pxw_or,		// Logical OR operation
+	ce_img_pxw_xor,		// Logical XOR operation
+	ce_img_pxw_not,		// Logical NOT operation
+
+	// Geometry distance operations
+	ce_img_pxw_eds,		// Euclidian distance operation
+	ce_img_pxw_mds,		// Manhattan distance operation
+
+	// Other operations
+	ce_img_pxw_thr,		// Threshold operation
+	NULL
+};
+	
+
+// *** Single value pixelwise operations
+diascm_proc _cm_proc_img_pxn_table[] = {
+
+	// Arythmetic operations
+	ce_img_pxn_add,		// Summa operation
+	ce_img_pxn_subl,		// Substitute left operation
+	ce_img_pxn_mul,		// Multiplication operation
+	ce_img_pxn_divl,		// Division left operation
+	ce_img_pxn_pow,		// Power operation
+	ce_img_pxn_root,		// Root operation
+
+	// Statistical operations
+	ce_img_pxn_max,		// Maximum operation
+	ce_img_pxn_min,		// Minimum operation
+	ce_img_pxn_avg,		// Average filrer
+	ce_img_pxn_gvg,		// Geometric average operation
+	ce_img_pxn_hvg,		// Harmonic average operation
+
+	// Boolean logic operations
+	ce_img_pxn_and,		// Logical AND operation
+	ce_img_pxn_or,		// Logical OR operation
+	ce_img_pxn_xor,		// Logical XOR operation
+
+	// Geometry distance operations
+	ce_img_pxn_eds,		// Euclidian distance operation
+	ce_img_pxn_mds,		// Manhattan distance operation
+	NULL
+};
+	
+	
+//***
+// GLOBAL LOOKUP-TABLE
+//***
+
+diascm_lookup _cm_lookup_table[] = {
+	{ 0x10000000 + 0x1000 + 0x400,  0x10000000 + 0x1000 + 0x400 + 20, _cm_proc_img_mtx_table},
+	{ 0x10000000 + 0x1000 + 0x600,  0x10000000 + 0x1000 + 0x600 + 3, _cm_proc_img_whl_table},
+	{ 0x10000000 + 0x1000 + 0x500,  0x10000000 + 0x1000 + 0x500 + 11, _cm_proc_img_trc_table},
+	{ 0x10000000 + 0x1000 + 0x300,  0x10000000 + 0x1000 + 0x300 + 20, _cm_proc_img_pxw_table},
+	{ 0x10000000 + 0x1000 + 0x200,  0x10000000 + 0x1000 + 0x200 + 16, _cm_proc_img_pxn_table},
+	{ 0, 0, NULL }
+};
+
+				

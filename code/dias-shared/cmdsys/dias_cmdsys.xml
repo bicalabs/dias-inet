@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- xmlns="http://dias.zsmu.edu.ua/devel/cmdsys.xsd"-->
+<cmdsys title="DIAS" name="DIAS command system" ver="3" subver="00" codebase="0x10000000">
+	<subsys title="img" name="Image analysis commands" codeoff="0x1000">
+		<class title="mtx" name="Floating window operationing" codeoff="0x400">
+			<div name="Arythmetic operations">
+				<cmd title="sum" name="Summ operation" state="prototype" codeoff="0x00">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+				<cmd title="prd" name="Productuion operation" state="prototype" codeoff="0x01">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+			</div>
+			<div name="Statistical operations">
+				<cmd title="max" name="Maximum operation" state="implemented" codeoff="0x02">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+				<cmd title="min" name="Minimum operation" state="implemented" codeoff="0x03">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+				<cmd title="avg" name="Average filrer" state="implemented" codeoff="0x04">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+				<cmd title="med" name="Median filrer" state="prototype" codeoff="0x05">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+				<cmd title="gvg" name="Geometric average operation" state="prototype" codeoff="0x06">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+				<cmd title="hvg" name="Harmonic average operation" state="prototype" codeoff="0x07">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+				<cmd title="std" name="Standart deviation operation" state="implemented" codeoff="0x08">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="MultiplyBy" name="Multiplication factor" gentype="int" min="1" max="" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+			</div>
+			<div name="Boolean logic operations">
+				<cmd title="and" name="Logical AND operation" state="prototype" codeoff="0x09">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+				<cmd title="or" name="Logical OR operation" state="prototype" codeoff="0x0a">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+				<cmd title="xor" name="Logical XOR operation" state="prototype" codeoff="0x0b">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+			</div>
+			<div name="Geometry distance operations">
+				<cmd title="eds" name="Euclidian distance operation" state="prototype" codeoff="0x0c">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+				<cmd title="mds" name="Manhattan distance operation" state="prototype" codeoff="0x0d">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+			</div>
+			<div name="Diffirentiating operations">
+				<cmd title="grad" name="Gradient (nabla) operation" state="prototype" codeoff="0x0e">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+				<cmd title="div" name="Divergence operation" state="prototype" codeoff="0x0f">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+				<cmd title="rot" name="Rotor operation" state="prototype" codeoff="0x10">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+				<cmd title="lapl" name="Laplacian operation" state="prototype" codeoff="0x11">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+			</div>
+			<div name="Special operations">
+				<cmd title="filter" name="Custom operation" state="implemented" codeoff="0x12">
+					<arg title="MatrixSize" name="Matrix size" gentype="int" min="1" max="32" default="1" />
+					<arg title="Matrix" name="Matrix of factors" gentype="string" subtype="factors matrix" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+				<cmd title="logic" name="Content-dependent logic" state="implemented" codeoff="0x13">
+					<info>
+						<descr></descr>
+						<copyright>Maxim A. Orlovsky, 2003</copyright>
+						<source></source>
+						<check></check>
+					</info>
+					<arg title="CompVal" name="Compare with" gentype="int" subtype="greyval" default="0xFF" />
+					<arg title="CopySrc" name="Copy source image" gentype="int" subtype="bool" default="0" />
+					<arg title="ResultVal" name="Resulting value" gentype="int" subtype="greyval" default="0xFF" />
+					<arg title="CompOp" name="Compare Operation" gentype="int" subtype="enum" min="0" max="5"
+						default="0">
+						<enum title="comp" name="Substraction operations modes">
+							<entry title="logc_eq" symbol="=" name="Equal" val="0" />
+							<entry title="logc_ne" symbol="!=" name="Not equal" val="1" />
+							<entry title="logc_lt" symbol="&lt;" name="Less then" val="2" />
+							<entry title="logc_gt" symbol="&gt;" name="Greater than" val="3" />
+							<entry title="logc_le" symbol="&lt;=" name="Less or equal" val="4" />
+							<entry title="logc_ge" symbol="&gt;=" name="Greater or equal" val="5" />
+						</enum>
+					</arg>
+					<arg title="ResultOp" name="Resulting operation" gentype="int" subtype="enum" min="0"
+						max="6" default="0">
+						<enum title="reslt" name="Substraction operations modes">
+							<entry title="logr_value" symbol="Value" name="Set to value 'ResltVal'" val="1" />
+							<entry title="logr_bool" symbol="Source" name="Save source value" val="0" />
+							<entry title="logr_count" symbol="Count" name="Set to count of pixels" val="2" />
+							<entry title="logr_sum" symbol="Sum" name="Set to sum of pixels values" val="3" />
+							<entry title="logr_mean" symbol="Mean" name="Set to Mean of pixels values" val="4" />
+							<entry title="logr_min" symbol="Min" name="Set to minimal of pixels values" val="5" />
+							<entry title="logr_max" symbol="Max" name="Set to maximal of pixels values" val="6" />
+						</enum>
+					</arg>
+					<arg title="Matrix" name="Matrix of pixels" gentype="string" subtype="offsets matrix" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+				<cmd title="sfl" name="Multipurpose filter" state="prototype" codeoff="0x14">
+					<arg title="MtxDimX" name="Matrix X dimension" gentype="int" min="1" default="1" />
+					<arg title="MtxDimY" name="Matrix Y dimension" gentype="int" min="1" default="1" />
+					<arg title="MtxFactors" name="Factors matrix" gentype="string" subtype="matrix" />
+					<arg title="SrcMtxOp" name="Source-matrix operation" gentype="int" subtype="enum" min="0"
+						max="" default="0"></arg>
+					<arg title="MtxDstOp" name="Matrix-result operation" gentype="int" subtype="enum" min="0"
+						max="" default="0"></arg>
+				</cmd>
+			</div>
+		</class>
+		<class title="whl" name="Whole image processing" codeoff="0x600">
+			<div name="Information">
+				<cmd title="stat" name="Statistical information" state="implemented" codeoff="0x00">
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+					<ret title="Mean" name="Mean grey values" gentype="real" />
+					<ret title="StdDev" name="Standart deviation of grey values" gentype="real" />
+					<ret title="Count" name="Total number of grey values in image" gentype="int" />
+					<ret title="Min" name="Minimal grey value" gentype="int" subtype="greyval" />
+					<ret title="Min" name="Maximal grey value" gentype="int" subtype="greyval" />
+					<ret title="Sum" name="Sum of grey values in image" gentype="int" />
+				</cmd>
+			</div>
+			<div name="Transofrmation">
+				<cmd title="resample" name="Resample image" state="implemented" codeoff="0x01"></cmd>
+				<cmd title="product" name="Matrix pruduction of two images" state="implemented" codeoff="0x02"></cmd>
+			</div>
+		</class>
+		<class title="trc" name="Trace image operationing" codeoff="0x500">
+			<div name="Objects separation/aggregation">
+				<cmd title="erode" name="Erode objects" state="prototype" codeoff="0x00"></cmd>
+				<cmd title="dilate" name="Dilate objects" state="prototype" codeoff="0x01"></cmd>
+				<cmd title="open" name="Open objects" state="prototype" codeoff="0x02"></cmd>
+				<cmd title="close" name="Close objects" state="prototype" codeoff="0x03"></cmd>
+			</div>
+			<div name="Objects transformation">
+				<cmd title="holes" name="Fill holes in objects" state="implemented" codeoff="0x04">
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+					<arg title="8-Connections" name="Treat objects in 8-axis connections" gentype="int" subtype="bool"
+						default="1" />
+				</cmd>
+				<cmd title="link" name="Link lines" state="prototype" codeoff="0x05"></cmd>
+			</div>
+			<div name="Objects selection">
+				<cmd title="scrap" name="Scrap objects" state="implemented" codeoff="0x06">
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+					<arg title="Mode" name="Scrap operation mode" gentype="int" subtype="bool" default="1" />
+					<arg title="LowerArea" name="Lower boundary for object area" gentype="int" default="10"
+						min="0" />
+					<arg title="UpperArea" name="Upper boundary for object area" gentype="int" default="100"
+						min="0" />
+					<arg title="8-Connections" name="Treat objects in 8-axis connections" gentype="int" subtype="bool"
+						default="1" />
+				</cmd>
+				<cmd title="mark" name="Mark objects" state="implemented" codeoff="0x07"></cmd>
+				<cmd title="mask" name="Mask objects" state="prototype" codeoff="0x08"></cmd>
+			</div>
+			<div name="Objects identification">
+				<cmd title="ident" name="Identificate objects" state="implemented" codeoff="0x09"></cmd>
+				<cmd title="window" name="Identificate objects in window" state="implemented" codeoff="0x0a"></cmd>
+			</div>
+		</class>
+		<class title="pxw" name="Pixelwise image operations" codeoff="0x300">
+			<div name="Arythmetic operations">
+				<cmd title="add" name="Summa operation" state="implemented" codeoff="0x00">
+					<info>
+						<descr>Performs pixelwise summation of a sequence of images and divides the obtained result on a 'Divider' value.
+						       If the result is greater then maximum value, then if 'Overflow' is true a pixel is set to maximum possible value,
+						       otherwise it is set to a module value of operation being performed</descr>
+						<copyright>Maxim A. Orlovsky, 2003</copyright>
+						<source></source>
+						<check></check>
+					</info>
+					<arg title="Divider" name="Number to divide on" gentype="real" default="1.0" />
+					<arg title="Overflow" name="Keep owerflowing values" gentype="int" subtype="bool" default="0" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" multipl="2"
+						etc="yes" />
+				</cmd>
+				<cmd title="sub" name="Substitute operation" state="implemented" codeoff="0x01">
+					<arg title="Divider" name="Number to divide on" gentype="real" default="1.0" />
+					<arg title="Overflow" name="Keep owerflowing values" gentype="int" subtype="bool" default="0" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" multipl="2"
+						etc="yes" />
+				</cmd>
+				<cmd title="mul" name="Multiplication operation" state="implemented" codeoff="0x02">
+					<arg title="Divider" name="Number to divide on" gentype="real" default="1.0" />
+					<arg title="Overflow" name="Keep owerflowing values" gentype="int" subtype="bool" default="0" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" multipl="2"
+						etc="yes" />
+				</cmd>
+				<cmd title="div" name="Division operation" state="implemented" codeoff="0x03">
+					<arg title="Divider" name="Number to divide on" gentype="real" default="1.0" />
+					<arg title="Overflow" name="Keep owerflowing values" gentype="int" subtype="bool" default="0" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" multipl="2"
+						etc="yes" />
+				</cmd>
+				<cmd title="pow" name="Power operation" state="prototype" codeoff="0x04"></cmd>
+				<cmd title="root" name="Root operation" state="prototype" codeoff="0x05"></cmd>
+			</div>
+			<div name="Statistical operations">
+				<cmd title="max" name="Maximum operation" state="implemented" codeoff="0x06">
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" multipl="2"
+						etc="yes" />
+				</cmd>
+				<cmd title="min" name="Minimum operation" state="implemented" codeoff="0x07">
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" multipl="2"
+						etc="yes" />
+				</cmd>
+				<cmd title="avg" name="Average filrer" state="implemented" codeoff="0x08">
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" multipl="2"
+						etc="yes" />
+				</cmd>
+				<cmd title="med" name="Median filrer" state="prototype" codeoff="0x09">
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" multipl="2"
+						etc="yes" />
+				</cmd>
+				<cmd title="gvg" name="Geometric average operation" state="implemented" codeoff="0x0a">
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" multipl="2"
+						etc="yes" />
+				</cmd>
+				<cmd title="hvg" name="Harmonic average operation" state="implemented" codeoff="0x0b">
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" multipl="2"
+						etc="yes" />
+				</cmd>
+				<cmd title="std" name="Standart deviation operation" state="implemented" codeoff="0x0c">
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" multipl="3"
+						etc="yes" />
+				</cmd>
+			</div>
+			<div name="Boolean logic operations">
+				<cmd title="and" name="Logical AND operation" state="implemented" codeoff="0x0d">
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" multipl="2"
+						etc="yes" />
+				</cmd>
+				<cmd title="or" name="Logical OR operation" state="implemented" codeoff="0x0e">
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" multipl="2"
+						etc="yes" />
+				</cmd>
+				<cmd title="xor" name="Logical XOR operation" state="implemented" codeoff="0x0f">
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" multipl="2"
+						etc="yes" />
+				</cmd>
+				<cmd title="not" name="Logical NOT operation" state="implemented" codeoff="0x10">
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+			</div>
+			<div name="Geometry distance operations">
+				<cmd title="eds" name="Euclidian distance operation" state="prototype" codeoff="0x11"></cmd>
+				<cmd title="mds" name="Manhattan distance operation" state="prototype" codeoff="0x12"></cmd>
+			</div>
+			<div name="Other operations">
+				<cmd title="thr" name="Threshold operation" state="implemented" codeoff="0x13">
+					<arg title="LowGreyVal" name="Low grey value" gentype="int" subtype="greyval" default="0x00" />
+					<arg title="HiGreyVal" name="High grey value" gentype="int" subtype="greyval" default="0x80" />
+					<arg title="DstGreyVal" name="Destination grey value" gentype="int" subtype="greyval"
+						default="0xFF" />
+					<arg title="DestImg" name="Resulting image" gentype="int" subtype="handle image object" />
+					<arg title="SrcImg" name="Source image" gentype="int" subtype="handle image object" />
+				</cmd>
+			</div>
+		</class>
+		<class title="pxn" name="Single value pixelwise operations" codeoff="0x200">
+			<div name="Arythmetic operations">
+				<cmd title="add" name="Summa operation" state="prototype" codeoff="0x00"></cmd>
+				<cmd title="subl" name="Substitute left operation" state="prototype" codeoff="0x01"></cmd>
+				<cmd title="mul" name="Multiplication operation" state="prototype" codeoff="0x02"></cmd>
+				<cmd title="divl" name="Division left operation" state="prototype" codeoff="0x03"></cmd>
+				<cmd title="pow" name="Power operation" state="prototype" codeoff="0x04"></cmd>
+				<cmd title="root" name="Root operation" state="prototype" codeoff="0x05"></cmd>
+			</div>
+			<div name="Statistical operations">
+				<cmd title="max" name="Maximum operation" state="prototype" codeoff="0x06"></cmd>
+				<cmd title="min" name="Minimum operation" state="prototype" codeoff="0x07"></cmd>
+				<cmd title="avg" name="Average filrer" state="prototype" codeoff="0x08"></cmd>
+				<cmd title="gvg" name="Geometric average operation" state="prototype" codeoff="0x09"></cmd>
+				<cmd title="hvg" name="Harmonic average operation" state="prototype" codeoff="0x0a"></cmd>
+			</div>
+			<div name="Boolean logic operations">
+				<cmd title="and" name="Logical AND operation" state="implemented" codeoff="0x0b"></cmd>
+				<cmd title="or" name="Logical OR operation" state="prototype" codeoff="0x0c"></cmd>
+				<cmd title="xor" name="Logical XOR operation" state="prototype" codeoff="0x0d"></cmd>
+			</div>
+			<div name="Geometry distance operations">
+				<cmd title="eds" name="Euclidian distance operation" state="prototype" codeoff="0x0e"></cmd>
+				<cmd title="mds" name="Manhattan distance operation" state="prototype" codeoff="0x0f"></cmd>
+			</div>
+		</class>
+	</subsys>
+</cmdsys>

@@ -1,0 +1,6 @@
+	register uvar32_64 l;
+	INIT_1IMGS(0, ce_img_pxw_not);
+	for (l = 0; l < dimz; l++)
+		for (psrc = src->layers[l]; size; size--, psrc++)
+			*psrc = ~*psrc;
+	return (false);

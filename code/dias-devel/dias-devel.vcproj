@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.10"
+	Name="dias-devel"
+	ProjectGUID="{29074C51-FBAB-4DA0-A8EB-F6000BEC06BF}"
+	RootNamespace="dias-devel"
+	Keyword="MFCProj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="..\..\release\devel"
+			IntermediateDirectory="..\..\temp\debug\dias-devel"
+			ConfigurationType="1"
+			UseOfMFC="2"
+			UseOfATL="0"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				OptimizeForProcessor="0"
+				OptimizeForWindowsApplication="TRUE"
+				AdditionalIncludeDirectories="&quot;P:\ict\shared\c-include&quot;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG"
+				GeneratePreprocessedFile="0"
+				MinimalRebuild="TRUE"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="3"
+				EnableEnhancedInstructionSet="0"
+				TreatWChar_tAsBuiltInType="FALSE"
+				UsePrecompiledHeader="3"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="4"
+				DisableSpecificWarnings="4267;4312;4311"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="wsock32.lib"
+				OutputFile="$(OutDir)/$(ProjectName)d.exe"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="Q:\orlovsky\it\sys\aim.inet\libs\debug"
+				IgnoreDefaultLibraryNames="libcd"
+				AddModuleNamesToAssembly=""
+				GenerateDebugInformation="TRUE"
+				SubSystem="2"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="_DEBUG"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
+				HeaderFileName="$(ProjectName)_i.h"
+				InterfaceIdentifierFileName="$(ProjectName)_i.c"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Performing registration"
+				CommandLine="&quot;$(TargetPath)&quot; /RegServer"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="_DEBUG"
+				Culture="1033"
+				AdditionalIncludeDirectories="$(IntDir)"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="..\..\release\devel"
+			IntermediateDirectory="..\..\temp\release\dias-devel"
+			ConfigurationType="1"
+			UseOfMFC="2"
+			UseOfATL="1"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="3"
+				GlobalOptimizations="TRUE"
+				InlineFunctionExpansion="2"
+				ImproveFloatingPointConsistency="FALSE"
+				FavorSizeOrSpeed="1"
+				OptimizeForProcessor="2"
+				OptimizeForWindowsApplication="TRUE"
+				AdditionalIncludeDirectories="&quot;P:\ict\shared\c-include&quot;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG"
+				MinimalRebuild="FALSE"
+				RuntimeLibrary="2"
+				EnableEnhancedInstructionSet="2"
+				TreatWChar_tAsBuiltInType="FALSE"
+				UsePrecompiledHeader="3"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="0"
+				DisableSpecificWarnings="4267;4312;4311"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="wsock32.lib"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="Q:\orlovsky\it\sys\aim.inet\libs\release"
+				GenerateDebugInformation="FALSE"
+				SubSystem="2"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
+				HeaderFileName="dias-devel_i.h"
+				InterfaceIdentifierFileName="dias-devel_i.c"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Performing registration"
+				CommandLine="&quot;$(TargetPath)&quot; /RegServer"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"
+				AdditionalIncludeDirectories="$(IntDir)"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+		<Configuration
+			Name="Release - DLL|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="1"
+			UseOfMFC="2"
+			UseOfATL="1"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				OptimizeForProcessor="3"
+				OptimizeForWindowsApplication="TRUE"
+				AdditionalIncludeDirectories="&quot;P:\ict\shared\c-include&quot;"
+				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG"
+				MinimalRebuild="FALSE"
+				RuntimeLibrary="2"
+				TreatWChar_tAsBuiltInType="TRUE"
+				UsePrecompiledHeader="3"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="TRUE"
+				DebugInformationFormat="3"/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="aimkstp-win32-P4-1.00.lib strsafe-win32-P4-1.00.lib"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="Q:\orlovsky\it\sys\aim.inet\libs"
+				GenerateDebugInformation="TRUE"
+				SubSystem="2"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				TargetMachine="1"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="NDEBUG"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(IntDir)/$(ProjectName).tlb"
+				HeaderFileName="dias-devel_i.h"
+				InterfaceIdentifierFileName="dias-devel_i.c"/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Performing registration"
+				CommandLine="&quot;$(TargetPath)&quot; /RegServer"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				PreprocessorDefinitions="NDEBUG"
+				Culture="1033"
+				AdditionalIncludeDirectories="$(IntDir)"/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"/>
+			<Tool
+				Name="VCWebDeploymentTool"/>
+			<Tool
+				Name="VCManagedWrapperGeneratorTool"/>
+			<Tool
+				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+		</Configuration>
+	</Configurations>
+	<References>
+		<ActiveXReference
+			ControlGUID="{F5078F18-C551-11D3-89B9-0000F81FE221}"
+			ControlVersion="4.0"
+			WrapperTool="tlbimp"/>
+		<ActiveXReference
+			ControlGUID="{00020430-0000-0000-C000-000000000046}"
+			ControlVersion="2.0"
+			WrapperTool="tlbimp"/>
+	</References>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+			<File
+				RelativePath=".\AutoProxy.cpp">
+			</File>
+			<File
+				RelativePath=".\dias-devel.cpp">
+			</File>
+			<File
+				RelativePath=".\dias-devel.idl">
+			</File>
+			<File
+				RelativePath=".\ImageCtrl.cpp">
+			</File>
+			<File
+				RelativePath=".\Kstp.cpp">
+			</File>
+			<File
+				RelativePath=".\MainDlg.cpp">
+			</File>
+			<File
+				RelativePath=".\SaxHandlers.cpp">
+			</File>
+			<File
+				RelativePath=".\stdafx.cpp">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release - DLL|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="1"/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl;inc;xsd"
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			<File
+				RelativePath="..\shared-ks\aimkstp.h">
+			</File>
+			<File
+				RelativePath=".\AutoProxy.h">
+			</File>
+			<File
+				RelativePath=".\dias-devel.h">
+			</File>
+			<File
+				RelativePath=".\ImageCtrl.h">
+			</File>
+			<File
+				RelativePath=".\Kstp.h">
+			</File>
+			<File
+				RelativePath=".\MainDlg.h">
+			</File>
+			<File
+				RelativePath=".\Resource.h">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Generating map file for help compiler..."
+						CommandLine="echo // Generated Help Map file.  Used by $(ProjectName).hpj. &gt; &quot;hlp\$(ProjectName).hm&quot;
+echo. &gt; &quot;hlp\$(ProjectName).hm&quot;
+echo // Commands (ID_* and IDM_*) &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+makehm ID_,HID_,0x10000 IDM_,HIDM_,0x10000 &quot;$(InputFileName)&quot; &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo. &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo // Prompts (IDP_*) &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+makehm IDP_,HIDP_,0x30000 &quot;$(InputFileName)&quot; &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo. &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo // Resources (IDR_*) &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+makehm IDR_,HIDR_,0x20000 &quot;$(InputFileName)&quot; &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo. &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo // Dialogs (IDD_*) &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+makehm IDD_,HIDD_,0x20000 &quot;$(InputFileName)&quot; &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo. &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo // Frame Controls (IDW_*) &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+makehm IDW_,HIDW_,0x50000 &quot;$(InputFileName)&quot; &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+"
+						Outputs="hlp\$(ProjectName).hm"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Generating map file for help compiler..."
+						CommandLine="echo // Generated Help Map file.  Used by $(ProjectName).hpj. &gt; &quot;hlp\$(ProjectName).hm&quot;
+echo. &gt; &quot;hlp\$(ProjectName).hm&quot;
+echo // Commands (ID_* and IDM_*) &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+makehm ID_,HID_,0x10000 IDM_,HIDM_,0x10000 &quot;$(InputFileName)&quot; &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo. &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo // Prompts (IDP_*) &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+makehm IDP_,HIDP_,0x30000 &quot;$(InputFileName)&quot; &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo. &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo // Resources (IDR_*) &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+makehm IDR_,HIDR_,0x20000 &quot;$(InputFileName)&quot; &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo. &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo // Dialogs (IDD_*) &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+makehm IDD_,HIDD_,0x20000 &quot;$(InputFileName)&quot; &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo. &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo // Frame Controls (IDW_*) &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+makehm IDW_,HIDW_,0x50000 &quot;$(InputFileName)&quot; &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+"
+						Outputs="hlp\$(ProjectName).hm"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release - DLL|Win32">
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Generating map file for help compiler..."
+						CommandLine="echo // Generated Help Map file.  Used by $(ProjectName).hpj. &gt; &quot;hlp\$(ProjectName).hm&quot;
+echo. &gt; &quot;hlp\$(ProjectName).hm&quot;
+echo // Commands (ID_* and IDM_*) &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+makehm ID_,HID_,0x10000 IDM_,HIDM_,0x10000 &quot;$(InputFileName)&quot; &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo. &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo // Prompts (IDP_*) &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+makehm IDP_,HIDP_,0x30000 &quot;$(InputFileName)&quot; &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo. &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo // Resources (IDR_*) &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+makehm IDR_,HIDR_,0x20000 &quot;$(InputFileName)&quot; &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo. &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo // Dialogs (IDD_*) &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+makehm IDD_,HIDD_,0x20000 &quot;$(InputFileName)&quot; &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo. &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+echo // Frame Controls (IDW_*) &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+makehm IDW_,HIDW_,0x50000 &quot;$(InputFileName)&quot; &gt;&gt; &quot;hlp\$(ProjectName).hm&quot;
+"
+						Outputs="hlp\$(ProjectName).hm"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\SaxHandlers.h">
+			</File>
+			<File
+				RelativePath=".\stdafx.h">
+			</File>
+		</Filter>
+		<Filter
+			Name="Resource Files"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
+			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
+			<File
+				RelativePath=".\res\1.ico">
+			</File>
+			<File
+				RelativePath=".\res\2.ico">
+			</File>
+			<File
+				RelativePath=".\res\3.ico">
+			</File>
+			<File
+				RelativePath=".\res\4.ico">
+			</File>
+			<File
+				RelativePath=".\res\5.ico">
+			</File>
+			<File
+				RelativePath=".\res\alert.ico">
+			</File>
+			<File
+				RelativePath=".\res\bitmap1.bmp">
+			</File>
+			<File
+				RelativePath=".\res\bool.ico">
+			</File>
+			<File
+				RelativePath=".\res\class.ico">
+			</File>
+			<File
+				RelativePath=".\res\cmd.ico">
+			</File>
+			<File
+				RelativePath=".\res\cmdsys.ico">
+			</File>
+			<File
+				RelativePath=".\res\color.ico">
+			</File>
+			<File
+				RelativePath=".\res\colors.ico">
+			</File>
+			<File
+				RelativePath=".\res\compound.ico">
+			</File>
+			<File
+				RelativePath=".\res\dias-devel.ico">
+			</File>
+			<File
+				RelativePath=".\dias-devel.rc">
+			</File>
+			<File
+				RelativePath=".\res\dias-devel.rc2">
+			</File>
+			<File
+				RelativePath=".\dias-devel.rgs">
+			</File>
+			<File
+				RelativePath=".\res\div.ico">
+			</File>
+			<File
+				RelativePath=".\res\done.ico">
+			</File>
+			<File
+				RelativePath=".\res\entry.ico">
+			</File>
+			<File
+				RelativePath=".\res\fail.ico">
+			</File>
+			<File
+				RelativePath=".\res\icon1.ico">
+			</File>
+			<File
+				RelativePath=".\res\img.ico">
+			</File>
+			<File
+				RelativePath=".\res\int.ico">
+			</File>
+			<File
+				RelativePath=".\res\lut.ico">
+			</File>
+			<File
+				RelativePath=".\res\mark.ico">
+			</File>
+			<File
+				RelativePath=".\res\matrix.ico">
+			</File>
+			<File
+				RelativePath=".\res\matrix2.ico">
+			</File>
+			<File
+				RelativePath=".\res\notimpl.ico">
+			</File>
+			<File
+				RelativePath=".\res\real.ico">
+			</File>
+			<File
+				RelativePath=".\res\return.ico">
+			</File>
+			<File
+				RelativePath=".\res\snapshot.ico">
+			</File>
+			<File
+				RelativePath=".\res\storage.ico">
+			</File>
+			<File
+				RelativePath=".\res\storage2.ico">
+			</File>
+			<File
+				RelativePath=".\res\str.ico">
+			</File>
+			<File
+				RelativePath=".\res\string.ico">
+			</File>
+			<File
+				RelativePath=".\res\subsys.ico">
+			</File>
+			<File
+				RelativePath=".\res\success.ico">
+			</File>
+			<File
+				RelativePath=".\res\tbx_std_h.bmp">
+			</File>
+		</Filter>
+		<Filter
+			Name="Help Files"
+			Filter="rtf;cnt">
+			<File
+				RelativePath=".\hlp\afxdlg.rtf">
+			</File>
+			<File
+				RelativePath=".\hlp\images\bullet.bmp">
+			</File>
+			<File
+				RelativePath=".\hlp\dias-devel.cnt">
+			</File>
+		</Filter>
+		<Filter
+			Name="XML"
+			Filter="">
+			<File
+				RelativePath=".\xml\dias_cmdsys.xml">
+			</File>
+			<File
+				RelativePath=".\xml\dias_mtxsys.xml">
+			</File>
+		</Filter>
+		<File
+			RelativePath=".\res\dias-devel.manifest">
+		</File>
+		<File
+			RelativePath=".\dias-devel.reg">
+		</File>
+		<File
+			RelativePath=".\ReadMe.txt">
+		</File>
+	</Files>
+	<Globals>
+		<Global
+			Name="RESOURCE_FILE"
+			Value="dias-devel.rc"/>
+	</Globals>
+</VisualStudioProject>

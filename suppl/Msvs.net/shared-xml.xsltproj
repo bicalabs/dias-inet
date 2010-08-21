@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VisualStudioProject>
+    <xsltproj Version="1.5.1"
+         SccProjectName=""
+         SccLocalPath=""
+         SccAuxPath=""
+         SccProvider="">
+        <configurations>
+            <configuration name="Debug"
+                 LaunchArgs=""
+                 BuildCmdLine=""
+                 BuildOutputs=""
+                 DebuggerName=""
+                 ScriptArgs=""
+                 RunInShell="F"
+                 UseCGIEnvironment="F"
+                 StartUpScript="..\..\code\shared-devel\cmdsys-ctabls.xsl"
+                 InputFile="..\..\code\dias-devel\dias_cmdsys.xml"
+                 OutputFile="..\..\code\dias-ks\cmdtabl.cm"
+                 JITDebugging="F"
+                 TargetExe=""
+                 TargetExeArgs=""
+                 WorkingDirectory="">
+                <StyleSheetParams />
+                <ExtensionObjects />
+            </configuration>
+            <configuration name="Release"
+                 LaunchArgs=""
+                 BuildCmdLine=""
+                 BuildOutputs=""
+                 DebuggerName=""
+                 ScriptArgs=""
+                 RunInShell="F"
+                 UseCGIEnvironment="F"
+                 StartUpScript="..\..\code\shared-devel\cmdsys-html.xsl"
+                 InputFile="..\..\code\dias-devel\dias_cmdsys.xml"
+                 OutputFile="output.html"
+                 JITDebugging="F"
+                 TargetExe=""
+                 TargetExeArgs=""
+                 WorkingDirectory="">
+                <StyleSheetParams />
+                <ExtensionObjects />
+            </configuration>
+        </configurations>
+        <files>
+            <file name="..\..\code\shared-devel\cmdsys.xsd"
+                 ProjRelPath="T" RemoteURL="" />
+            <file name="..\..\code\shared-devel\cmdsys-html.xsl"
+                 ProjRelPath="T" RemoteURL="" />
+            <file name="..\..\code\dias-devel\dias_cmdsys.xml"
+                 ProjRelPath="T" RemoteURL="" />
+            <file name="..\..\code\shared-devel\cmdsys-cdefs.xsl"
+                 ProjRelPath="T" RemoteURL="" />
+            <file name="..\..\code\shared-devel\cmdsys-cdecls.xsl"
+                 ProjRelPath="T" RemoteURL="" />
+            <file name="..\..\code\shared-devel\cmdsys-ctabls.xsl"
+                 ProjRelPath="T" RemoteURL="" />
+            <file name="..\..\code\dias-ks\cmddef.h"
+                 ProjRelPath="T" RemoteURL="" />
+            <file name="..\..\code\dias-ks\cmdtabl.cm"
+                 ProjRelPath="T" RemoteURL="" />
+            <file name="..\..\code\dias-ks\cmddecl.h"
+                 ProjRelPath="T" RemoteURL="" />
+            <file name="..\..\code\shared-devel\cmdsys-cimpl.xsl"
+                 ProjRelPath="T" RemoteURL="" />
+            <file name="..\..\code\dias-ks\cmdimpl.cm"
+                 ProjRelPath="T" RemoteURL="" />
+            <file name="..\..\release\serv\site\res\laplacian.matrix.xml"
+                 ProjRelPath="T" RemoteURL="" />
+        </files>
+    </xsltproj>
+</VisualStudioProject>

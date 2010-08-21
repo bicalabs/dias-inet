@@ -1,0 +1,14 @@
+	rtbyte sum;
+	register svar32_64 l, i;
+	INIT_XIMGS(0, ce_img_pxw_avg);
+	for (l = dst->dimz - 1; l >= 0; --l) {
+		i = size;
+		pdst = dst->layers[l];
+		while (i--) {
+			sum = 0;
+			for (no = 0; no < n; ++no)
+				sum += srcs[no]->layers[l][i];
+			pdst[i] = (ubyte)(sum / n);
+		}
+	}
+	FINALIZE_XIMGS;

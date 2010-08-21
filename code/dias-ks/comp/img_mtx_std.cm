@@ -1,0 +1,39 @@
+	rtbyte r, std, avg;
+	uvar32_64 mtxdim, sum, prod;
+	register uvar32_64 x, y;
+	register svar32_64 i, l, mx, my;
+	INIT_2IMGS (2, ce_img_mtx_std);
+
+	isvalidf (kstp_get_int (query, 0, &mtxdim), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 1, &prod), c, kstp_errno);
+	iffailedf (mtxdim > 1 && mtxdim < min (src->dimx / 4,src->dimy / 4),
+	           c, "ce_img_mtx_std: wrong matrix size");
+
+	for (l = dst->dimz - 1; l >= 0; --l) {
+		i = size;
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		for (y = 0; y < dst->dimy; ++y)
+			for (x = 0; x < dst->dimx; ++x) {
+				if (x <= mtxdim || dst->dimx - x <= mtxdim ||
+				    y <= mtxdim || dst->dimy - y <= mtxdim) {
+					pdst[x + y*dst->dimx] = 0;
+					continue;
+				}
+				sum = 0;
+				for (mx = -(svar32_64)mtxdim; mx <= (svar32_64)mtxdim; ++mx)
+					for (my = -(svar32_64)mtxdim; my <= (svar32_64)mtxdim; ++my)
+						sum += psrc[(x + mx) + (y + my)*dst->dimx];
+				std = 0;
+				avg = (rtbyte)(sum) / (mtxdim * mtxdim * 4 + 2 * mtxdim + 4);
+				for (mx = -(svar32_64)mtxdim; mx <= (svar32_64)mtxdim; ++mx)
+					for (my = -(svar32_64)mtxdim; my <= (svar32_64)mtxdim; ++my) {
+						r = psrc[(x + mx) + (y + my)*dst->dimx] - avg;
+						r *= r;
+						//if (r < 0.) r = -1;
+						std += r;
+					}
+				pdst[x + y*dst->dimx] = (ubyte)(prod * pow(std / (mtxdim * mtxdim * 4 + 2 * mtxdim + 4), 0.5));
+			}
+	}
+	return (true);

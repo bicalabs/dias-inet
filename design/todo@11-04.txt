@@ -1,0 +1,12 @@
+ADD to DIAS-KS functionality
+1. Median filter
+2. Erode and dilate
+3. Free shapes for all floating window operations
+4. Scrap, fill holes
+5. Storage of objects database on disk
+6. Computations
+7. Handling of var directory in multi-user mode
+
+ADD to DIAS-DEVEL functionality:
+1. Handling of client key after error execution
+2. Saving actions

@@ -1,0 +1,47 @@
+
+diascm_proc _cm_proc__table[] = {
+	ce_measure,
+};
+
+diascm_proc _cm_proc_img_table[] = {
+	ce_img_stat,
+	ce_img_product, ce_img_resample
+};
+
+diascm_proc _cm_proc_img_pxn_table[] = {
+	ce_img_pxn_add, ce_img_pxn_mul, ce_img_pxn_pow,
+	ce_img_pxn_and, ce_img_pxn_or, ce_img_pxn_xor,
+};
+
+diascm_proc _cm_proc_img_pxw_table[] = {
+	ce_img_pxw_add, ce_img_pxw_sub, ce_img_pxw_mul, ce_img_pxw_div, ce_img_pxw_pow, ce_img_pxw_root,
+	ce_img_pxw_and, ce_img_pxw_or,  ce_img_pxw_xor, ce_img_pxw_not,
+	ce_img_pxw_min, ce_img_pxw_max, ce_img_pxw_med,
+	ce_img_pxw_avg, ce_img_pxw_gvg, ce_img_pxw_hvg,
+	ce_img_pxw_std, ce_img_pxw_eds, ce_img_pxw_mds,
+	ce_img_pxw_thr,
+};
+
+diascm_proc _cm_proc_img_mtx_table[] = {
+	ce_img_mtx_logic,
+	ce_img_mtx_sum, ce_img_mtx_prd,
+	ce_img_mtx_and, ce_img_mtx_or, ce_img_mtx_xor,
+	ce_img_mtx_min, ce_img_mtx_max,
+	ce_img_mtx_med, ce_img_mtx_avg, ce_img_mtx_gvg, ce_img_mtx_hvg,
+	ce_img_mtx_std, ce_img_mtx_eds, ce_img_mtx_mds,
+	ce_img_mtx_grad, ce_img_mtx_div, ce_img_mtx_rot, ce_img_mtx_lapl,
+	ce_img_mtx_filter,
+};
+
+diascm_proc _cm_proc_img_trc_table[] = {
+	ce_img_trc_holes, ce_img_trc_scrap, ce_img_trc_mark, ce_img_trc_mask,
+	ce_img_trc_link, ce_img_trc_window, ce_img_trc_ident,
+};
+
+diascm_lookup _cm_lookup_table[] = {
+	{0, 1, 0, _cm_proc__table},
+	{0, 1, 0, _cm_proc_img_table},
+	{0, 1, 0, _cm_proc_img_pxn_table},
+	{0, 0, 0, NULL}
+};
+

@@ -1,0 +1,16 @@
+// aImAPI.odl : type library source for aImAPI.dll
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (aImAPI.tlb).
+
+[ uuid(C24E9947-DB24-47D6-8835-82650E199B8F), version(1.0) ]
+library AImAPI
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};

@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'diasdevel'
+				'diasdevel.EXE'
+				{
+			val AppID = s '%APPID%'
+		}
+	}
+}

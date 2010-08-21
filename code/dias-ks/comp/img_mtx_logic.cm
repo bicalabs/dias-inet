@@ -1,0 +1,84 @@
+	string str;
+	sdword *moffs, *p;
+	ubyte val, min, max;
+	int copysrc, trueval, compval, compcode, resltcode;
+	uvar32_64 limx, limy, mlen, count, sum;
+	svar32_64 l, mszt = 0, mszb = 0, mszl = 0, mszr = 0;
+	uvar32_64 x, y, m;
+
+	INIT_2IMGS (6, ce_img_mtx_logic);
+
+	isvalidf (kstp_get_int (query, 0, &compval), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 1, &copysrc), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 2, &trueval), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 3, &compcode), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 4, &resltcode), c, kstp_errno);
+	isvalidf (kstp_get_string (query, 5, &str), c, kstp_errno);
+	iffailedf (compcode < 6, c, "ce_img_mtx_logic: wrong comparsion code");
+	iffailedf (resltcode < 7, c, "ce_img_mtx_logic: wrong result code");
+	iffailedf (moffs = (sdword *)strsafe_ptr (str), c, "ce_img_mtx_logic: wrong parameter");
+	iffailedf (mlen = strsafe_len (str) / sizeof(sdword) / 2, c, "ce_img_mtx_logic: wrong parameter");
+	iffailedf (p = ksmem_commit (c, mlen * sizeof(sdword)), c, "ce_img_mtx_logic");
+	for (m = 0; m < mlen * 2; m += 2) {
+		p[m / 2] = moffs[m + 0] + moffs[m + 1] * dimx;
+		if (mszt > moffs[m + 1]) mszt = moffs[m + 1];
+		if (mszl > moffs[m + 0]) mszl = moffs[m + 0];
+		if (mszb < moffs[m + 1]) mszb = moffs[m + 1];
+		if (mszr < moffs[m + 0]) mszr = moffs[m + 0];
+	}
+	moffs = p;
+
+	for (l = dimz - 1; l >= 0; --l) {
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		if (copysrc == -1)
+			memcpy (pdst, psrc, size);
+		else
+			memset (pdst, copysrc, size);
+		limy = dimy - mszb;
+
+#define	PROC1(expr1,expr2)	\
+		switch (compcode) { \
+			case ce_logc_eq: PROC2(==, expr1, expr2); break; \
+			case ce_logc_ne: PROC2(!=, expr1, expr2); break; \
+			case ce_logc_lt: PROC2(<,  expr1, expr2); break; \
+			case ce_logc_gt: PROC2(>,  expr1, expr2); break; \
+			case ce_logc_le: PROC2(<=, expr1, expr2); break; \
+			case ce_logc_ge: PROC2(>=, expr1, expr2); break; \
+		}
+#define	PROC2(op,true_expr,eq_expr)	\
+		for (y = -mszt, psrc += -mszt, pdst += -mszt; \
+		     y < limy; \
+		     ++y, pdst += mszr, psrc += mszr) { \
+			limx = dimx - mszr; \
+			for (x = -mszl, pdst += -mszl, psrc += -mszl; \
+			     x < limx; \
+			     ++x, ++pdst, ++psrc) { \
+				min = 0xFF; \
+				count = sum = max = 0; \
+				for (p = moffs, m = 0; m < mlen; ++m, ++p) \
+					if ((val = *(psrc + *p)) op compval) { \
+						true_expr; \
+						count++; \
+						sum += val; \
+						if (min > val) min = val; \
+						if (max < val) max = val; \
+		 			} \
+				eq_expr; \
+			} \
+		}
+
+		switch (resltcode) {
+			case ce_logr_bool:	PROC1(*pdst = trueval; break;, ;); break;
+			case ce_logr_value:	PROC1(*pdst = val; break;, ;); break;
+			case ce_logr_count:	PROC1(;, if (count > 0) *pdst = (ubyte)(count / trueval)); break;
+			case ce_logr_sum:	PROC1(;, if (count > 0) *pdst = (ubyte)(sum / trueval)); break;
+			case ce_logr_mean:	PROC1(;, if (count > 0) *pdst = (ubyte)(sum / count)); break;
+			case ce_logr_min:	PROC1(;, if (count > 0) *pdst = min); break;
+			case ce_logr_max:	PROC1(;, if (count > 0) *pdst = max); break;
+		}
+#undef PROC2
+#undef PROC1
+	}
+	ksmem_release (c, moffs);
+	return (true);

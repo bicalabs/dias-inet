@@ -1,0 +1,75 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: zipdll - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\DOCUME~1\default\LOCALS~1\Temp\RSPD3.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /Fp"..\..\..\Temp\Release\aimzip/zipdll.pch" /YX /Fo"..\..\..\Temp\Release\aimzip/" /Fd"..\..\..\Temp\Release\aimzip/" /FD /c 
+"C:\usr\home\orlovsky\it\sys\aim.forth\code\Shared\aimzip\bits.c"
+"C:\usr\home\orlovsky\it\sys\aim.forth\code\Shared\aimzip\crypt.c"
+"C:\usr\home\orlovsky\it\sys\aim.forth\code\Shared\aimzip\czip.cpp"
+"C:\usr\home\orlovsky\it\sys\aim.forth\code\Shared\aimzip\deflate.c"
+"C:\usr\home\orlovsky\it\sys\aim.forth\code\Shared\aimzip\gzip.c"
+"C:\usr\home\orlovsky\it\sys\aim.forth\code\Shared\aimzip\inflate.c"
+"C:\usr\home\orlovsky\it\sys\aim.forth\code\Shared\aimzip\lzw.c"
+"C:\usr\home\orlovsky\it\sys\aim.forth\code\Shared\aimzip\tailor.c"
+"C:\usr\home\orlovsky\it\sys\aim.forth\code\Shared\aimzip\trees.c"
+"C:\usr\home\orlovsky\it\sys\aim.forth\code\Shared\aimzip\unlzh.c"
+"C:\usr\home\orlovsky\it\sys\aim.forth\code\Shared\aimzip\unlzw.c"
+"C:\usr\home\orlovsky\it\sys\aim.forth\code\Shared\aimzip\unpack.c"
+"C:\usr\home\orlovsky\it\sys\aim.forth\code\Shared\aimzip\unzip.c"
+"C:\usr\home\orlovsky\it\sys\aim.forth\code\Shared\aimzip\util.c"
+"C:\usr\home\orlovsky\it\sys\aim.forth\code\Shared\aimzip\zip.c"
+]
+Creating command line "cl.exe @D:\DOCUME~1\default\LOCALS~1\Temp\RSPD3.tmp" 
+Creating temporary file "D:\DOCUME~1\default\LOCALS~1\Temp\RSPD4.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"..\..\..\Release\Shared/aimzip.pdb" /machine:I386 /out:"..\..\..\Release\Shared/aimzip.dll" /implib:"..\..\..\Release\Shared/aimzip.lib" 
+\usr\home\orlovsky\it\sys\aim.forth\Temp\Release\aimzip\bits.obj
+\usr\home\orlovsky\it\sys\aim.forth\Temp\Release\aimzip\crypt.obj
+\usr\home\orlovsky\it\sys\aim.forth\Temp\Release\aimzip\czip.obj
+\usr\home\orlovsky\it\sys\aim.forth\Temp\Release\aimzip\deflate.obj
+\usr\home\orlovsky\it\sys\aim.forth\Temp\Release\aimzip\gzip.obj
+\usr\home\orlovsky\it\sys\aim.forth\Temp\Release\aimzip\inflate.obj
+\usr\home\orlovsky\it\sys\aim.forth\Temp\Release\aimzip\lzw.obj
+\usr\home\orlovsky\it\sys\aim.forth\Temp\Release\aimzip\tailor.obj
+\usr\home\orlovsky\it\sys\aim.forth\Temp\Release\aimzip\trees.obj
+\usr\home\orlovsky\it\sys\aim.forth\Temp\Release\aimzip\unlzh.obj
+\usr\home\orlovsky\it\sys\aim.forth\Temp\Release\aimzip\unlzw.obj
+\usr\home\orlovsky\it\sys\aim.forth\Temp\Release\aimzip\unpack.obj
+\usr\home\orlovsky\it\sys\aim.forth\Temp\Release\aimzip\unzip.obj
+\usr\home\orlovsky\it\sys\aim.forth\Temp\Release\aimzip\util.obj
+\usr\home\orlovsky\it\sys\aim.forth\Temp\Release\aimzip\zip.obj
+]
+Creating command line "link.exe @D:\DOCUME~1\default\LOCALS~1\Temp\RSPD4.tmp"
+<h3>Output Window</h3>
+Compiling...
+bits.c
+crypt.c
+czip.cpp
+deflate.c
+gzip.c
+inflate.c
+lzw.c
+tailor.c
+trees.c
+unlzh.c
+unlzw.c
+unpack.c
+unzip.c
+util.c
+zip.c
+Linking...
+   Creating library ..\..\..\Release\Shared/aimzip.lib and object ..\..\..\Release\Shared/aimzip.exp
+
+
+
+<h3>Results</h3>
+aimzip.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

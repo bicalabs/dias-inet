@@ -1,0 +1,668 @@
+﻿
+/*******************************************************************************
+*  This is a part of DIAS ver3.00, aIm SUITE.Internet                          *
+*                                                                              *
+*  DIAS kernel service-specific publuc functions implementation module         *
+*                                                                              *
+*  Do not copy, view or modify this code unless your a member of               *
+*  DIAS development team                                                       *
+*                                                                              *
+*  For licensing information see license.txt in the program root directory     *
+*                                                                              *
+*  File is automatically generated from dias_cmdsys.xml                        *
+*                                                                              *
+*******************************************************************************/
+
+				
+/*
+ *** List of .cm files that MUST exists in the ./comp directory 
+ *
+	img_mtx_max.cm
+	img_mtx_min.cm
+	img_mtx_avg.cm
+	img_mtx_std.cm
+	img_mtx_filter.cm
+	img_mtx_logic.cm
+	img_whl_stat.cm
+	img_whl_resample.cm
+	img_whl_product.cm
+	img_trc_holes.cm
+	img_trc_scrap.cm
+	img_trc_mark.cm
+	img_trc_ident.cm
+	img_trc_window.cm
+	img_pxw_add.cm
+	img_pxw_sub.cm
+	img_pxw_mul.cm
+	img_pxw_div.cm
+	img_pxw_max.cm
+	img_pxw_min.cm
+	img_pxw_avg.cm
+	img_pxw_gvg.cm
+	img_pxw_hvg.cm
+	img_pxw_std.cm
+	img_pxw_and.cm
+	img_pxw_or.cm
+	img_pxw_xor.cm
+	img_pxw_not.cm
+	img_pxw_thr.cm
+	img_pxn_and.cm
+
+ */
+
+					
+
+/*******************************************************************************
+ * Floating window operationing
+ ******************************************************************************/
+		
+/*
+ * Arythmetic operations
+ */
+
+/* Summ operation */
+bool ce_img_mtx_sum (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_mtx_sum.cm"
+	return (false);
+}
+	
+/* Productuion operation */
+bool ce_img_mtx_prd (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_mtx_prd.cm"
+	return (false);
+}
+	
+		
+/*
+ * Statistical operations
+ */
+
+/* Maximum operation */
+bool ce_img_mtx_max (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_mtx_max.cm"
+	return (false);
+}
+	
+/* Minimum operation */
+bool ce_img_mtx_min (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_mtx_min.cm"
+	return (false);
+}
+	
+/* Average filrer */
+bool ce_img_mtx_avg (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_mtx_avg.cm"
+	return (false);
+}
+	
+/* Median filrer */
+bool ce_img_mtx_med (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_mtx_med.cm"
+	return (false);
+}
+	
+/* Geometric average operation */
+bool ce_img_mtx_gvg (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_mtx_gvg.cm"
+	return (false);
+}
+	
+/* Harmonic average operation */
+bool ce_img_mtx_hvg (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_mtx_hvg.cm"
+	return (false);
+}
+	
+/* Standart deviation operation */
+bool ce_img_mtx_std (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_mtx_std.cm"
+	return (false);
+}
+	
+		
+/*
+ * Boolean logic operations
+ */
+
+/* Logical AND operation */
+bool ce_img_mtx_and (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_mtx_and.cm"
+	return (false);
+}
+	
+/* Logical OR operation */
+bool ce_img_mtx_or (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_mtx_or.cm"
+	return (false);
+}
+	
+/* Logical XOR operation */
+bool ce_img_mtx_xor (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_mtx_xor.cm"
+	return (false);
+}
+	
+		
+/*
+ * Geometry distance operations
+ */
+
+/* Euclidian distance operation */
+bool ce_img_mtx_eds (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_mtx_eds.cm"
+	return (false);
+}
+	
+/* Manhattan distance operation */
+bool ce_img_mtx_mds (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_mtx_mds.cm"
+	return (false);
+}
+	
+		
+/*
+ * Diffirentiating operations
+ */
+
+/* Gradient (nabla) operation */
+bool ce_img_mtx_grad (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_mtx_grad.cm"
+	return (false);
+}
+	
+/* Divergence operation */
+bool ce_img_mtx_div (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_mtx_div.cm"
+	return (false);
+}
+	
+/* Rotor operation */
+bool ce_img_mtx_rot (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_mtx_rot.cm"
+	return (false);
+}
+	
+/* Laplacian operation */
+bool ce_img_mtx_lapl (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_mtx_lapl.cm"
+	return (false);
+}
+	
+		
+/*
+ * Special operations
+ */
+
+/* Custom operation */
+bool ce_img_mtx_filter (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_mtx_filter.cm"
+	return (false);
+}
+	
+/* Content-dependent logic */
+bool ce_img_mtx_logic (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_mtx_logic.cm"
+	return (false);
+}
+	
+
+/*******************************************************************************
+ * Whole image processing
+ ******************************************************************************/
+		
+/*
+ * Information
+ */
+
+/* Statistical information */
+bool ce_img_whl_stat (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_whl_stat.cm"
+	return (false);
+}
+	
+		
+/*
+ * Transofrmation
+ */
+
+/* Resample image */
+bool ce_img_whl_resample (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_whl_resample.cm"
+	return (false);
+}
+	
+/* Matrix pruduction of two images */
+bool ce_img_whl_product (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_whl_product.cm"
+	return (false);
+}
+	
+
+/*******************************************************************************
+ * Trace image operationing
+ ******************************************************************************/
+		
+/*
+ * Objects separation/aggregation
+ */
+
+/* Erode objects */
+bool ce_img_trc_erode (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_trc_erode.cm"
+	return (false);
+}
+	
+/* Dilate objects */
+bool ce_img_trc_dilate (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_trc_dilate.cm"
+	return (false);
+}
+	
+/* Open objects */
+bool ce_img_trc_open (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_trc_open.cm"
+	return (false);
+}
+	
+/* Close objects */
+bool ce_img_trc_close (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_trc_close.cm"
+	return (false);
+}
+	
+		
+/*
+ * Objects transformation
+ */
+
+/* Fill holes in objects */
+bool ce_img_trc_holes (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_trc_holes.cm"
+	return (false);
+}
+	
+/* Link lines */
+bool ce_img_trc_link (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_trc_link.cm"
+	return (false);
+}
+	
+		
+/*
+ * Objects selection
+ */
+
+/* Scrap objects */
+bool ce_img_trc_scrap (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_trc_scrap.cm"
+	return (false);
+}
+	
+/* Mark objects */
+bool ce_img_trc_mark (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_trc_mark.cm"
+	return (false);
+}
+	
+/* Mask objects */
+bool ce_img_trc_mask (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_trc_mask.cm"
+	return (false);
+}
+	
+		
+/*
+ * Objects identification
+ */
+
+/* Identificate objects */
+bool ce_img_trc_ident (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_trc_ident.cm"
+	return (false);
+}
+	
+/* Identificate objects in window */
+bool ce_img_trc_window (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_trc_window.cm"
+	return (false);
+}
+	
+
+/*******************************************************************************
+ * Pixelwise image operations
+ ******************************************************************************/
+		
+/*
+ * Arythmetic operations
+ */
+
+/* Summa operation */
+bool ce_img_pxw_add (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_pxw_add.cm"
+	return (false);
+}
+	
+/* Substitute operation */
+bool ce_img_pxw_sub (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_pxw_sub.cm"
+	return (false);
+}
+	
+/* Multiplication operation */
+bool ce_img_pxw_mul (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_pxw_mul.cm"
+	return (false);
+}
+	
+/* Division operation */
+bool ce_img_pxw_div (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_pxw_div.cm"
+	return (false);
+}
+	
+/* Power operation */
+bool ce_img_pxw_pow (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxw_pow.cm"
+	return (false);
+}
+	
+/* Root operation */
+bool ce_img_pxw_root (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxw_root.cm"
+	return (false);
+}
+	
+		
+/*
+ * Statistical operations
+ */
+
+/* Maximum operation */
+bool ce_img_pxw_max (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_pxw_max.cm"
+	return (false);
+}
+	
+/* Minimum operation */
+bool ce_img_pxw_min (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_pxw_min.cm"
+	return (false);
+}
+	
+/* Average filrer */
+bool ce_img_pxw_avg (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_pxw_avg.cm"
+	return (false);
+}
+	
+/* Median filrer */
+bool ce_img_pxw_med (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxw_med.cm"
+	return (false);
+}
+	
+/* Geometric average operation */
+bool ce_img_pxw_gvg (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_pxw_gvg.cm"
+	return (false);
+}
+	
+/* Harmonic average operation */
+bool ce_img_pxw_hvg (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_pxw_hvg.cm"
+	return (false);
+}
+	
+/* Standart deviation operation */
+bool ce_img_pxw_std (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_pxw_std.cm"
+	return (false);
+}
+	
+		
+/*
+ * Boolean logic operations
+ */
+
+/* Logical AND operation */
+bool ce_img_pxw_and (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_pxw_and.cm"
+	return (false);
+}
+	
+/* Logical OR operation */
+bool ce_img_pxw_or (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_pxw_or.cm"
+	return (false);
+}
+	
+/* Logical XOR operation */
+bool ce_img_pxw_xor (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_pxw_xor.cm"
+	return (false);
+}
+	
+/* Logical NOT operation */
+bool ce_img_pxw_not (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_pxw_not.cm"
+	return (false);
+}
+	
+		
+/*
+ * Geometry distance operations
+ */
+
+/* Euclidian distance operation */
+bool ce_img_pxw_eds (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxw_eds.cm"
+	return (false);
+}
+	
+/* Manhattan distance operation */
+bool ce_img_pxw_mds (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxw_mds.cm"
+	return (false);
+}
+	
+		
+/*
+ * Other operations
+ */
+
+/* Threshold operation */
+bool ce_img_pxw_thr (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_pxw_thr.cm"
+	return (false);
+}
+	
+
+/*******************************************************************************
+ * Single value pixelwise operations
+ ******************************************************************************/
+		
+/*
+ * Arythmetic operations
+ */
+
+/* Summa operation */
+bool ce_img_pxn_add (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxn_add.cm"
+	return (false);
+}
+	
+/* Substitute left operation */
+bool ce_img_pxn_subl (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxn_subl.cm"
+	return (false);
+}
+	
+/* Multiplication operation */
+bool ce_img_pxn_mul (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxn_mul.cm"
+	return (false);
+}
+	
+/* Division left operation */
+bool ce_img_pxn_divl (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxn_divl.cm"
+	return (false);
+}
+	
+/* Power operation */
+bool ce_img_pxn_pow (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxn_pow.cm"
+	return (false);
+}
+	
+/* Root operation */
+bool ce_img_pxn_root (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxn_root.cm"
+	return (false);
+}
+	
+		
+/*
+ * Statistical operations
+ */
+
+/* Maximum operation */
+bool ce_img_pxn_max (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxn_max.cm"
+	return (false);
+}
+	
+/* Minimum operation */
+bool ce_img_pxn_min (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxn_min.cm"
+	return (false);
+}
+	
+/* Average filrer */
+bool ce_img_pxn_avg (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxn_avg.cm"
+	return (false);
+}
+	
+/* Geometric average operation */
+bool ce_img_pxn_gvg (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxn_gvg.cm"
+	return (false);
+}
+	
+/* Harmonic average operation */
+bool ce_img_pxn_hvg (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxn_hvg.cm"
+	return (false);
+}
+	
+		
+/*
+ * Boolean logic operations
+ */
+
+/* Logical AND operation */
+bool ce_img_pxn_and (client* c, packet* query, packet* resp) {
+	/* This function MUST BE implemented as a separate .cm file */
+#	include "comp/img_pxn_and.cm"
+	return (false);
+}
+	
+/* Logical OR operation */
+bool ce_img_pxn_or (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxn_or.cm"
+	return (false);
+}
+	
+/* Logical XOR operation */
+bool ce_img_pxn_xor (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxn_xor.cm"
+	return (false);
+}
+	
+		
+/*
+ * Geometry distance operations
+ */
+
+/* Euclidian distance operation */
+bool ce_img_pxn_eds (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxn_eds.cm"
+	return (false);
+}
+	
+/* Manhattan distance operation */
+bool ce_img_pxn_mds (client* c, packet* query, packet* resp) {
+	/* This function is not implemented yet */
+//#	include "comp/img_pxn_mds.cm"
+	return (false);
+}
+	

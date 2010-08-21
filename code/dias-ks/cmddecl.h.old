@@ -1,0 +1,97 @@
+
+bool	ce_measure (client* c, packet* query, packet* resp);
+
+/*
+ * Pixelwise operation between image and single number
+ */
+/* Arithmetic operations */
+bool	ce_img_pxn_add (client* c, packet* query, packet* resp);
+bool	ce_img_pxn_mul (client* c, packet* query, packet* resp);
+bool	ce_img_pxn_pow (client* c, packet* query, packet* resp);
+
+/* Logical operations */
+bool	ce_img_pxn_and (client* c, packet* query, packet* resp);
+bool	ce_img_pxn_or  (client* c, packet* query, packet* resp);
+bool	ce_img_pxn_xor (client* c, packet* query, packet* resp);
+
+/*
+ * Two or more images pixelwise operations
+ */
+/* Arithmetic operations */
+bool	ce_img_pxw_add (client* c, packet* query, packet* resp);
+bool	ce_img_pxw_sub (client* c, packet* query, packet* resp);
+bool	ce_img_pxw_mul (client* c, packet* query, packet* resp);
+bool	ce_img_pxw_div (client* c, packet* query, packet* resp);
+bool	ce_img_pxw_pow (client* c, packet* query, packet* resp);
+bool	ce_img_pxw_root (client* c, packet* query, packet* resp);
+
+/* Logical operations */
+bool	ce_img_pxw_and (client* c, packet* query, packet* resp);
+bool	ce_img_pxw_or  (client* c, packet* query, packet* resp);
+bool	ce_img_pxw_xor (client* c, packet* query, packet* resp);
+bool	ce_img_pxw_not (client* c, packet* query, packet* resp);
+
+/* Distribution operations, including arithmetic, geometric, harmonic mean and standart deviation */
+bool	ce_img_pxw_min (client* c, packet* query, packet* resp);
+bool	ce_img_pxw_max (client* c, packet* query, packet* resp);
+bool	ce_img_pxw_med (client* c, packet* query, packet* resp);
+bool	ce_img_pxw_avg (client* c, packet* query, packet* resp);
+bool	ce_img_pxw_gvg (client* c, packet* query, packet* resp);
+bool	ce_img_pxw_hvg (client* c, packet* query, packet* resp);
+bool	ce_img_pxw_std (client* c, packet* query, packet* resp);
+
+/* Distances: squared, manhettan and euclidian */
+bool	ce_img_pxw_sds (client* c, packet* query, packet* resp);
+bool	ce_img_pxw_eds (client* c, packet* query, packet* resp);
+bool	ce_img_pxw_mds (client* c, packet* query, packet* resp);
+
+/* Threshholding */
+bool	ce_img_pxw_thr (client* c, packet* query, packet* resp);
+
+/*
+ * Image stepped matrix operations
+ */
+
+bool	ce_img_mtx_logic (client* c, packet* query, packet* resp);
+
+bool	ce_img_mtx_sum (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_prd (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_min (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_max (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_avg (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_med (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_gvg (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_hvg (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_std (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_eds (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_mds (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_xor (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_and (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_or (client* c, packet* query, packet* resp);
+
+bool	ce_img_mtx_grad (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_div (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_rot (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_lapl (client* c, packet* query, packet* resp);
+bool	ce_img_mtx_filter (client* c, packet* query, packet* resp);
+
+/*
+ * Image tracing operations
+ */
+bool	ce_img_trc_holes (client* c, packet* query, packet* resp);
+bool	ce_img_trc_scrap (client* c, packet* query, packet* resp);
+bool	ce_img_trc_mark (client* c, packet* query, packet* resp);
+bool	ce_img_trc_mask (client* c, packet* query, packet* resp);
+bool	ce_img_trc_link (client* c, packet* query, packet* resp);
+bool	ce_img_trc_window (client* c, packet* query, packet* resp);
+bool	ce_img_trc_ident (client* c, packet* query, packet* resp);
+
+/*
+ * Whole image-to-image operations
+ */
+bool	ce_img_whl_resample (client* c, packet* query, packet* resp);
+bool	ce_img_whl_scale (client* c, packet* query, packet* resp);
+bool	ce_img_whl_normalize (client* c, packet* query, packet* resp);
+bool	ce_img_whl_linearize (client* c, packet* query, packet* resp);
+bool	ce_img_whl_product (client* c, packet* query, packet* resp);
+bool	ce_img_whl_stat (client* c, packet* query, packet* resp);

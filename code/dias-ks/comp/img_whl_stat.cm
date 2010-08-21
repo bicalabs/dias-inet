@@ -1,0 +1,29 @@
+	rtbyte avg, std = 0;
+	uvar32_64 sum = 0, min = (uvar32_64)-1, max = 0, i;
+
+	INIT_1IMGS (0, ce_img_stat);
+
+	i = size;
+	psrc = src->layers[0];
+	while (i--) {
+		if (min > *psrc) min = *psrc;
+		if (max < *psrc) max = *psrc;
+		sum += *psrc++;
+	}
+	avg = (rtbyte)sum / (rtbyte)size;
+	i = size;
+	psrc = src->layers[0];
+	while (i--)
+		std += pow (avg - *psrc++, 2);
+	std /= size - 1;
+	std = pow (std, 0.5);
+
+	kstp_allocate (resp, 6);
+	kstp_set_real (resp, 0, avg);
+	kstp_set_real (resp, 1, std);
+	kstp_set_int (resp, 2, size);
+	kstp_set_int (resp, 3, min);
+	kstp_set_int (resp, 4, max);
+	kstp_set_int (resp, 5, sum);
+
+	return (true);

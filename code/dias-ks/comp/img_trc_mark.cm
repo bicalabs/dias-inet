@@ -1,0 +1,39 @@
+	/* Internal variabes */
+	udword conn8, type;
+	bool free = false, edges = false;
+	ubyte *ptr, what = 0xFF, fill;
+	uvar32_64 pos, area, seed = 0;
+	/* Standart variables */
+	ubyte *ptmp, *p;
+	uvar32_64 l, i;
+
+	INIT_2IMGS (2, ce_img_trc_scrap);
+
+	isvalidf (kstp_get_int (query, 0, &type), c, kstp_errno);
+	isvalidf (kstp_get_int (query, 1, &conn8), c, kstp_errno);
+	iffailedf (type == true || type == false, c, "wrong operation type");
+	iffailedf (conn8 == true || conn8 == false, c, "wrong object connection type");
+
+	iffailedf (ptmp = ksmem_commit (c, size), c, "ce_img_trc_scrap");
+	p = ptmp;
+
+	fill = type ? 0xC0 : 0x00;
+	for (l = 0; l < dimz; --l) {
+		ptmp = p;
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		memcpy (ptmp, pdst, size);
+
+		for (seed = 0; seed < size; seed++)
+			if (ptmp[seed] == 0xFF)
+				do { FLOODFILL (ptmp); } while (area);
+
+		i = size;
+		if (type)
+			while (i--) *pdst++ = (*ptmp++ == fill) ? 0xFF : 0x00;
+		else
+			memcpy (pdst, ptmp, size);
+	}
+
+	ksmem_release (c, p);
+	return (true);

@@ -1,0 +1,12 @@
+	register svar32_64 l, i;
+	INIT_XIMGS(0, ce_img_pxw_max);
+	for (l = dst->dimz - 1; l >= 0; --l) {
+		i = size;
+		pdst = dst->layers[l];
+		while (i--) {
+			pdst[i] = (ubyte)0;
+			for (no = 0; no < n; ++no)
+				pdst[i] = max (pdst[i], srcs[no]->layers[l][i]);
+		}
+	}
+	FINALIZE_XIMGS;

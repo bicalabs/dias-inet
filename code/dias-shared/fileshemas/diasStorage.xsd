@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<schema elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:NameSpace1="http://www.w3.org/2001/XMLSchema">
+	<element name="storage">
+		<complexType>
+			<all>
+				<element name="image">
+					<complexType>
+						<sequence>
+							<element name="mask">
+								<complexType>
+									<sequence></sequence>
+									<attribute name="file" type="NameSpace1:fileName" />
+								</complexType>
+							</element>
+							<element name="overlay">
+								<complexType>
+									<sequence></sequence>
+									<attribute name="file" type="NameSpace1:fileName" />
+								</complexType>
+							</element>
+							<element name="label">
+								<complexType>
+									<sequence></sequence>
+									<attribute name="file" type="NameSpace1:fileName" />
+								</complexType>
+							</element>
+							<element name="metric">
+								<complexType>
+									<sequence></sequence>
+									<attribute name="file" type="NameSpace1:fileName" />
+								</complexType>
+							</element>
+							<element name="origin" type="imageOrigin" />
+						</sequence>
+						<attribute name="file" type="fileName" />
+						<attribute name="fileType" type="string" />
+						<attribute name="dateModified" type="dateTime" />
+						<attribute name="dateCreated" type="dateTime" />
+						<attribute name="comment" type="string" />
+						<attribute name="title" type="NameSpace1:itemName" />
+					</complexType>
+				</element>
+				<element name="data">
+					<complexType>
+						<sequence />
+					</complexType>
+				</element>
+				<element name="title" type="itemName" />
+				<element name="comment" type="itemComment" />
+				<element name="creator" type="string" />
+				<element name="owner" type="string" />
+			</all>
+		</complexType>
+	</element>
+	<simpleType name="itemName">
+		<restriction base="string">
+			<maxLength value="256" />
+		</restriction>
+	</simpleType>
+	<simpleType name="fileName">
+		<restriction base="string">
+			<maxLength value="256" />
+		</restriction>
+	</simpleType>
+	<simpleType name="itemComment">
+		<restriction base="string">
+			<maxLength value="8192" />
+		</restriction>
+	</simpleType>
+	<complexType name="imageOrigin">
+		<sequence>
+			<element name="function" type="functionDescr" />
+		</sequence>
+	</complexType>
+	<complexType name="functionDescr">
+		<sequence>
+			<element name="parameters" type="functionParams" />
+		</sequence>
+		<attribute name="title" type="string" />
+		<attribute name="owner" type="string" />
+		<attribute name="date" type="dateTime" />
+	</complexType>
+	<complexType name="functionParams">
+		<sequence></sequence>
+		<attribute name="title" type="string" />
+		<attribute name="value" type="string" />
+	</complexType>
+</schema>

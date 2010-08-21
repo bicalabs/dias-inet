@@ -1,0 +1,368 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+#ifdef _WIN32
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ARG_COLOR           ICON                    "res\\color.ico"
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#include ""res\\dias-devel.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\n"
+    "1 TYPELIB ""dias-devel.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_DIASDEVEL1          REGISTRY                "dias-devel.rgs"
+#endif    // Russian resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral (Sys. Default) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEUSD)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_SYS_DEFAULT
+#pragma code_page(1251)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\dias-devel.ico"
+IDI_CMD_CMD             ICON                    "res\\cmd.ico"
+IDI_CMD_CMDX            ICON                    "res\\icon1.ico"
+IDI_ARG_INT             ICON                    "res\\int.ico"
+IDI_ARG_REAL            ICON                    "res\\real.ico"
+IDI_ARG_STR             ICON                    "res\\str.ico"
+IDI_ALERT               ICON                    "res\\alert.ico"
+IDI_ARG_BOOL            ICON                    "res\\bool.ico"
+IDI_CMD_CLS             ICON                    "res\\class.ico"
+IDI_CMD_SYS             ICON                    "res\\cmdsys.ico"
+IDI_OBJ_LUT             ICON                    "res\\lut.ico"
+IDI_OBJ                 ICON                    "res\\compound.ico"
+IDI_CMD_DIV             ICON                    "res\\div.ico"
+IDI_DONE                ICON                    "res\\done.ico"
+IDI_ENTRY               ICON                    "res\\entry.ico"
+IDI_FAIL                ICON                    "res\\fail.ico"
+IDI_OBJ_IMG             ICON                    "res\\img.ico"
+IDI_OBJ_MARK            ICON                    "res\\mark.ico"
+IDI_ARG_MATRIX1         ICON                    "res\\matrix.ico"
+IDI_ARG_MATRIX2         ICON                    "res\\matrix2.ico"
+IDI_NOWAY               ICON                    "res\\notimpl.ico"
+IDI_RETURN              ICON                    "res\\return.ico"
+IDI_OBJ_SHOT            ICON                    "res\\snapshot.ico"
+IDI_CMD_SUB             ICON                    "res\\subsys.ico"
+IDI_SUCCESS             ICON                    "res\\success.ico"
+IDI_OBJ_STOR            ICON                    "res\\storage.ico"
+#endif    // Neutral (Sys. Default) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 235, 55
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "About dias-devel"
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "dias-devel Version 1.0",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "Copyright (C) 2004",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "OK",IDOK,178,7,50,16,WS_GROUP
+END
+
+IDD_DIASDEVEL_DIALOG DIALOGEX 0, 0, 790, 433
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_MINIMIZEBOX | WS_POPUP | 
+    WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+MENU IDR_DIASDEVEL
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "Tree1",IDC_FLT_FUNCTIONS,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_DISABLEDRAGDROP | 
+                    TVS_SHOWSELALWAYS | TVS_TRACKSELECT | TVS_FULLROWSELECT | 
+                    WS_BORDER | WS_TABSTOP | 0x4c00,165,268,225,138
+    CONTROL         "List1",IDC_FLT_HISTORY,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SHAREIMAGELISTS | 
+                    LVS_NOLABELWRAP | LVS_NOSORTHEADER | WS_BORDER | 
+                    WS_TABSTOP,663,326,6,6
+    CONTROL         "List1",IDC_FLT_PARAM,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SHAREIMAGELISTS | 
+                    LVS_NOLABELWRAP | LVS_OWNERDRAWFIXED | 
+                    LVS_NOCOLUMNHEADER | LVS_NOSORTHEADER | WS_BORDER | 
+                    WS_TABSTOP,399,268,225,138
+    PUSHBUTTON      "Execute",IDC_FLT_EXEC,7,412,117,14
+    CONTROL         "Auto preview",IDC_FLT_AUTOPREVIEW,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,133,414,59,10
+    CONTROL         "",IDC_FLT_IMG1NAME,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SHAREIMAGELISTS | 
+                    LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,285,151,122
+    COMBOBOX        IDC_FLT_IMG2WHO,632,268,151,114,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_FLT_IMG2NAME,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_SHAREIMAGELISTS | 
+                    LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,632,284,151,122
+    COMBOBOX        IDC_FLT_IMG1WHO,7,268,151,114,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "",IDC_FLT_IMG1,"Static",SS_WHITERECT | SS_NOTIFY,7,7,
+                    386,256,WS_EX_STATICEDGE
+    CONTROL         "",IDC_FLT_IMG2,"Static",SS_WHITERECT | SS_NOTIFY,397,7,
+                    386,256,WS_EX_STATICEDGE
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,9,0,0
+ PRODUCTVERSION 3,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "World Wide Science"
+            VALUE "FileDescription", "Dias Developer Center"
+            VALUE "FileVersion", "0.90"
+            VALUE "InternalName", "dias-devel.exe"
+            VALUE "LegalCopyright", "(c) Maxim A. Orlovsky.  All rights reserved."
+            VALUE "LegalTrademarks", "aIm SUITE"
+            VALUE "OriginalFilename", "dias-devel.exe"
+            VALUE "ProductName", "aI SUITE Internet"
+            VALUE "ProductVersion", "3.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_DIASDEVEL_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 783
+        VERTGUIDE, 232
+        VERTGUIDE, 239
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 426
+        HORZGUIDE, 268
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_DIASDEVEL MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Connect DIAS\tCtrl+C",       ID_FILE_CONNECT
+        MENUITEM "&Disconnect DIAS\tCtrl+X",    ID_FILE_DISCONNECT
+        MENUITEM SEPARATOR
+        MENUITEM "&Upload...\tCtrl+U",          ID_FILE_UPLOAD
+        MENUITEM "&Download...\tCtrl+D",        ID_FILE_DOWNLOAD
+        MENUITEM SEPARATOR
+        MENUITEM "&Select storage...\tCtrl+S",  ID_FILE_SELECTSTORAGE
+        MENUITEM "Edit storage...\tCtrl+E",     ID_FILE_EDITSTORAGE
+        MENUITEM "De&lete storage...\tDel",     ID_FILE_DELETESTORAGE
+        MENUITEM SEPARATOR
+        MENUITEM "&Exit\tCtrl+Q",               ID_FILE_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Refresh\tCtrl+R",            ID_VIEW_REFRESH
+        MENUITEM SEPARATOR
+        MENUITEM "&Storage info...\tCtrl+Shift+S", ID_VIEW_STORAGEINFO
+        MENUITEM "&Image info... \tCtrl+Shift+I", ID_VIEW_IMAGEINFO
+        MENUITEM SEPARATOR
+        MENUITEM "Auto &preview\tCtrl+P",       ID_VIEW_AUTOPREVIEW
+        MENUITEM "&Apply now\tCtrl+A",          ID_VIEW_APPLYNOW
+    END
+    POPUP "Plug-Ins"
+    BEGIN
+        MENUITEM "Hypothalamic AVPergic system v1", ID_PLUG_HTHALAMAVP
+        MENUITEM SEPARATOR
+        MENUITEM "Memory test 1",               ID_PLUG_MEMORYTEST1
+    END
+    MENUITEM "&Help",                       ID_HELP32787
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_DIASDEVEL ACCELERATORS 
+BEGIN
+    "A",            ID_APPLY_NOW,           VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_FILE_CONNECT,        VIRTKEY, CONTROL, NOINVERT
+    "X",            ID_FILE_DISCONNECT,     VIRTKEY, CONTROL, NOINVERT
+    "U",            ID_FILE_UPLOAD,         VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_FILE_SELECTSTORAGE,  VIRTKEY, CONTROL, NOINVERT
+    "E",            ID_FILE_EDITSTORAGE,    VIRTKEY, CONTROL, NOINVERT
+    "Q",            ID_FILE_EXIT,           VIRTKEY, CONTROL, NOINVERT
+    "D",            ID_FILE_DOWNLOAD,       VIRTKEY, CONTROL, NOINVERT
+    "R",            ID_VIEW_REFRESH,        VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_VIEW_STORAGEINFO,    VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    "I",            ID_VIEW_IMAGEINFO,      VIRTKEY, SHIFT, CONTROL, 
+                                                    NOINVERT
+    "P",            ID_VIW_AUTOPREVIEW,     VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDP_OLE_INIT_FAILED     "OLE initialization failed.  Make sure that the OLE libraries are the correct version."
+    IDS_ABOUTBOX            "&About dias-devel..."
+    IDS_MBC_GEN             "DIAS Development Center"
+    IDP_SOCKETS_INIT_FAILED "Windows sockets initialization failed."
+    IDS_MBT_SOCKET          "Error connecting to DIAS Kernel Service (socket creation): #%08X"
+    IDS_MBT_CONNECT         "Error connecting to DIAS Kernel Service (socket connection): #%08X"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#include "res\dias-devel.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+1 TYPELIB "dias-devel.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

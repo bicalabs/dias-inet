@@ -1,0 +1,71 @@
+	clock_t oclock;
+	ubyte min, *sp;
+	svar32_64 l;
+	udword mtxdim;
+	uvar32_64 limx, limy;
+	register uvar32_64 x, y;
+	register svar32_64 mx, my;
+	INIT_2IMGS (1, ce_img_mtx_min);
+
+	isvalidf (kstp_get_int (query, 0, &mtxdim), c, kstp_errno);
+	iffailedf (mtxdim >= 1 && mtxdim < min (src->dimx / 4,src->dimy / 4),
+	           c, "ce_img_mtx_min: wrong matrix size");
+
+	oclock = clock ();
+	for (l = dimz - 1; l >= 0; --l) {
+		psrc = src->layers[l];
+		pdst = dst->layers[l];
+		memset (pdst, 0, size);
+
+		limy = dimy - mtxdim;
+		psrc += mtxdim * (dimx + 1);
+		pdst += mtxdim * (dimx + 1);
+		for (y = mtxdim; y < limy; ++y) {
+			limx = dimx - mtxdim;
+			for (x = mtxdim; x < limx; ++x) {
+
+				sp = psrc - mtxdim * (dimx + 1);
+/*			__asm {
+				pushad
+				mov	al,-1
+				mov	edi,mtxdim
+				mov	esi,sp
+				mov	ecx,edi
+				mov	edx,edi
+				shl	edx,1
+				inc	edx
+				sub	esi,edx
+__loop2:			push	ecx
+				mov	ecx,edi
+__loop1:			cmp	al,byte ptr [esi]
+				jle	__jle1
+				mov	al,byte ptr [esi]
+__jle1:				inc	esi
+				loop	__loop1
+				mov	ebx,edi		/* remembers dimx
+				sub	ebx,edx		/* substracting (mtxdim << 1) + 1
+				add	esi,ebx
+				pop	ecx
+				loop	__loop2
+				mov	min,al
+				mov	psrc,esi
+				popad
+			}*/
+
+				min = (ubyte)-1;
+				for (my = -(sdword)mtxdim; my <= (sdword)mtxdim; ++my) {
+					for (mx = -(sdword)mtxdim; mx <= (sdword)mtxdim; ++mx, ++sp)
+						if (min > *sp) min = *sp;
+					sp += dimx - (mtxdim << 1) - 1;
+				}
+
+				*pdst++ = min;
+				psrc++;
+			}
+			psrc += 2 * mtxdim;
+			pdst += 2 * mtxdim;
+		}
+	}
+	oclock = clock () - oclock;
+	kserr_fire (c, 0, "mtx min timing", __FILE__, oclock);
+	return (true);

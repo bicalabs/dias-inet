@@ -1,0 +1,25 @@
+	uvar32_64 *ptmp, min = (uvar32_64)-1, max = 0;
+	register svar32_64 l;
+	register uvar32_64 x, y, i;
+	INIT_3IMGS (0, ce_img_whl_prod);
+
+	iffailedf (ptmp = ksmem_commit(c, dst->dimx * dst->dimx * sizeof (uvar32_64)), c, "out of memody");
+
+	for (l = dst->dimz - 1; l >= 0; --l) {
+		pdst = dst->layers[l];
+		psrc1 = src1->layers[l];
+		psrc2 = src2->layers[l];
+		for (y = 0; y < dst->dimy; ++y)
+			for (x = 0; x < dst->dimy; ++x) {
+				ptmp[x+y*dst->dimx] = 0;
+				for (i = 0; i < dst->dimy; ++i)
+					ptmp[x+y*dst->dimx] += psrc1[x+i*dst->dimx] * psrc2[i+y*dst->dimx];
+				min = (min <= ptmp[x+y*dst->dimx]) ? min : ptmp[x+y*dst->dimx];
+				max = (max >= ptmp[x+y*dst->dimx]) ? max : ptmp[x+y*dst->dimx];
+			}
+		for (y = 0; y < dst->dimy; ++y)
+			for (x = 0; x < dst->dimx; ++x)
+				pdst[x+y*dst->dimx] = (ubyte)((ptmp[x+y*dst->dimx] - min) * 255. / (max - min));
+	}
+	ksmem_release (c, ptmp);
+	return (true);
